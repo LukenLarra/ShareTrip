@@ -86,21 +86,15 @@ public class MainGUIController implements Controller{
 
     @FXML
     void initialize() {
-        createRide = load("CreateRide.fxml");
-        queryRides = load("QueryRides.fxml");
         // set current driver name
         lblDriver.setText(businessLogic.getCurrentDriver().getName());
     }
 
     private void showScene(String scene) {
         switch (scene) {
-            case "CreateRide" -> mainWrapper.setCenter(createRide.ui);
-            case "QueryRides" -> mainWrapper.setCenter(queryRides.ui);
+            case "CreateRide" -> mainWrapper.setCenter(mainGUI.getCreateRidesWin());
+            case "QueryRides" -> mainWrapper.setCenter(mainGUI.getQueryRidesWin());
         }
-    }
-
-    private BorderPane getMainWrapper() {
-        return mainWrapper;
     }
 
     @Override

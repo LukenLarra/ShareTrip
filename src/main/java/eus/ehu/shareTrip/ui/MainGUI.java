@@ -72,9 +72,9 @@ public class MainGUI {
 
         this.stage = stage;
 
-        mainWin = load("MainGUI2.fxml");
-        //queryRidesWin = load("QueryRides.fxml");
-        //createRideWin = load("CreateRide.fxml");
+        mainWin = load("MainGUI.fxml");
+        queryRidesWin = load("QueryRides.fxml");
+        createRideWin = load("CreateRide.fxml");
 
         showMain();
 
@@ -83,10 +83,16 @@ public class MainGUI {
 //  public void start(Stage stage) throws IOException {
 //      init(stage);
 //  }
+    public Parent getQueryRidesWin() {
+        return queryRidesWin.ui;
+    }
 
+    public Parent getCreateRidesWin() {
+        return createRideWin.ui;
+    }
 
     public void showMain() {
-        setupScene(mainWin.ui, "MainTitle", 700, 500);
+        setupScene(mainWin.ui, "MainTitle", 1000, 600);
     }
 
     public void showQueryRides() {
