@@ -47,10 +47,10 @@
       <children>
             <PasswordField fx:id="passwordField" layoutX="304.0" layoutY="191.0" />
             <TextField fx:id="usernameField" layoutX="304.0" layoutY="131.0" />
-            <Button layoutX="251.0" layoutY="276.0" mnemonicParsing="false" text="Sign-In" />
+            <Button layoutX="253.0" layoutY="276.0" mnemonicParsing="false" onAction="#SignIn" text="Sign-In" />
             <Label layoutX="197.0" layoutY="133.0" text="Username:" />
             <Label layoutX="198.0" layoutY="195.0" text="Password:" />
-            <Button layoutX="359.0" layoutY="276.0" mnemonicParsing="false" text="Sign-Up" />
+            <Button layoutX="342.0" layoutY="276.0" mnemonicParsing="false" text="Sign-Up" />
             <RadioButton fx:id="travelerButton" layoutX="224.0" layoutY="54.0" mnemonicParsing="false" text="Traveler">
                <toggleGroup>
                   <ToggleGroup fx:id="User" />

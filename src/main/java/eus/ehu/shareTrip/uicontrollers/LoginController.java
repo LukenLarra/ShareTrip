@@ -13,10 +13,10 @@ public class LoginController {
     private RadioButton driverButton;
 
     @FXML
-    private PasswordField passwordField;
+    private RadioButton travelerButton;
 
     @FXML
-    private RadioButton travelerButton;
+    private PasswordField passwordField;
 
     @FXML
     private TextField usernameField;
