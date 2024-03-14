@@ -1,10 +1,13 @@
 package eus.ehu.shareTrip.ui;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
+import eus.ehu.shareTrip.uicontrollers.MainGUIController;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import eus.ehu.shareTrip.uicontrollers.Controller;
@@ -18,6 +21,7 @@ public class MainGUI {
     private Window mainWin, createRideWin, queryRidesWin;
 
     private BlFacade businessLogic;
+
     private Stage stage;
     private Scene scene;
 
@@ -68,9 +72,9 @@ public class MainGUI {
 
         this.stage = stage;
 
-        mainWin = load("MainGUI.fxml");
-        queryRidesWin = load("QueryRides.fxml");
-        createRideWin = load("CreateRide.fxml");
+        mainWin = load("MainGUI2.fxml");
+        //queryRidesWin = load("QueryRides.fxml");
+        //createRideWin = load("CreateRide.fxml");
 
         showMain();
 
@@ -82,15 +86,17 @@ public class MainGUI {
 
 
     public void showMain() {
-        setupScene(mainWin.ui, "MainTitle", 320, 250);
+        setupScene(mainWin.ui, "MainTitle", 700, 500);
     }
 
     public void showQueryRides() {
         setupScene(queryRidesWin.ui, "QueryRides", 1000, 500);
+
     }
 
     public void showCreateRide() {
         setupScene(createRideWin.ui, "CreateRide", 550, 400);
+
     }
 
     private void setupScene(Parent ui, String title, int width, int height) {
@@ -106,7 +112,7 @@ public class MainGUI {
         stage.show();
     }
 
-//  public static void main(String[] args) {
+    //  public static void main(String[] args) {
 //    launch();
 //  }
 }

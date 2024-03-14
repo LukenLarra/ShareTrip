@@ -3,21 +3,30 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import eus.ehu.shareTrip.ui.MainGUI;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Window;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainGUIController implements Controller{
+
+    private Window createRide, queryRides;
+
+    @FXML
+    private BorderPane mainWrapper;
 
     @FXML
     private Label selectOptionLbl;
 
     @FXML
     private Label lblDriver;
-
 
     @FXML
     private Button queryRidesBtn;
@@ -42,22 +51,56 @@ public class MainGUIController implements Controller{
         businessLogic = blFacade;
     }
 
+
+    public class Window {
+        private Controller controller;
+        private Parent ui;
+    }
+
+    private Window load(String fxml) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent ui = loader.load();
+            Controller controller = loader.getController();
+
+            Window window = new Window();
+            window.controller = controller;
+            window.ui = ui;
+            return window;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void queryRides(ActionEvent event) {
-        mainGUI.showQueryRides();
+        //mainGUI.showQueryRides();
+        showScene("QueryRides");
     }
 
     @FXML
     void createRide(ActionEvent event) {
-        mainGUI.showCreateRide();
+        //mainGUI.showCreateRide();
+        showScene("CreateRide");
     }
 
 
     @FXML
     void initialize() {
+        createRide = load("CreateRide.fxml");
+        queryRides = load("QueryRides.fxml");
+        // set current driver name
+        lblDriver.setText(businessLogic.getCurrentDriver().getName());
+    }
 
-            // set current driver name
-            lblDriver.setText(businessLogic.getCurrentDriver().getName());
+    private void showScene(String scene) {
+        switch (scene) {
+            case "CreateRide" -> mainWrapper.setCenter(createRide.ui);
+            case "QueryRides" -> mainWrapper.setCenter(queryRides.ui);
+        }
+    }
+
+    private BorderPane getMainWrapper() {
+        return mainWrapper;
     }
 
     @Override
