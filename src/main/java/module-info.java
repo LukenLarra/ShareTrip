@@ -7,8 +7,8 @@ module eus.ehu.sharetrip {
     requires org.apache.logging.log4j;
     requires jakarta.persistence;
 
-    opens eus.ehu.ridesfx.domain to javafx.base, org.hibernate.orm.core;
-    opens eus.ehu.ridesfx.ui to javafx.fxml;
-    opens eus.ehu.ridesfx.uicontrollers to javafx.fxml;
-    exports eus.ehu.ridesfx.ui;
+    opens eus.ehu.shareTrip.domain to javafx.base, org.hibernate.orm.core;
+    opens eus.ehu.shareTrip.ui to javafx.fxml;
+    opens eus.ehu.shareTrip.uicontrollers to javafx.fxml;
+    exports eus.ehu.shareTrip.ui;
 }
