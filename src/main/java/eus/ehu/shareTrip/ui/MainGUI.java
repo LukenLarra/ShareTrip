@@ -1,14 +1,10 @@
 package eus.ehu.shareTrip.ui;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
-import eus.ehu.shareTrip.uicontrollers.LoginController;
-import eus.ehu.shareTrip.uicontrollers.MainGUIController;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import eus.ehu.shareTrip.uicontrollers.Controller;
@@ -76,18 +72,19 @@ public class MainGUI {
         mainWin = load("MainGUI.fxml");
         queryRidesWin = load("QueryRides.fxml");
         createRideWin = load("CreateRide.fxml");
-//        signInWin = load("SignIn.fxml");
-//        signUpWin = load("SignUp.fxml");
-//        signInSignUpWin = load("Login.fxml");
+        signInSignUpWin = load("Login.fxml");
+        //signInWin = load("SignIn.fxml");
+        //signUpWin = load("SignUp.fxml");
 
-        showMain();
-        //showLogin();
+
+        // showMain();
+        showLogin();
 
     }
 
-//  public void start(Stage stage) throws IOException {
-//      init(stage);
-//  }
+   // public void start(Stage stage) throws IOException {
+   //  init(stage);
+   //}
     public Parent getQueryRidesWin() {
         return queryRidesWin.ui;
     }
@@ -102,7 +99,7 @@ public class MainGUI {
     }
 
     public void showLogin() {
-        setupScene(signInSignUpWin.ui, "Sign In/Up", 1000, 600);
+        setupScene(signInSignUpWin.ui, "SignInUp", 1000, 600);
     }
 
     public void showQueryRides() {
