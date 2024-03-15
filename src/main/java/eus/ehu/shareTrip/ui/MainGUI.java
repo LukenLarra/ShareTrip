@@ -93,13 +93,21 @@ public class MainGUI {
         return createRideWin.ui;
     }
 
+    public Parent getSignInWin() {
+        return signInWin.ui;
+    }
+
+    public Parent getSignUpWin() {
+        return signUpWin.ui;
+    }
+
 
     public void showMain() {
         setupScene(mainWin.ui, "MainTitle", 1000, 600);
     }
 
     public void showLogin() {
-        setupScene(signInSignUpWin.ui, "SignInUp", 1000, 600);
+        setupScene(signInSignUpWin.ui, "SignInUp", 600, 500);
     }
 
     public void showQueryRides() {
@@ -109,13 +117,6 @@ public class MainGUI {
     public void showCreateRide() {
         setupScene(createRideWin.ui, "CreateRide", 550, 400);
 
-    }
-    public void showSignIn() {
-        setupScene(signInWin.ui, "SignIn", 550, 400);
-    }
-
-    public void showSignUp() {
-        setupScene(signUpWin.ui, "SignUp", 550, 400);
     }
 
     private void setupScene(Parent ui, String title, int width, int height) {
@@ -129,6 +130,10 @@ public class MainGUI {
         stage.setTitle(ResourceBundle.getBundle("Etiquetas", Locale.getDefault()).getString(title));
         scene.setRoot(ui);
         stage.show();
+    }
+
+    public MainGUI getMainGUI(){
+        return this;
     }
 
     //  public static void main(String[] args) {
