@@ -5,38 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class LoginController {
+public class LoginControllerPSA implements Controller  {
 
     private MainGUI mainGUI;
-
-    @FXML
-    private ToggleGroup userSignUp;
-    @FXML
-    private ToggleGroup userSignIp;
-
-    @FXML
-    private RadioButton driverSignUpBtn;
-
-    @FXML
-    private RadioButton travelerSignUpBtn;
-
-    @FXML
-    private RadioButton driverSignInBtn;
-
-    @FXML
-    private RadioButton travelerSignInBtn;
-
-    @FXML
-    private Label msgSignIn;
-
-    @FXML
-    private Label msgSignUp;
-
-    @FXML
-    private Button btnSignUp;
-
-    @FXML
-    private Button btnSignIn;
 
     @FXML
     private Button btnShowSignIn;
@@ -45,29 +16,71 @@ public class LoginController {
     private Button btnShowSignUp;
 
     @FXML
+    void showSignIn(ActionEvent event) {
+
+    }
+
+    @FXML
+    void showSignUp(ActionEvent event) {
+
+    }
+
+    @FXML
+    void initialize() {
+
+    }
+
+    @Override
+    public void setMainApp(MainGUI mainGUI) {
+        this.mainGUI = mainGUI;
+    }
+
+
+   /* @FXML
+    private Button btnSignIn;
+
+    @FXML
+    private RadioButton driverSignInBtn;
+
+    @FXML
     private TextField emailFieldSignIn;
 
     @FXML
-    private TextField emailFieldSignUp;
+    private Label msgSignIn;
 
     @FXML
     private PasswordField passwordFieldSignIn;
 
     @FXML
+    private RadioButton travelerSignInBtn;
+
+    @FXML
+    private ToggleGroup userSignIn;
+
+    @FXML
+    private Button btnSignUp;
+
+    @FXML
+    private RadioButton driverSignUpBtn;
+
+    @FXML
+    private TextField emailFieldSignUp;
+
+    @FXML
+    private Label msgSignUp;
+
+    @FXML
     private PasswordField passwordFieldSignUp;
+
+    @FXML
+    private RadioButton travelerSignUpBtn;
+
+    @FXML
+    private ToggleGroup userSignUp;
 
     @FXML
     private TextField usernameFieldSignUp;
 
-    @FXML
-    void showSignIn(ActionEvent event) {
-        mainGUI.showSignIn();
-    }
-
-    @FXML
-    void showSignUp(ActionEvent event) {
-        mainGUI.showSignUp();
-    }
 
     @FXML
     void SignIn(ActionEvent event) {
@@ -98,8 +111,7 @@ public class LoginController {
             //else, create traveler and show mainGUI.showMain();
         }
     }
-    @FXML
-    void initialize() {
 
-    }
+    */
+
 }
