@@ -78,9 +78,10 @@ public class MainGUI {
         createRideWin = load("CreateRide.fxml");
 //        signInWin = load("SignIn.fxml");
 //        signUpWin = load("SignUp.fxml");
-        signInSignUpWin = load("Login.fxml");
+//        signInSignUpWin = load("Login.fxml");
 
-        showLogin();
+        showMain();
+        //showLogin();
 
     }
 
@@ -101,7 +102,7 @@ public class MainGUI {
     }
 
     public void showLogin() {
-        setupScene(signInSignUpWin.ui, "Sign In or Sign Up", 1000, 600);
+        setupScene(signInSignUpWin.ui, "Sign In/Up", 1000, 600);
     }
 
     public void showQueryRides() {
