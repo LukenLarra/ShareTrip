@@ -73,8 +73,8 @@ public class MainGUI {
         queryRidesWin = load("QueryRides.fxml");
         createRideWin = load("CreateRide.fxml");
         signInSignUpWin = load("Login.fxml");
-        //signInWin = load("SignIn.fxml");
-        //signUpWin = load("SignUp.fxml");
+        signInWin = load("SignIn.fxml");
+        signUpWin = load("SignUp.fxml");
 
 
         // showMain();

@@ -53,5 +53,6 @@ public class SignUpController implements Controller {
     public SignUpController(BlFacade bl) {
         this.businessLogic = bl;
     }
+
 }
 
