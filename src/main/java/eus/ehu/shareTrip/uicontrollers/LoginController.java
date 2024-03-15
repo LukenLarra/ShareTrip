@@ -76,7 +76,6 @@ public class LoginController {
             //check if driver exists
             //if exists, show mainGUI.showMain();
             //else, show error message
-
         }else{
             //get password and email from signIn fields
             //check if traveler exists
