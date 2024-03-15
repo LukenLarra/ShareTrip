@@ -17,8 +17,6 @@ import java.util.ResourceBundle;
 
 public class MainGUIController implements Controller{
 
-    private Window createRide, queryRides;
-
     @FXML
     private BorderPane mainWrapper;
 

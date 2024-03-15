@@ -1,6 +1,7 @@
 package eus.ehu.shareTrip.ui;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
+import eus.ehu.shareTrip.uicontrollers.LoginController;
 import eus.ehu.shareTrip.uicontrollers.MainGUIController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class MainGUI {
 
-    private Window mainWin, createRideWin, queryRidesWin;
+    private Window mainWin, createRideWin, queryRidesWin, signInSignUpWin, signInWin, signUpWin;
 
     private BlFacade businessLogic;
 
@@ -75,8 +76,11 @@ public class MainGUI {
         mainWin = load("MainGUI.fxml");
         queryRidesWin = load("QueryRides.fxml");
         createRideWin = load("CreateRide.fxml");
+//        signInWin = load("SignIn.fxml");
+//        signUpWin = load("SignUp.fxml");
+        signInSignUpWin = load("Login.fxml");
 
-        showMain();
+        showLogin();
 
     }
 
@@ -91,18 +95,29 @@ public class MainGUI {
         return createRideWin.ui;
     }
 
+
     public void showMain() {
         setupScene(mainWin.ui, "MainTitle", 1000, 600);
+    }
+
+    public void showLogin() {
+        setupScene(signInSignUpWin.ui, "Sign In or Sign Up", 1000, 600);
     }
 
     public void showQueryRides() {
         setupScene(queryRidesWin.ui, "QueryRides", 1000, 500);
 
     }
-
     public void showCreateRide() {
         setupScene(createRideWin.ui, "CreateRide", 550, 400);
 
+    }
+    public void showSignIn() {
+        setupScene(signInWin.ui, "SignIn", 550, 400);
+    }
+
+    public void showSignUp() {
+        setupScene(signUpWin.ui, "SignUp", 550, 400);
     }
 
     private void setupScene(Parent ui, String title, int width, int height) {

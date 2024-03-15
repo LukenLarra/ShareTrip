@@ -35,21 +35,6 @@ public class Traveler implements Serializable {
         this.name = name;
     }
 
-    public String toString(){
-        return email+";"+name;
-    }
-
-    public boolean equals(Object obj){
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (!(obj instanceof Traveler)) return false;
-        Traveler t = (Traveler)obj;
-        return t.getEmail().equals(this.getEmail());
-    }
-
-    public int hashCode(){
-        return email.hashCode();
-    }
 
 
 
