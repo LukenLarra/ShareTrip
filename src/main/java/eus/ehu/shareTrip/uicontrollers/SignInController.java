@@ -43,7 +43,6 @@ public class SignInController implements Controller {
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
-
     }
 
     public SignInController(BlFacade bl) {
