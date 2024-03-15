@@ -13,6 +13,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class SignInController implements Controller {
 
+    private MainGUI mainGUI;
+
     private BlFacade businessLogic;
 
     @FXML
@@ -38,11 +40,24 @@ public class SignInController implements Controller {
 
     @FXML
     void SignIn(ActionEvent event) {
+        /*if(driverSignInBtn.isSelected()){
+            businessLogic.signInDriver(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
+        }else{
+            businessLogic.signInTraveler(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
+        }
 
+        if(businessLogic.isLogged()){
+            mainGUI.showMain();
+        }else{
+            msgSignIn.setText("Email or password incorrect");
+        }
+
+*/
     }
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
+        this.mainGUI = mainGUI;
     }
 
     public SignInController(BlFacade bl) {

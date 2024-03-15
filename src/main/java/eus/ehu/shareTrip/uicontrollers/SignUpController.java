@@ -13,6 +13,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class SignUpController implements Controller {
 
+    private MainGUI mainGUI;
+
     private BlFacade businessLogic;
 
     @FXML
@@ -47,7 +49,7 @@ public class SignUpController implements Controller {
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
-
+        this.mainGUI = mainGUI;
     }
 
     public SignUpController(BlFacade bl) {
