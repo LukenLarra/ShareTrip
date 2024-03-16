@@ -13,8 +13,8 @@
             <Label fx:id="selectOptionLbl" text="%SelectUseCase" />
             <Button fx:id="queryRidesBtn" mnemonicParsing="false" onAction="#queryRides" text="%QueryRides" />
             <Button fx:id="createRidesBtn" mnemonicParsing="false" onAction="#createRide" text="%CreateRide" />
-            <Label text="Driver:" />
-            <Label fx:id="lblDriver" />
+            <Label fx:id="lblUserType" />
+            <Label fx:id="lblUserName" />
          </children>
       </VBox>
    </left>

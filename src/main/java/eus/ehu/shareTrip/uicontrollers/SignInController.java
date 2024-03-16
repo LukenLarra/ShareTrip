@@ -4,12 +4,14 @@ import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 public class SignInController implements Controller {
 
@@ -40,19 +42,21 @@ public class SignInController implements Controller {
 
     @FXML
     void SignIn(ActionEvent event) {
-        /*if(driverSignInBtn.isSelected()){
-            businessLogic.signInDriver(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
-        }else{
-            businessLogic.signInTraveler(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
-        }
+        if (driverSignInBtn.isSelected()) {
+            if (businessLogic.signInDriver(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
 
-        if(businessLogic.isLogged()){
-            mainGUI.showMain();
-        }else{
-            msgSignIn.setText("Email or password incorrect");
-        }
+                mainGUI.showMain();
 
-*/
+            } else {
+                msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
+            }
+        } else {
+            if (businessLogic.signInTraveler(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
+                mainGUI.showMain();
+            } else {
+                msgSignIn.setText("Email or password incorrect. Make sure you are signed up");
+            }
+        }
     }
 
     @Override

@@ -22,6 +22,6 @@
       </RadioButton>
       <RadioButton fx:id="driverSignInBtn" layoutX="349.0" layoutY="73.0" mnemonicParsing="false" text="Driver" toggleGroup="$userSignIn" />
       <Label layoutX="149.0" layoutY="73.0" text="Choose user:" />
-      <Label fx:id="msgSignIn" layoutX="300.0" layoutY="331.0" prefHeight="18.0" prefWidth="14.0" />
+      <Label fx:id="msgSignIn" alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="321.0" prefHeight="18.0" prefWidth="255.0" />
    </children>
 </AnchorPane>

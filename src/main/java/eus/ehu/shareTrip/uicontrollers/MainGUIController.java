@@ -1,6 +1,7 @@
 package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
+import eus.ehu.shareTrip.domain.Driver;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,10 @@ public class MainGUIController implements Controller{
     private Label selectOptionLbl;
 
     @FXML
-    private Label lblDriver;
+    private Label lblUserName;
+
+    @FXML
+    private Label lblUserType;
 
     @FXML
     private Button queryRidesBtn;
@@ -84,8 +88,8 @@ public class MainGUIController implements Controller{
 
     @FXML
     void initialize() {
-        // set current driver name
-        lblDriver.setText(businessLogic.getCurrentDriver().getName());
+        //lblUserType.setText(businessLogic.getCurrentDriver().getClass().getSimpleName() + ":");
+        //lblUserName.setText(businessLogic.getCurrentDriver().getName());
     }
 
     private void showScene(String scene) {

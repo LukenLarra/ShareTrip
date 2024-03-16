@@ -104,6 +104,7 @@ public class MainGUI {
 
     public void showMain() {
         setupScene(mainWin.ui, "MainTitle", 1000, 600);
+
     }
 
     public void showLogin() {
@@ -118,6 +119,7 @@ public class MainGUI {
         setupScene(createRideWin.ui, "CreateRide", 550, 400);
 
     }
+
 
     private void setupScene(Parent ui, String title, int width, int height) {
         if (scene == null) {
