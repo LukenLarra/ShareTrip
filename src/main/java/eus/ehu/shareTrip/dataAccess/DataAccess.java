@@ -4,6 +4,7 @@ import eus.ehu.shareTrip.configuration.Config;
 import eus.ehu.shareTrip.configuration.UtilDate;
 import eus.ehu.shareTrip.domain.Ride;
 import eus.ehu.shareTrip.domain.Driver;
+import eus.ehu.shareTrip.domain.Traveler;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 import jakarta.persistence.EntityManager;
@@ -100,9 +101,12 @@ public class DataAccess {
 
 
       //Create drivers
-      Driver driver1 = new Driver("driver1@gmail.com", "Aitor Fernandez");
-      Driver driver2 = new Driver("driver2@gmail.com", "Ane Gaztañaga");
-      Driver driver3 = new Driver("driver3@gmail.com", "Test driver");
+      Driver driver1 = new Driver("driver1@gmail.com", "Aitor Fernandez", "1234");
+      Driver driver2 = new Driver("driver2@gmail.com", "Ane Gaztañaga", "4321");
+      Driver driver3 = new Driver("driver3@gmail.com", "Test driver", "0000");
+
+      Traveler traveler1 = new Traveler("traveler1@gmail.com", "Juan Perez", "9999");
+      Traveler traveler2 = new Traveler("traveler2@gmail.com", "Gorka Astigarraga", "9876");
 
 
       //Create rides
@@ -124,6 +128,8 @@ public class DataAccess {
       db.persist(driver1);
       db.persist(driver2);
       db.persist(driver3);
+      db.persist(traveler1);
+      db.persist(traveler2);
 
 
       db.getTransaction().commit();
@@ -281,4 +287,35 @@ public class DataAccess {
     System.out.println("DataBase is closed");
   }
 
+  public void signUpDriver(Driver driver) {
+    db.getTransaction().begin();
+    db.persist(driver);
+    db.getTransaction().commit();
+  }
+
+  public boolean existsDriver(String email) {
+    Driver driver = db.find(Driver.class, email);
+    return driver != null;
+  }
+
+  public boolean existsTraveler(String email) {
+    Traveler traveler = db.find(Traveler.class, email);
+    return traveler != null;
+  }
+
+  public void signUpTraveler(Traveler traveler) {
+    db.getTransaction().begin();
+    db.persist(traveler);
+    db.getTransaction().commit();
+  }
+
+  public boolean signInDriver(String email, String password) {
+    Driver driver = db.find(Driver.class, email);
+    return driver != null && driver.getPassword().equals(password);
+  }
+
+  public boolean signInTraveler(String email, String password) {
+    Traveler traveler = db.find(Traveler.class, email);
+    return traveler != null && traveler.getPassword().equals(password);
+  }
 }

@@ -13,6 +13,7 @@
 
         <property name="hibernate.physical_naming_strategy">org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</property>
         <mapping class="eus.ehu.shareTrip.domain.Driver" />
+        <mapping class="eus.ehu.shareTrip.domain.Traveler"/>
         <mapping class="eus.ehu.shareTrip.domain.Ride" />
 
     </session-factory>

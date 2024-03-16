@@ -1,6 +1,6 @@
 package eus.ehu.shareTrip.domain;
-import jakarta.persistence.*;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import java.io.Serializable;
 
 @Entity
@@ -9,16 +9,18 @@ public class Traveler implements Serializable {
     @Id
     private String email;
     private String name;
+    private String password;
 
-    public Traveler() {
-        super();
-    }
 
-    public Traveler(String email, String name) {
+    public Traveler(String email, String name, String password) {
         this.email = email;
         this.name = name;
+        this.password = password;
     }
 
+    public Traveler() {
+
+    }
     public String getEmail() {
         return email;
     }
@@ -33,6 +35,14 @@ public class Traveler implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 

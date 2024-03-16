@@ -24,6 +24,6 @@
       <Button fx:id="btnSignUp" layoutX="281.0" layoutY="277.0" mnemonicParsing="false" onAction="#SignUp" text="Sign-Up" />
       <TextField fx:id="usernameFieldSignUp" layoutX="259.0" layoutY="159.0" prefHeight="25.0" prefWidth="167.0" />
       <Label layoutX="184.0" layoutY="163.0" text="Name:" />
-      <Label fx:id="msgSignUp" layoutX="300.0" layoutY="329.0" prefHeight="18.0" prefWidth="21.0" />
+      <Label fx:id="msgSignUp" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="334.0" prefHeight="18.0" prefWidth="397.0" />
    </children>
 </AnchorPane>

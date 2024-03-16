@@ -35,15 +35,33 @@ public class SignUpController implements Controller {
     @FXML
     private RadioButton travelerSignUpBtn;
 
-    @FXML
-    private ToggleGroup userSignUp;
 
     @FXML
     private TextField usernameFieldSignUp;
 
     @FXML
     void SignUp(ActionEvent event) {
+        if (driverSignUpBtn.isSelected()) {
+            if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
+                msgSignUp.setText("Please fill all the fields");
+            }else if (businessLogic.existsDriver(emailFieldSignUp.getText())) {
+                msgSignUp.setText("This email is already in use. Choose another one.");
+            }else {
+                businessLogic.signUpDriver(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText());
+                msgSignUp.setText("Driver created successfully");
+            }
 
+        }else {
+            if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
+                msgSignUp.setText("Please fill all the fields");
+            }else if (businessLogic.existsTraveler(emailFieldSignUp.getText())) {
+                msgSignUp.setText("This email is already in use. Choose another one.");
+            }else {
+                businessLogic.signUpTraveler(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText());
+                msgSignUp.setText("Traveler created successfully");
+            }
+
+        }
     }
 
 

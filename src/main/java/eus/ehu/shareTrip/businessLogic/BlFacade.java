@@ -70,4 +70,17 @@ public interface BlFacade {
 
 
     List<Date> getDatesWithRides(String value, String value1);
+
+    boolean existsDriver(String email);
+
+    boolean existsTraveler(String email);
+
+    void signUpDriver(String email, String name, String password);
+
+    void signUpTraveler(String email, String name, String password);
+
+    boolean signInDriver(String email, String password);
+
+    boolean signInTraveler(String email, String password);
+
 }

@@ -4,6 +4,7 @@ import eus.ehu.shareTrip.configuration.Config;
 import eus.ehu.shareTrip.dataAccess.DataAccess;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
+import eus.ehu.shareTrip.domain.Traveler;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 
@@ -74,7 +75,6 @@ public class BlFacadeImplementation implements BlFacade {
 		return this.currentDriver;
 	}
 
-
 public List<String> getDepartCities(){
 		List<String> departLocations=dbManager.getDepartCities();
 		return departLocations;
@@ -93,5 +93,40 @@ public List<String> getDestinationCities(String from){
 		List<Date> dates = dbManager.getDatesWithRides(value, value1);
 		return dates;
 	}
+
+	@Override
+	public void signUpDriver(String email, String name, String password) {
+		Driver driver = new Driver(email, name, password);
+		dbManager.signUpDriver(driver);
+	}
+	@Override
+	public void signUpTraveler(String email, String name, String password) {
+		Traveler traveler = new Traveler(email, name, password);
+		dbManager.signUpTraveler(traveler);
+	}
+
+	@Override
+	public boolean signInDriver(String email, String password) {
+		return dbManager.signInDriver(email, password);
+	}
+	@Override
+	public boolean signInTraveler(String email, String password) {
+		return dbManager.signInTraveler(email, password);
+	}
+
+
+
+
+	public boolean existsDriver(String text){
+		return dbManager.existsDriver(text);
+	}
+
+	public boolean existsTraveler(String text){
+		return dbManager.existsTraveler(text);
+	}
+
+
+
+
 
 }
