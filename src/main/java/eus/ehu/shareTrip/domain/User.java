@@ -1,9 +1,5 @@
 package eus.ehu.shareTrip.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-
 public class User {
     private String email;
     private String name;
