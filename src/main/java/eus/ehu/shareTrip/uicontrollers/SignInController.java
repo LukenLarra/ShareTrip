@@ -44,7 +44,8 @@ public class SignInController implements Controller {
     void SignIn(ActionEvent event) {
         if (driverSignInBtn.isSelected()) {
             if (businessLogic.signInDriver(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
-
+                Stage stage = (Stage) btnSignIn.getScene().getWindow();
+                stage.close();
                 mainGUI.showMain();
 
             } else {
@@ -52,6 +53,8 @@ public class SignInController implements Controller {
             }
         } else {
             if (businessLogic.signInTraveler(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
+                Stage stage = (Stage) btnSignIn.getScene().getWindow();
+                stage.close();
                 mainGUI.showMain();
             } else {
                 msgSignIn.setText("Email or password incorrect. Make sure you are signed up");
