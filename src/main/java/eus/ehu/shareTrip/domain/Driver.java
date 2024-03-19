@@ -15,7 +15,7 @@ public class Driver extends User implements Serializable {
 	private String email;
 	private String name;
 	private String password;
-	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST, mappedBy="driver", orphanRemoval=true)
 	private List<Ride> rides=new Vector<Ride>();
 
 
