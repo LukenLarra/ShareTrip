@@ -1,6 +1,17 @@
 package eus.ehu.shareTrip.domain;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "USERS") // Renames the table to avoid using a reserved keyword
+@DiscriminatorColumn(name = "USER_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String email;
     private String name;
     private String password;
@@ -15,11 +26,8 @@ public class User {
     }
 
     public User() {
-        this.email = "";
-        this.name = "";
-        this.password = "";
-    }
 
+    }
 
     public String getEmail() {
         return email;
@@ -32,8 +40,5 @@ public class User {
     public String getPassword() {
         return password;
     }
-//
-//    // boolean isDriver() {
-//        return isDriver;
-//    }
+
 }

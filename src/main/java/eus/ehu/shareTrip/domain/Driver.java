@@ -8,12 +8,8 @@ import java.util.List;
 import java.util.Vector;
 
 @Entity
-public class Driver implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@DiscriminatorValue("DRIVER")
+public class Driver extends User implements Serializable {
 
 	@Id
 	private String email;
@@ -24,13 +20,11 @@ public class Driver implements Serializable {
 
 
 	public Driver(String email, String name, String password) {
-		this.email = email;
-		this.name = name;
-		this.password = password;
+		super(email, name, password);
 	}
 
 	public Driver() {
-
+		super();
 	}
 
 
