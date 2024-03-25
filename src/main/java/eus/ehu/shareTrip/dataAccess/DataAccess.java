@@ -310,11 +310,10 @@ public class DataAccess {
     db.getTransaction().commit();
   }
 
-  public boolean signIn(String email, String password) {
-      TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
-      userQuery.setParameter("email", email);
-      User user = userQuery.getResultList().stream().findFirst().orElse(null);
-      if (user != null && user.getPassword().equals(password)) return true;
-      return false;
+  public User signIn(String email, String password) {
+    TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :password", User.class);
+    userQuery.setParameter("email", email);
+    userQuery.setParameter("password", password);
+    return userQuery.getResultList().stream().findFirst().orElse(null);
   }
 }

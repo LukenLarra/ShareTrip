@@ -1,6 +1,9 @@
 package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
+import eus.ehu.shareTrip.domain.Driver;
+import eus.ehu.shareTrip.domain.Traveler;
+import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,9 +26,6 @@ public class SignInController implements Controller {
     private Button btnSignIn;
 
     @FXML
-    private RadioButton driverSignInBtn;
-
-    @FXML
     private TextField emailFieldSignIn;
 
     @FXML
@@ -35,14 +35,9 @@ public class SignInController implements Controller {
     private PasswordField passwordFieldSignIn;
 
     @FXML
-    private RadioButton travelerSignInBtn;
-
-    @FXML
-    private ToggleGroup userSignIn;
-
-    @FXML
     void SignIn(ActionEvent event) {
-        if (businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
+        User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
+        if (user != null) {
             Stage stage = (Stage) btnSignIn.getScene().getWindow();
             stage.close();
             mainGUI.showMain();
