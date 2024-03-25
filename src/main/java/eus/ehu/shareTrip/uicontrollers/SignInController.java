@@ -42,23 +42,12 @@ public class SignInController implements Controller {
 
     @FXML
     void SignIn(ActionEvent event) {
-        if (driverSignInBtn.isSelected()) {
-            if (businessLogic.signInDriver(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
-                Stage stage = (Stage) btnSignIn.getScene().getWindow();
-                stage.close();
-                mainGUI.showMain();
-
-            } else {
-                msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
-            }
+        if (businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
+            Stage stage = (Stage) btnSignIn.getScene().getWindow();
+            stage.close();
+            mainGUI.showMain();
         } else {
-            if (businessLogic.signInTraveler(emailFieldSignIn.getText(), passwordFieldSignIn.getText())) {
-                Stage stage = (Stage) btnSignIn.getScene().getWindow();
-                stage.close();
-                mainGUI.showMain();
-            } else {
-                msgSignIn.setText("Email or password incorrect. Make sure you are signed up");
-            }
+            msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
         }
     }
 

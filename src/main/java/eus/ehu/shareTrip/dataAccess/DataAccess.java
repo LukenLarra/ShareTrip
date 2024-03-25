@@ -5,6 +5,7 @@ import eus.ehu.shareTrip.configuration.UtilDate;
 import eus.ehu.shareTrip.domain.Ride;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Traveler;
+import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 import jakarta.persistence.EntityManager;
@@ -309,13 +310,11 @@ public class DataAccess {
     db.getTransaction().commit();
   }
 
-  public boolean signInDriver(String email, String password) {
-    Driver driver = db.find(Driver.class, email);
-    return driver != null && driver.getPassword().equals(password);
-  }
-
-  public boolean signInTraveler(String email, String password) {
-    Traveler traveler = db.find(Traveler.class, email);
-    return traveler != null && traveler.getPassword().equals(password);
+  public boolean signIn(String email, String password) {
+      TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+      userQuery.setParameter("email", email);
+      User user = userQuery.getResultList().stream().findFirst().orElse(null);
+      if (user != null && user.getPassword().equals(password)) return true;
+      return false;
   }
 }

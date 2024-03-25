@@ -79,8 +79,6 @@ public interface BlFacade {
 
     void signUpTraveler(String email, String name, String password);
 
-    boolean signInDriver(String email, String password);
-
-    boolean signInTraveler(String email, String password);
+    boolean signIn(String email, String password);
 
 }

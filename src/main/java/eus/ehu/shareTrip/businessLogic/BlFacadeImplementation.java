@@ -106,12 +106,8 @@ public List<String> getDestinationCities(String from){
 	}
 
 	@Override
-	public boolean signInDriver(String email, String password) {
-		return dbManager.signInDriver(email, password);
-	}
-	@Override
-	public boolean signInTraveler(String email, String password) {
-		return dbManager.signInTraveler(email, password);
+	public boolean signIn(String email, String password) {
+		return dbManager.signIn(email, password);
 	}
 
 
