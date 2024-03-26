@@ -37,7 +37,7 @@ public class SignUpController implements Controller {
 
     @FXML
     void SignUp(ActionEvent event) {
-        RadioButton selectedRadioButton = (RadioButton) userSignUp.selectedToggleProperty().getValue();
+        RadioButton selectedRadioButton = (RadioButton) userSignUp.getSelectedToggle();
         if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
             msgSignUp.setText("Please fill all the fields");
         } else if (!emailFieldSignUp.getText().contains("@gmail.com")) {
@@ -47,7 +47,6 @@ public class SignUpController implements Controller {
         } else {
             businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText());
             msgSignUp.setText("User created successfully");
-
         }
     }
 
