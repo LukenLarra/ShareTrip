@@ -11,8 +11,8 @@
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="109.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="selectOptionLbl" text="%SelectUseCase" />
-            <Button fx:id="btnShowSignUp" mnemonicParsing="false" onAction="#showSignUp" text="%Sign-Up" />
-            <Button fx:id="btnShowSignIn" mnemonicParsing="false" onAction="#showSignIn" text="%Sign-In" />
+            <Button fx:id="btnShowSignUp" mnemonicParsing="false" onAction="#showSignUp" text="%SignUp" />
+            <Button fx:id="btnShowSignIn" mnemonicParsing="false" onAction="#showSignIn" text="%SignIn" />
             <Button fx:id="queryRidesBtn" mnemonicParsing="false" onAction="#queryRides" text="%QueryRides" />
             <Button fx:id="createRidesBtn" mnemonicParsing="false" onAction="#createRide" text="%CreateRide" />
             <Label fx:id="lblUserType" />
