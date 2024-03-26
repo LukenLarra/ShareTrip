@@ -38,12 +38,11 @@ public class SignInController implements Controller {
     void SignIn(ActionEvent event) {
         if(emailFieldSignIn.getText().contains("@gmail.com")) {
             User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
-            if (user != null) {
-                Stage stage = (Stage) btnSignIn.getScene().getWindow();
-                stage.close();
-                mainGUI.showMain();
-            } else {
+            if (user == null) {
                 msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
+            }else{
+                passwordFieldSignIn.clear();
+                emailFieldSignIn.clear();
             }
         } else {
             msgSignIn.setText("Email must be a gmail account.");
