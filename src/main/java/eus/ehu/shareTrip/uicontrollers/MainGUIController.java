@@ -6,10 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
@@ -42,6 +44,12 @@ public class MainGUIController implements Controller{
 
     @FXML
     private URL location;
+
+    @FXML
+    private Button btnShowSignIn;
+
+    @FXML
+    private Button btnShowSignUp;
 
     private MainGUI mainGUI;
 
@@ -84,6 +92,20 @@ public class MainGUIController implements Controller{
         //mainGUI.showCreateRide();
         showScene("CreateRide");
     }
+    @FXML
+    void showSignIn(ActionEvent event) throws IOException {
+//        Stage stage = new Stage();
+//        stage.setScene(new Scene(mainGUI.getSignInWin(), 600, 500));
+//        stage.show();
+        showScene("SignIn");
+    }
+    @FXML
+    void showSignUp(ActionEvent event) throws IOException {
+//        Stage stage = new Stage();
+//        stage.setScene(new Scene(mainGUI.getSignUpWin(), 600, 500));
+//        stage.show();
+        showScene("SignUp");
+    }
 
 
     @FXML
@@ -95,6 +117,8 @@ public class MainGUIController implements Controller{
         switch (scene) {
             case "CreateRide" -> mainWrapper.setCenter(mainGUI.getCreateRidesWin());
             case "QueryRides" -> mainWrapper.setCenter(mainGUI.getQueryRidesWin());
+            case "SignIn" -> mainWrapper.setCenter(mainGUI.getSignInWin());
+            case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());
         }
     }
 
