@@ -33,6 +33,9 @@ public class SignUpController implements Controller {
     private PasswordField passwordFieldSignUp;
 
     @FXML
+    private PasswordField passwordChecker;
+
+    @FXML
     private TextField usernameFieldSignUp;
 
     @FXML
@@ -44,6 +47,8 @@ public class SignUpController implements Controller {
             msgSignUp.setText("Email must be a gmail account.");
         } else if (businessLogic.existsUser(emailFieldSignUp.getText())) {
             msgSignUp.setText("This email is already in use. Choose another one.");
+        }else if (!(passwordFieldSignUp.getText().equals(passwordChecker.getText()))){
+            msgSignUp.setText("Passwords do not match");
         } else {
             businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText());
             msgSignUp.setText("User created successfully");
