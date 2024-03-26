@@ -21,7 +21,7 @@
       </RadioButton>
       <RadioButton fx:id="driverSignUpBtn" layoutX="361.0" layoutY="73.0" mnemonicParsing="false" text="Driver" toggleGroup="$userSignUp" />
       <Label layoutX="177.0" layoutY="73.0" text="Choose user:" />
-      <Button fx:id="btnSignUp" layoutX="281.0" layoutY="277.0" mnemonicParsing="false" onAction="#SignUp" text="Sign-Up" />
+      <Button fx:id="btnSignUp" layoutX="281.0" layoutY="277.0" mnemonicParsing="false" onAction="#SignUp" text="Register" />
       <TextField fx:id="usernameFieldSignUp" layoutX="259.0" layoutY="159.0" prefHeight="25.0" prefWidth="167.0" />
       <Label layoutX="184.0" layoutY="163.0" text="Name:" />
       <Label fx:id="msgSignUp" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="334.0" prefHeight="18.0" prefWidth="397.0" />
