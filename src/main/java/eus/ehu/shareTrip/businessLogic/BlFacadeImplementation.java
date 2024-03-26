@@ -116,7 +116,7 @@ public class BlFacadeImplementation implements BlFacade {
 	public User signIn(String email, String password) {
 		return dbManager.signIn(email, password);
 }
-
+	@Override
 	public boolean existsUser(String text){
 		return dbManager.existsUser(text);
 	}

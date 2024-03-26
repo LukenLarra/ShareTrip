@@ -72,14 +72,11 @@ public class MainGUI {
         mainWin = load("MainGUI.fxml");
         queryRidesWin = load("QueryRides.fxml");
         createRideWin = load("CreateRide.fxml");
-        //signInSignUpWin = load("Login.fxml");
         signInWin = load("SignIn.fxml");
         signUpWin = load("SignUp.fxml");
 
 
         showMain();
-        //showLogin();
-
     }
 
    // public void start(Stage stage) throws IOException {
@@ -106,11 +103,6 @@ public class MainGUI {
         setupScene(mainWin.ui, "MainTitle", 1000, 600);
 
     }
-
-    public void showLogin() {
-        setupScene(signInSignUpWin.ui, "SignInUp", 600, 500);
-    }
-
     public void showQueryRides() {
         setupScene(queryRidesWin.ui, "QueryRides", 1000, 500);
 
