@@ -1,12 +1,13 @@
 package eus.ehu.shareTrip.domain;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.io.Serializable;
 
 @Entity
+@DiscriminatorValue("TRAVELER")
 public class Traveler extends User implements Serializable {
 
-    @Id
     private String email;
     private String name;
     private String password;

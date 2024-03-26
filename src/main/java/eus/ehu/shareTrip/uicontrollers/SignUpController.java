@@ -52,6 +52,11 @@ public class SignUpController implements Controller {
         } else {
             businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText());
             msgSignUp.setText("User created successfully");
+            userSignUp.selectToggle(null);
+            emailFieldSignUp.setText("");
+            usernameFieldSignUp.setText("");
+            passwordFieldSignUp.setText("");
+            passwordChecker.setText("");
         }
     }
 

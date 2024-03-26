@@ -11,7 +11,6 @@ import java.util.Vector;
 @DiscriminatorValue("DRIVER")
 public class Driver extends User implements Serializable {
 
-	@Id
 	private String email;
 	private String name;
 	private String password;
