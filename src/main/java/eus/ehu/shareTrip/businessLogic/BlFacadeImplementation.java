@@ -108,8 +108,8 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@Override
-	public void signUp(String email, String name, String password){
-		dbManager.signUp(email, name, password);
+	public void signUp(String email, String name, String password, String role) {
+		dbManager.signUp(email, name, password, role);
 	}
 
 	@Override

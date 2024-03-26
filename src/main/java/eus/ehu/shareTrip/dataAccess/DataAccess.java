@@ -302,9 +302,13 @@ public class DataAccess {
     return userQuery.getSingleResult();
   }
 
-  public void signUp(String email, String name, String password) {
+  public void signUp(String email, String name, String password, String role) {
     db.getTransaction().begin();
-    db.persist(new User(email, name, password));
+    if (role.equals("Driver")){
+      db.persist(new Driver(email, name, password));
+    } else {
+      db.persist(new Traveler(email, name, password));
+    }
     db.getTransaction().commit();
 
   }
