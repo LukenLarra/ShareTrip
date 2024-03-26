@@ -79,7 +79,7 @@ public interface BlFacade {
 
     boolean existsUser(String email);
 
-    void signUp(String email, String name, String password);
+    void signUp(String email, String name, String password, String role);
 
 
     User signIn(String email, String password);
