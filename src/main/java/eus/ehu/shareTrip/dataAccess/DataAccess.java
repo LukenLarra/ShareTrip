@@ -281,39 +281,31 @@ public class DataAccess {
     // create domain entities and persist them
   }
 
-
-
   public void close() {
     db.close();
     System.out.println("DataBase is closed");
   }
 
-  public void signUpDriver(Driver driver) {
-    db.getTransaction().begin();
-    db.persist(driver);
-    db.getTransaction().commit();
-  }
-
-  public boolean existsDriver(String email) {
-    Driver driver = db.find(Driver.class, email);
-    return driver != null;
-  }
-
-  public boolean existsTraveler(String email) {
-    Traveler traveler = db.find(Traveler.class, email);
-    return traveler != null;
-  }
-
-  public void signUpTraveler(Traveler traveler) {
-    db.getTransaction().begin();
-    db.persist(traveler);
-    db.getTransaction().commit();
+  public boolean existsUser(String email) {
+    TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u " +
+            "WHERE u.email = :email", User.class);
+    userQuery.setParameter("email", email);
+    return !userQuery.getResultList().isEmpty();
   }
 
   public User signIn(String email, String password) {
-    TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :password", User.class);
+    TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u " +
+            "WHERE u.email = :email AND " +
+            " u.password = :password", User.class);
     userQuery.setParameter("email", email);
     userQuery.setParameter("password", password);
-    return userQuery.getResultList().stream().findFirst().orElse(null);
+    return userQuery.getSingleResult();
+  }
+
+  public void signUp(String email, String name, String password) {
+    db.getTransaction().begin();
+    db.persist(new User(email, name, password));
+    db.getTransaction().commit();
+
   }
 }

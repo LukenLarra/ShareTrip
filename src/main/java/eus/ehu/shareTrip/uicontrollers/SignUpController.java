@@ -27,6 +27,9 @@ public class SignUpController implements Controller {
     private TextField emailFieldSignUp;
 
     @FXML
+    private ToggleGroup userSignUp;
+
+    @FXML
     private Label msgSignUp;
 
     @FXML
@@ -41,31 +44,19 @@ public class SignUpController implements Controller {
 
     @FXML
     void SignUp(ActionEvent event) {
-        if (driverSignUpBtn.isSelected()) {
-            if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
-                msgSignUp.setText("Please fill all the fields");
-            }else if(!emailFieldSignUp.getText().contains("@gmail.com")) {
-                msgSignUp.setText("Email must be a gmail account.");
-            }else if (businessLogic.existsDriver(emailFieldSignUp.getText())) {
-                msgSignUp.setText("This email is already in use. Choose another one.");
-            }else {
-                businessLogic.signUpDriver(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText());
-                msgSignUp.setText("Driver created successfully");
-            }
+        userSignUp.selectedToggleProperty().getValue();
 
-        }else {
-            if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
-                msgSignUp.setText("Please fill all the fields");
-            }else if (businessLogic.existsTraveler(emailFieldSignUp.getText())) {
-                msgSignUp.setText("This email is already in use. Choose another one.");
-            }else {
-                businessLogic.signUpTraveler(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText());
-                msgSignUp.setText("Traveler created successfully");
-            }
-
+        if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
+            msgSignUp.setText("Please fill all the fields");
+        } else if (!emailFieldSignUp.getText().contains("@gmail.com")) {
+            msgSignUp.setText("Email must be a gmail account.");
+        } else if (businessLogic.existsUser(emailFieldSignUp.getText())) {
+            msgSignUp.setText("This email is already in use. Choose another one.");
+        } else {
+            businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText());
+            msgSignUp.setText("User created successfully");
         }
     }
-
 
     @Override
     public void setMainApp(MainGUI mainGUI) {

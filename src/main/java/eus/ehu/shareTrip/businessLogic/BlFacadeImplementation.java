@@ -24,7 +24,7 @@ public class BlFacadeImplementation implements BlFacade {
 	private Driver currentDriver;
 	private Traveler currentTraveler;
 
-	public BlFacadeImplementation()  {
+	public BlFacadeImplementation() {
 		System.out.println("Creating BlFacadeImplementation instance");
 		boolean initialize = config.getDataBaseOpenMode().equals("initialize");
 		dbManager = new DataAccess(initialize);
@@ -33,14 +33,14 @@ public class BlFacadeImplementation implements BlFacade {
 
 	}
 
-	public Ride createRide(String from, String to, Date date, int nPlaces, float price, String driverEmail ) throws RideMustBeLaterThanTodayException, RideAlreadyExistException {
-		Ride ride=dbManager.createRide(from, to, date, nPlaces, price, driverEmail);
+	public Ride createRide(String from, String to, Date date, int nPlaces, float price, String driverEmail) throws RideMustBeLaterThanTodayException, RideAlreadyExistException {
+		Ride ride = dbManager.createRide(from, to, date, nPlaces, price, driverEmail);
 		return ride;
 	}
 
 	@Override
 	public List<Ride> getRides(String origin, String destination, Date date) {
-		List<Ride>  events = dbManager.getRides(origin, destination, date);
+		List<Ride> events = dbManager.getRides(origin, destination, date);
 		return events;
 	}
 
@@ -49,8 +49,8 @@ public class BlFacadeImplementation implements BlFacade {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Date> getThisMonthDatesWithRides(String from, String to, Date date){
-		List<Date>  dates=dbManager.getThisMonthDatesWithRides(from, to, date);
+	public List<Date> getThisMonthDatesWithRides(String from, String to, Date date) {
+		List<Date> dates = dbManager.getThisMonthDatesWithRides(from, to, date);
 		return dates;
 	}
 
@@ -63,7 +63,7 @@ public class BlFacadeImplementation implements BlFacade {
 	 */
 
 	public Vector<Date> getEventsMonth(Date date) {
-		Vector<Date>  dates = dbManager.getEventsMonth(date);
+		Vector<Date> dates = dbManager.getEventsMonth(date);
 		return dates;
 	}
 
@@ -71,6 +71,7 @@ public class BlFacadeImplementation implements BlFacade {
 	public void setCurrentDriver(Driver driver) {
 		this.currentDriver = driver;
 	}
+
 	@Override
 	public void setCurrentTraveler(Traveler traveler) {
 		this.currentTraveler = traveler;
@@ -80,21 +81,23 @@ public class BlFacadeImplementation implements BlFacade {
 	public Driver getCurrentDriver() {
 		return this.currentDriver;
 	}
+
 	@Override
 	public Traveler getCurrentTraveler() {
 		return this.currentTraveler;
 	}
 
-public List<String> getDepartCities(){
-		List<String> departLocations=dbManager.getDepartCities();
+	public List<String> getDepartCities() {
+		List<String> departLocations = dbManager.getDepartCities();
 		return departLocations;
 
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
-public List<String> getDestinationCities(String from){
-		List<String> targetCities=dbManager.getArrivalCities(from);
+	public List<String> getDestinationCities(String from) {
+		List<String> targetCities = dbManager.getArrivalCities(from);
 		return targetCities;
 	}
 
@@ -105,14 +108,8 @@ public List<String> getDestinationCities(String from){
 	}
 
 	@Override
-	public void signUpDriver(String email, String name, String password) {
-		Driver driver = new Driver(email, name, password);
-		dbManager.signUpDriver(driver);
-	}
-	@Override
-	public void signUpTraveler(String email, String name, String password) {
-		Traveler traveler = new Traveler(email, name, password);
-		dbManager.signUpTraveler(traveler);
+	public void signUp(String email, String name, String password){
+		dbManager.signUp(email, name, password);
 	}
 
 	@Override
@@ -120,12 +117,8 @@ public List<String> getDestinationCities(String from){
 		return dbManager.signIn(email, password);
 }
 
-	public boolean existsDriver(String text){
-		return dbManager.existsDriver(text);
-	}
-
-	public boolean existsTraveler(String text){
-		return dbManager.existsTraveler(text);
+	public boolean existsUser(String text){
+		return dbManager.existsUser(text);
 	}
 
 
