@@ -36,13 +36,17 @@ public class SignInController implements Controller {
 
     @FXML
     void SignIn(ActionEvent event) {
-        User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
-        if (user != null) {
-            Stage stage = (Stage) btnSignIn.getScene().getWindow();
-            stage.close();
-            mainGUI.showMain();
+        if(emailFieldSignIn.getText().contains("@gmail.com")) {
+            User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
+            if (user != null) {
+                Stage stage = (Stage) btnSignIn.getScene().getWindow();
+                stage.close();
+                mainGUI.showMain();
+            } else {
+                msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
+            }
         } else {
-            msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
+            msgSignIn.setText("Email must be a gmail account.");
         }
     }
 

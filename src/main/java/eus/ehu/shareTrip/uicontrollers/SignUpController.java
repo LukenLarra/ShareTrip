@@ -44,6 +44,8 @@ public class SignUpController implements Controller {
         if (driverSignUpBtn.isSelected()) {
             if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
                 msgSignUp.setText("Please fill all the fields");
+            }else if(!emailFieldSignUp.getText().contains("@gmail.com")) {
+                msgSignUp.setText("Email must be a gmail account.");
             }else if (businessLogic.existsDriver(emailFieldSignUp.getText())) {
                 msgSignUp.setText("This email is already in use. Choose another one.");
             }else {
