@@ -8,29 +8,23 @@ import java.util.List;
 import java.util.Vector;
 
 @Entity
-public class Driver implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@DiscriminatorValue("DRIVER")
+public class Driver extends User implements Serializable {
 
 	@Id
 	private String email;
 	private String name;
 	private String password;
-	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST, mappedBy="driver", orphanRemoval=true)
 	private List<Ride> rides=new Vector<Ride>();
 
 
 	public Driver(String email, String name, String password) {
-		this.email = email;
-		this.name = name;
-		this.password = password;
+		super(email, name, password);
 	}
 
 	public Driver() {
-
+		super();
 	}
 
 

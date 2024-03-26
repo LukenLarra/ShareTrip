@@ -5,6 +5,7 @@ import eus.ehu.shareTrip.dataAccess.DataAccess;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
 import eus.ehu.shareTrip.domain.Traveler;
+import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 
@@ -21,6 +22,7 @@ public class BlFacadeImplementation implements BlFacade {
 	DataAccess dbManager;
 	Config config = Config.getInstance();
 	private Driver currentDriver;
+	private Traveler currentTraveler;
 
 	public BlFacadeImplementation()  {
 		System.out.println("Creating BlFacadeImplementation instance");
@@ -69,10 +71,18 @@ public class BlFacadeImplementation implements BlFacade {
 	public void setCurrentDriver(Driver driver) {
 		this.currentDriver = driver;
 	}
+	@Override
+	public void setCurrentTraveler(Traveler traveler) {
+		this.currentTraveler = traveler;
+	}
 
 	@Override
 	public Driver getCurrentDriver() {
 		return this.currentDriver;
+	}
+	@Override
+	public Traveler getCurrentTraveler() {
+		return this.currentTraveler;
 	}
 
 public List<String> getDepartCities(){
@@ -106,16 +116,9 @@ public List<String> getDestinationCities(String from){
 	}
 
 	@Override
-	public boolean signInDriver(String email, String password) {
-		return dbManager.signInDriver(email, password);
-	}
-	@Override
-	public boolean signInTraveler(String email, String password) {
-		return dbManager.signInTraveler(email, password);
-	}
-
-
-
+	public User signIn(String email, String password) {
+		return dbManager.signIn(email, password);
+}
 
 	public boolean existsDriver(String text){
 		return dbManager.existsDriver(text);

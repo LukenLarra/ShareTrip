@@ -2,6 +2,8 @@ package eus.ehu.shareTrip.businessLogic;
 
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
+import eus.ehu.shareTrip.domain.Traveler;
+import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 
@@ -48,6 +50,10 @@ public interface BlFacade {
 
     Driver getCurrentDriver();
 
+    void setCurrentTraveler(Traveler traveler);
+
+    Traveler getCurrentTraveler();
+
     Ride createRide(String text, String text1, Date date, int inputSeats, float price, String email) throws RideMustBeLaterThanTodayException, RideAlreadyExistException;
 
 
@@ -79,8 +85,6 @@ public interface BlFacade {
 
     void signUpTraveler(String email, String name, String password);
 
-    boolean signInDriver(String email, String password);
-
-    boolean signInTraveler(String email, String password);
+    User signIn(String email, String password);
 
 }

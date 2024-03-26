@@ -88,8 +88,7 @@ public class MainGUIController implements Controller{
 
     @FXML
     void initialize() {
-        //lblUserType.setText(businessLogic.getCurrentDriver().getClass().getSimpleName() + ":");
-        //lblUserName.setText(businessLogic.getCurrentDriver().getName());
+
     }
 
     private void showScene(String scene) {

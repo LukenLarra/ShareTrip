@@ -4,7 +4,7 @@ import jakarta.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class Traveler implements Serializable {
+public class Traveler extends User implements Serializable {
 
     @Id
     private String email;
@@ -13,13 +13,11 @@ public class Traveler implements Serializable {
 
 
     public Traveler(String email, String name, String password) {
-        this.email = email;
-        this.name = name;
-        this.password = password;
+        super(email, name, password);
     }
 
     public Traveler() {
-
+        super();
     }
     public String getEmail() {
         return email;
