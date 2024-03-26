@@ -21,9 +21,6 @@ public class SignUpController implements Controller {
     private Button btnSignUp;
 
     @FXML
-    private RadioButton driverSignUpBtn;
-
-    @FXML
     private TextField emailFieldSignUp;
 
     @FXML
@@ -34,10 +31,6 @@ public class SignUpController implements Controller {
 
     @FXML
     private PasswordField passwordFieldSignUp;
-
-    @FXML
-    private RadioButton travelerSignUpBtn;
-
 
     @FXML
     private TextField usernameFieldSignUp;
