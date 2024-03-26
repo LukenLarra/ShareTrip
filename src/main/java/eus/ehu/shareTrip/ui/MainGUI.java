@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class MainGUI {
 
-    private Window mainWin, createRideWin, queryRidesWin, signInSignUpWin, signInWin, signUpWin;
+    private Window mainWin, createRideWin, queryRidesWin, signInWin, signUpWin;
 
     private BlFacade businessLogic;
 
