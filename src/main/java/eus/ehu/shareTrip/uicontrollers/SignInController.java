@@ -34,14 +34,18 @@ public class SignInController implements Controller {
             User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
             if (user == null) {
                 msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
+                msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+
             }else{
                 passwordFieldSignIn.clear();
                 emailFieldSignIn.clear();
                 msgSignIn.setText("Logged in successfully.");
+                msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 businessLogic.setCurrentUser(user);
             }
         } else {
             msgSignIn.setText("Email must be a gmail account.");
+            msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }
     }
 

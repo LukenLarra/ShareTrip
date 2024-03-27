@@ -43,12 +43,16 @@ public class SignUpController implements Controller {
         RadioButton selectedRadioButton = (RadioButton) userSignUp.getSelectedToggle();
         if (emailFieldSignUp.getText().isEmpty() || usernameFieldSignUp.getText().isEmpty() || passwordFieldSignUp.getText().isEmpty()) {
             msgSignUp.setText("Please fill all the fields");
+            msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         } else if (!emailFieldSignUp.getText().contains("@gmail.com")) {
             msgSignUp.setText("Email must be a gmail account.");
+            msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         } else if (businessLogic.existsUser(emailFieldSignUp.getText())) {
             msgSignUp.setText("This email is already in use. Choose another one.");
+            msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }else if (!(passwordFieldSignUp.getText().equals(passwordChecker.getText()))){
             msgSignUp.setText("Passwords do not match");
+            msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         } else {
             businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText());
             msgSignUp.setText("User created successfully");
@@ -57,6 +61,8 @@ public class SignUpController implements Controller {
             usernameFieldSignUp.clear();
             passwordFieldSignUp.clear();
             passwordChecker.clear();
+            msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+
         }
     }
 
