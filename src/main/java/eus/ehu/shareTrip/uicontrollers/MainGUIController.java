@@ -86,7 +86,7 @@ public class MainGUIController implements Controller{
         //if the driver hasn't signed in, don't let them query rides
         if (businessLogic.getCurrentUser() == null) {
             selectOptionLbl.setText("Please sign in to query rides.");
-            return;
+            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
         }
         showScene("QueryRides");
     }
@@ -96,7 +96,7 @@ public class MainGUIController implements Controller{
         //if the driver hasn't signed in, don't let them create rides
         if (businessLogic.getCurrentUser() == null) {
             selectOptionLbl.setText("Please sign in to create rides.");
-            return;
+            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
         }
         showScene("CreateRide");
     }
@@ -105,7 +105,7 @@ public class MainGUIController implements Controller{
         //if the driver has already signed in don't let them sign in again
         if (businessLogic.getCurrentUser() != null) {
             selectOptionLbl.setText("You are already signed in.");
-            return;
+            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
         }
         showScene("SignIn");
     }
@@ -114,7 +114,7 @@ public class MainGUIController implements Controller{
         //if the driver has already signed in don't let them sign up again
         if (businessLogic.getCurrentUser() != null) {
             selectOptionLbl.setText("You are already signed in.");
-            return;
+            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
         }
         showScene("SignUp");
     }
