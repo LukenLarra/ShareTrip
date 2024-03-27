@@ -43,6 +43,7 @@ public class SignInController implements Controller {
             }else{
                 passwordFieldSignIn.clear();
                 emailFieldSignIn.clear();
+                msgSignIn.setText("Logged in successfully.");
             }
         } else {
             msgSignIn.setText("Email must be a gmail account.");
