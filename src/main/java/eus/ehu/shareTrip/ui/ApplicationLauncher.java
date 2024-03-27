@@ -25,9 +25,12 @@ public class ApplicationLauncher {
 
 
       Driver driver=new Driver("driver3@gmail.com","Test Driver", "1111");
-      businessLogic.setCurrentDriver(driver);
+      businessLogic.setCurrentUser(driver);
+
 
       new MainGUI(businessLogic);
+
+      businessLogic.setCurrentUser(null);
       }
     }
     catch (Exception e) {

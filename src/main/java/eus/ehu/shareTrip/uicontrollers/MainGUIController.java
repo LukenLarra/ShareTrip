@@ -83,27 +83,39 @@ public class MainGUIController implements Controller{
     }
     @FXML
     void queryRides(ActionEvent event) {
-        //mainGUI.showQueryRides();
+        //if the driver hasn't signed in, don't let them query rides
+        if (businessLogic.getCurrentUser() == null) {
+            selectOptionLbl.setText("Please sign in to query rides.");
+            return;
+        }
         showScene("QueryRides");
     }
 
     @FXML
     void createRide(ActionEvent event) {
-        //mainGUI.showCreateRide();
+        //if the driver hasn't signed in, don't let them create rides
+        if (businessLogic.getCurrentUser() == null) {
+            selectOptionLbl.setText("Please sign in to create rides.");
+            return;
+        }
         showScene("CreateRide");
     }
     @FXML
     void showSignIn(ActionEvent event) throws IOException {
-//        Stage stage = new Stage();
-//        stage.setScene(new Scene(mainGUI.getSignInWin(), 600, 500));
-//        stage.show();
+        //if the driver has already signed in don't let them sign in again
+        if (businessLogic.getCurrentUser() != null) {
+            selectOptionLbl.setText("You are already signed in.");
+            return;
+        }
         showScene("SignIn");
     }
     @FXML
     void showSignUp(ActionEvent event) throws IOException {
-//        Stage stage = new Stage();
-//        stage.setScene(new Scene(mainGUI.getSignUpWin(), 600, 500));
-//        stage.show();
+        //if the driver has already signed in don't let them sign up again
+        if (businessLogic.getCurrentUser() != null) {
+            selectOptionLbl.setText("You are already signed in.");
+            return;
+        }
         showScene("SignUp");
     }
 

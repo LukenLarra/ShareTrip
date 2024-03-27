@@ -21,8 +21,7 @@ public class BlFacadeImplementation implements BlFacade {
 
 	DataAccess dbManager;
 	Config config = Config.getInstance();
-	private Driver currentDriver;
-	private Traveler currentTraveler;
+	private User currentUser;
 
 	public BlFacadeImplementation() {
 		System.out.println("Creating BlFacadeImplementation instance");
@@ -68,23 +67,13 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@Override
-	public void setCurrentDriver(Driver driver) {
-		this.currentDriver = driver;
+	public void setCurrentUser(User user) {
+		this.currentUser = user;
 	}
 
 	@Override
-	public void setCurrentTraveler(Traveler traveler) {
-		this.currentTraveler = traveler;
-	}
-
-	@Override
-	public Driver getCurrentDriver() {
-		return this.currentDriver;
-	}
-
-	@Override
-	public Traveler getCurrentTraveler() {
-		return this.currentTraveler;
+	public User getCurrentUser() {
+		return this.currentUser;
 	}
 
 	public List<String> getDepartCities() {
