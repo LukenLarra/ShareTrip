@@ -2,6 +2,7 @@ package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
+import eus.ehu.shareTrip.domain.Traveler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class MainGUIController implements Controller{
 
+
     @FXML
     private BorderPane mainWrapper;
 
@@ -36,7 +38,10 @@ public class MainGUIController implements Controller{
     private Button queryRidesBtn;
 
     @FXML
-    private Button createRideBtn;
+    private Button requestRideBtn;
+
+    @FXML
+    private Button createRidesBtn;
 
 
     @FXML
@@ -100,6 +105,12 @@ public class MainGUIController implements Controller{
         }
         showScene("CreateRide");
     }
+
+    @FXML
+    void requestRide(ActionEvent event) {
+
+    }
+
     @FXML
     void showSignIn(ActionEvent event) throws IOException {
         //if the driver has already signed in don't let them sign in again
@@ -122,7 +133,7 @@ public class MainGUIController implements Controller{
 
     @FXML
     void initialize() {
-
+        requestRideBtn.setVisible(false);
     }
 
     private void showScene(String scene) {
