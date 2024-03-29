@@ -2,9 +2,7 @@ package eus.ehu.shareTrip.businessLogic;
 
 import eus.ehu.shareTrip.configuration.Config;
 import eus.ehu.shareTrip.dataAccess.DataAccess;
-import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
-import eus.ehu.shareTrip.domain.Traveler;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
@@ -110,8 +108,12 @@ public class BlFacadeImplementation implements BlFacade {
 		return dbManager.existsUser(text);
 	}
 
-
-
-
-
+	@Override
+	public void requestSeats(int rideId, int numSeats) throws IllegalArgumentException {
+		Ride ride = dbManager.getRideById(rideId);
+		if (ride == null) {
+			throw new IllegalArgumentException("No se encontró el viaje con el ID proporcionado");
+		}
+		ride.requestSeats(numSeats);
+	}
 }

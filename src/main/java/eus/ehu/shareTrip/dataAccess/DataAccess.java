@@ -312,4 +312,8 @@ public class DataAccess {
     db.getTransaction().commit();
 
   }
+
+    public Ride getRideById(int rideId) {
+        return db.find(Ride.class, rideId);
+    }
 }

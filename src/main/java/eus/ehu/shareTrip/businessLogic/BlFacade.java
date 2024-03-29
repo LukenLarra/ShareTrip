@@ -80,4 +80,7 @@ public interface BlFacade {
 
     User signIn(String email, String password);
 
+    public void requestSeats(int rideId, int numSeats) throws IllegalArgumentException;
+
+
 }

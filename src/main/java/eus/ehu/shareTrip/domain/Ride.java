@@ -133,7 +133,7 @@ public class Ride implements Serializable {
 	}
 
 	
-	public float getNumPlaces() {
+	public int getNumPlaces() {
 		return numPlaces;
 	}
 
@@ -177,7 +177,14 @@ public class Ride implements Serializable {
 		this.price = price;
 	}
 
-
+	public boolean requestSeats(int numSeatsToReserve) {
+		if (numSeatsToReserve <= numPlaces) {
+			numPlaces -= numSeatsToReserve;
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public String toString(){
 		return rideNumber+";"+";"+ fromLocation +";"+ toLocation +";"+date;
