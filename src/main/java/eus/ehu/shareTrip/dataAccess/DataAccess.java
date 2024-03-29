@@ -314,6 +314,8 @@ public class DataAccess {
   }
 
     public Ride getRideById(int rideId) {
-        return db.find(Ride.class, rideId);
+      TypedQuery<Ride> rideQuery = db.createQuery("SELECT r FROM Ride r WHERE r.id = :id", Ride.class);
+      rideQuery.setParameter("id", rideId);
+      return rideQuery.getSingleResult();
     }
 }
