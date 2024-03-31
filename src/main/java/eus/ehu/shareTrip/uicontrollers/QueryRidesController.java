@@ -208,30 +208,35 @@ public class QueryRidesController implements Controller {
 
     @FXML
     void requestRide(ActionEvent event) {
-        Ride selectedRide = tblRides.getSelectionModel().getSelectedItem();
-        if (selectedRide != null) {
-            String seatsStr = seatsNumber.getText();
-            if (!seatsStr.isEmpty()) {
-                int seats = Integer.parseInt(seatsStr);
-                if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
-                    try {
-                        businessLogic.requestSeats(selectedRide.getRideNumber(), seats);
-                        message.setText("Request made successfully");
-                        message.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
-                    } catch (Exception e) {
-                        System.out.println("Error whilst doing the request: " + e.getMessage());
+        if (businessLogic.getCurrentUser().getClass().equals(Driver.class)){
+            message.setText("Only travelers can request rides");
+            message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+        }else{
+            Ride selectedRide = tblRides.getSelectionModel().getSelectedItem();
+            if (selectedRide != null) {
+                String seatsStr = seatsNumber.getText();
+                if (!seatsStr.isEmpty()) {
+                    int seats = Integer.parseInt(seatsStr);
+                    if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
+                        try {
+                            businessLogic.requestSeats(selectedRide.getRideNumber(), seats);
+                            message.setText("Request made successfully");
+                            message.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
+                        } catch (Exception e) {
+                            System.out.println("Error whilst doing the request: " + e.getMessage());
+                        }
+                    } else {
+                        message.setText("Please introduce a valid number of seats");
+                        message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
                     }
                 } else {
-                    message.setText("Please introduce a valid number of seats");
+                    message.setText("Please introduce a number of seats to make the request");
                     message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
                 }
             } else {
-                    message.setText("Please introduce a number of seats to make the request");
-                    message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-            }
-        } else {
                 message.setText("Please select a ride.");
                 message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            }
         }
     }
 

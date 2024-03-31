@@ -100,7 +100,13 @@ public class MainGUIController implements Controller{
             selectOptionLbl.setText("Please sign in to create rides.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
             showScene("SignIn");
-        }else{showScene("CreateRide");}
+        }else if (businessLogic.getCurrentUser().getClass().equals(Traveler.class)){
+            selectOptionLbl.setText("Only drivers can create rides.");
+            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            showScene("QueryRides");
+        }else {
+            showScene("CreateRide");
+        }
     }
 
 
