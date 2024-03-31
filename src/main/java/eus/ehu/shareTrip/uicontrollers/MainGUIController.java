@@ -38,9 +38,6 @@ public class MainGUIController implements Controller{
     private Button queryRidesBtn;
 
     @FXML
-    private Button requestRideBtn;
-
-    @FXML
     private Button createRidesBtn;
 
 
@@ -92,8 +89,8 @@ public class MainGUIController implements Controller{
         if (businessLogic.getCurrentUser() == null) {
             selectOptionLbl.setText("Please sign in to query rides.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-        }
-        showScene("QueryRides");
+            showScene("SignIn");
+        }else{ showScene("QueryRides"); }
     }
 
     @FXML
@@ -102,14 +99,10 @@ public class MainGUIController implements Controller{
         if (businessLogic.getCurrentUser() == null) {
             selectOptionLbl.setText("Please sign in to create rides.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-        }
-        showScene("CreateRide");
+            showScene("SignIn");
+        }else{showScene("CreateRide");}
     }
 
-    @FXML
-    void requestRide(ActionEvent event) {
-
-    }
 
     @FXML
     void showSignIn(ActionEvent event) throws IOException {
@@ -133,7 +126,6 @@ public class MainGUIController implements Controller{
 
     @FXML
     void initialize() {
-        requestRideBtn.setVisible(false);
     }
 
     private void showScene(String scene) {
