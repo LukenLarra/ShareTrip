@@ -77,10 +77,10 @@ public interface BlFacade {
 
     void signUp(String email, String name, String password, String role);
 
-
     User signIn(String email, String password);
 
-    public void requestSeats(int rideId, int numSeats) throws IllegalArgumentException;
+    void requestSeats(int rideId, int numSeats) throws IllegalArgumentException;
 
+    void logout();
 
 }

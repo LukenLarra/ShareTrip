@@ -15,6 +15,7 @@
             <Button fx:id="btnShowSignIn" mnemonicParsing="false" onAction="#showSignIn" text="%SignIn" />
             <Button fx:id="queryRidesBtn" mnemonicParsing="false" onAction="#queryRides" text="%QueryRides" />
             <Button fx:id="createRidesBtn" mnemonicParsing="false" onAction="#createRide" text="%CreateRide" />
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logout" text="%Logout" />
             <Label fx:id="lblUserType" />
             <Label fx:id="lblUserName" />
          </children>

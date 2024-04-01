@@ -116,4 +116,9 @@ public class BlFacadeImplementation implements BlFacade {
 		}
 		ride.requestSeats(numSeats);
 	}
+	@Override
+	public void logout() {
+		// Clear the current user
+		currentUser = null;
+	}
 }

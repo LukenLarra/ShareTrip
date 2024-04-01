@@ -3,12 +3,14 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.ui.MainGUI;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 
 public class SignInController implements Controller {
 
@@ -36,16 +38,37 @@ public class SignInController implements Controller {
                 msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
                 msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
 
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                pause.setOnFinished(e -> {
+                    msgSignIn.setText("");
+                    msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+                });
+                pause.play();
+
             }else{
                 passwordFieldSignIn.clear();
                 emailFieldSignIn.clear();
                 msgSignIn.setText("Logged in successfully.");
                 msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 businessLogic.setCurrentUser(user);
+
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                pause.setOnFinished(e -> {
+                    msgSignIn.setText("");
+                    msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+                });
+                pause.play();
             }
         } else {
             msgSignIn.setText("Email must be a gmail account.");
             msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> {
+                msgSignIn.setText("");
+                msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+            });
+            pause.play();
         }
     }
 

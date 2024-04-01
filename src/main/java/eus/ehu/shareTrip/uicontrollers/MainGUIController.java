@@ -42,6 +42,8 @@ public class MainGUIController implements Controller{
     @FXML
     private Button createRidesBtn;
 
+    @FXML
+    private Button logoutBtn;
 
     @FXML
     private ResourceBundle resources;
@@ -151,6 +153,27 @@ public class MainGUIController implements Controller{
         } else {
             showScene("SignUp");
         }
+    }
+
+    @FXML
+    void logout(ActionEvent event) {
+        if (businessLogic.getCurrentUser() == null) {
+            selectOptionLbl.setText("You are not signed in.");
+            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
+        }else {
+            businessLogic.logout();
+            selectOptionLbl.setText("You have been logged out.");
+            selectOptionLbl.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
+        }
+        showScene("SignIn");
     }
 
 
