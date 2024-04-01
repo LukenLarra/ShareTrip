@@ -3,6 +3,7 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Traveler;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -90,6 +92,10 @@ public class MainGUIController implements Controller{
             selectOptionLbl.setText("Please sign in to query rides.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
             showScene("SignIn");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
         }else{ showScene("QueryRides"); }
     }
 
@@ -100,10 +106,18 @@ public class MainGUIController implements Controller{
             selectOptionLbl.setText("Please sign in to create rides.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
             showScene("SignIn");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
         }else if (businessLogic.getCurrentUser().getClass().equals(Traveler.class)){
             selectOptionLbl.setText("Only drivers can create rides.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
             showScene("QueryRides");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
         }else {
             showScene("CreateRide");
         }
@@ -116,8 +130,13 @@ public class MainGUIController implements Controller{
         if (businessLogic.getCurrentUser() != null) {
             selectOptionLbl.setText("You are already signed in.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
+        } else {
+            showScene("SignIn");
         }
-        showScene("SignIn");
     }
     @FXML
     void showSignUp(ActionEvent event) throws IOException {
@@ -125,8 +144,13 @@ public class MainGUIController implements Controller{
         if (businessLogic.getCurrentUser() != null) {
             selectOptionLbl.setText("You are already signed in.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
+        } else {
+            showScene("SignUp");
         }
-        showScene("SignUp");
     }
 
 
