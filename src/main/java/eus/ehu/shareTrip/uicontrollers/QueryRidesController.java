@@ -208,6 +208,7 @@ public class QueryRidesController implements Controller {
 
     @FXML
     void requestRide(ActionEvent event) {
+        int seats = 0;
         if (businessLogic.getCurrentUser().getClass().equals(Driver.class)){
             message.setText("Only travelers can request rides");
             message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
@@ -215,7 +216,12 @@ public class QueryRidesController implements Controller {
             Ride selectedRide = tblRides.getSelectionModel().getSelectedItem();
             if (selectedRide != null) {
                 String seatsStr = seatsNumber.getText();
-                int seats = Integer.parseInt(seatsStr);
+                try {
+                    seats = Integer.parseInt(seatsStr);
+                } catch (NumberFormatException e) {
+                    message.setText("Please enter a valid number");
+                    message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                }
                 if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
                     if (businessLogic.requestSeats(selectedRide.getRideNumber(), seats)) {
                     message.setText("Request made successfully");
@@ -225,7 +231,7 @@ public class QueryRidesController implements Controller {
                     message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
                     }
                 } else {
-                    message.setText("Please introduce a valid number of seats to make the request");
+                    message.setText("Please enter a valid number for available seats.");
                     message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
                 }
             } else {
