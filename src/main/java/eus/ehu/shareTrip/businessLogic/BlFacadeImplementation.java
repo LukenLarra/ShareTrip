@@ -109,12 +109,12 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@Override
-	public void requestSeats(int rideId, int numSeats) throws IllegalArgumentException {
+	public boolean requestSeats(int rideId, int numSeats){
 		Ride ride = dbManager.getRideById(rideId);
 		if (ride == null) {
-			throw new IllegalArgumentException("No se encontró el viaje con el ID proporcionado");
+			return false;
 		}
-		ride.requestSeats(numSeats);
+		return ride.requestSeats(numSeats);
 	}
 	@Override
 	public void logout() {
