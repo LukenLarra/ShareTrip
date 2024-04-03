@@ -215,22 +215,17 @@ public class QueryRidesController implements Controller {
             Ride selectedRide = tblRides.getSelectionModel().getSelectedItem();
             if (selectedRide != null) {
                 String seatsStr = seatsNumber.getText();
-                if (!seatsStr.isEmpty()) {
-                    int seats = Integer.parseInt(seatsStr);
-                    if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
-                        try {
-                            businessLogic.requestSeats(selectedRide.getRideNumber(), seats);
-                            message.setText("Request made successfully");
-                            message.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
-                        } catch (Exception e) {
-                            System.out.println("Error whilst doing the request: " + e.getMessage());
-                        }
+                int seats = Integer.parseInt(seatsStr);
+                if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
+                    if (businessLogic.requestSeats(selectedRide.getRideNumber(), seats)) {
+                    message.setText("Request made successfully");
+                    message.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
                     } else {
-                        message.setText("Please introduce a valid number of seats");
-                        message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                    message.setText("Error whilst doing the request");
+                    message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
                     }
                 } else {
-                    message.setText("Please introduce a number of seats to make the request");
+                    message.setText("Please introduce a valid number of seats to make the request");
                     message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
                 }
             } else {
