@@ -177,12 +177,11 @@ public class Ride implements Serializable {
 		this.price = price;
 	}
 
-	public boolean requestSeats(int numSeatsToReserve) {
+	public void requestSeats(int numSeatsToReserve) {
 		if (numSeatsToReserve <= numPlaces) {
 			numPlaces -= numSeatsToReserve;
-			return true;
-		} else {
-			return false;
+		}else {
+			throw new IllegalArgumentException("Not enough places");
 		}
 	}
 
@@ -190,8 +189,4 @@ public class Ride implements Serializable {
 		return rideNumber+";"+";"+ fromLocation +";"+ toLocation +";"+date;
 	}
 
-
-
-
-	
 }
