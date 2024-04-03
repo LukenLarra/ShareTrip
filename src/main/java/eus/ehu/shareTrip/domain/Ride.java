@@ -177,7 +177,7 @@ public class Ride implements Serializable {
 		this.price = price;
 	}
 
-	public void requestSeats(int numSeatsToReserve) {
+	public void bookSeats(int numSeatsToReserve) {
 		if (numSeatsToReserve <= numPlaces) {
 			numPlaces -= numSeatsToReserve;
 		}else {

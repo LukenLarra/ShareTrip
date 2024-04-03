@@ -114,7 +114,7 @@ public class BlFacadeImplementation implements BlFacade {
 		if (ride == null) {
 			return false;
 		}
-		return ride.requestSeats(numSeats);
+		return true;
 	}
 	@Override
 	public void logout() {
