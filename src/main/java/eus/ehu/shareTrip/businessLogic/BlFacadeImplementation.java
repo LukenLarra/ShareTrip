@@ -3,12 +3,14 @@ package eus.ehu.shareTrip.businessLogic;
 import eus.ehu.shareTrip.configuration.Config;
 import eus.ehu.shareTrip.dataAccess.DataAccess;
 import eus.ehu.shareTrip.domain.Ride;
+import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.Vector;
 
 
@@ -111,14 +113,21 @@ public class BlFacadeImplementation implements BlFacade {
 	@Override
 	public boolean requestSeats(int rideId, int numSeats){
 		Ride ride = dbManager.getRideById(rideId);
-		if (ride == null) {
-			return false;
+		if (ride != null) {
+			String reservationCode = UUID.randomUUID().toString();
+			RideRequest rideRequest = new RideRequest(ride, numSeats, reservationCode);
+            return dbManager.requestSeats(rideRequest);
 		}
-		return true;
+		return false;
 	}
 	@Override
 	public void logout() {
 		// Clear the current user
 		currentUser = null;
+	}
+
+	@Override
+	public RideRequest getRideRequestByReservationCode(String reservationCode) {
+		return dbManager.getRideRequestByReservationCode(reservationCode);
 	}
 }

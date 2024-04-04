@@ -1,9 +1,6 @@
 package eus.ehu.shareTrip.businessLogic;
 
-import eus.ehu.shareTrip.domain.Driver;
-import eus.ehu.shareTrip.domain.Ride;
-import eus.ehu.shareTrip.domain.Traveler;
-import eus.ehu.shareTrip.domain.User;
+import eus.ehu.shareTrip.domain.*;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 
@@ -81,6 +78,7 @@ public interface BlFacade {
 
     boolean requestSeats(int rideId, int numSeats);
 
+    RideRequest getRideRequestByReservationCode(String reservationCode);
     void logout();
 
 }

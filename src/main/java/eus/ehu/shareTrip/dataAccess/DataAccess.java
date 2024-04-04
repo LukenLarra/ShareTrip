@@ -2,14 +2,12 @@ package eus.ehu.shareTrip.dataAccess;
 
 import eus.ehu.shareTrip.configuration.Config;
 import eus.ehu.shareTrip.configuration.UtilDate;
-import eus.ehu.shareTrip.domain.Ride;
-import eus.ehu.shareTrip.domain.Driver;
-import eus.ehu.shareTrip.domain.Traveler;
-import eus.ehu.shareTrip.domain.User;
+import eus.ehu.shareTrip.domain.*;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -318,4 +316,26 @@ public class DataAccess {
       rideQuery.setParameter("id", rideId);
       return rideQuery.getSingleResult();
     }
+  public boolean requestSeats(RideRequest rideRequest){
+    db.getTransaction().begin();
+    try {
+      db.persist(rideRequest);
+      db.getTransaction().commit();
+      return true;
+    } catch (Exception e) {
+      if (db.getTransaction().isActive()) {
+        db.getTransaction().rollback();
+      }
+      return false;
+    }
+  }
+  public RideRequest getRideRequestByReservationCode(String reservationCode) {
+    TypedQuery<RideRequest> query = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.reservationCode = :reservationCode", RideRequest.class);
+    query.setParameter("reservationCode", reservationCode);
+    try {
+      return query.getSingleResult();
+    } catch (NoResultException e) {
+      return null;
+    }
+  }
 }
