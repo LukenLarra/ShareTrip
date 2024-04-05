@@ -119,6 +119,7 @@ public class BlFacadeImplementation implements BlFacade {
 			RideRequest rideRequest = new RideRequest(ride, numSeats, reservationCode, date);
 			rideRequest.setRequestId(rideId);
            	dbManager.requestRide(rideRequest);
+			return true;
 		}
 		return false;
 	}
@@ -138,6 +139,7 @@ public class BlFacadeImplementation implements BlFacade {
 		RideRequest rideRequest = dbManager.getRideRequestByReservationCode(requestCode);
 		Ride ride = rideRequest.getRide();
 		ride.bookSeats(rideRequest.getNumSeats());
+		dbManager.deleteRideRequest(requestCode);
 	}
 	@Override
 	public void rejectRequest(String requestCode){

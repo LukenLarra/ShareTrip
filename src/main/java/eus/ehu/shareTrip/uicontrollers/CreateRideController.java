@@ -134,15 +134,16 @@ public class CreateRideController implements Controller {
         String requestCode = txtRequestCode.getText();
         if (requestCode.isEmpty()) {
             messageRequest.setText("Please enter a request code");
-            messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         } else {
             try {
                 businessLogic.acceptRequest(requestCode);
                 messageRequest.setText("Request accepted successfully");
-                messageRequest.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+                txtRequestCode.clear();
             } catch (Exception e) {
                 messageRequest.setText("Request not found");
-                messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }
     }
@@ -152,15 +153,16 @@ public class CreateRideController implements Controller {
         String requestCode = txtRequestCode.getText();
         if (requestCode.isEmpty()) {
             messageRequest.setText("Please enter a request code");
-            messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         } else {
             try {
                 businessLogic.rejectRequest(requestCode);
                 messageRequest.setText("Request rejected successfully");
-                messageRequest.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+                txtRequestCode.clear();
             } catch (Exception e) {
                 messageRequest.setText("Request not found");
-                messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }
     }

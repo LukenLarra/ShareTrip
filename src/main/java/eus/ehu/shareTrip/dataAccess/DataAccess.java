@@ -319,14 +319,8 @@ public class DataAccess {
 
   public void requestRide(RideRequest rideRequest){
     db.getTransaction().begin();
-    try {
-      db.persist(rideRequest);
-      db.getTransaction().commit();
-    } catch (Exception e) {
-      if (db.getTransaction().isActive()) {
-        db.getTransaction().rollback();
-      }
-    }
+    db.persist(rideRequest);
+    db.getTransaction().commit();
   }
   public RideRequest getRideRequestByReservationCode(String reservationCode) {
     TypedQuery<RideRequest> query = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.reservationCode = :reservationCode", RideRequest.class);

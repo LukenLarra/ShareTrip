@@ -211,7 +211,7 @@ public class QueryRidesController implements Controller {
         int seats = 0;
         if (businessLogic.getCurrentUser().getClass().equals(Driver.class)){
             message.setText("Only travelers can request rides");
-            message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }else{
             Ride selectedRide = tblRides.getSelectionModel().getSelectedItem();
             if (selectedRide != null) {
@@ -220,23 +220,23 @@ public class QueryRidesController implements Controller {
                     seats = Integer.parseInt(seatsStr);
                 } catch (NumberFormatException e) {
                     message.setText("Please enter a valid number");
-                    message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                    message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 }
                 if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
                     if (businessLogic.requestRide(selectedRide.getRideNumber(), seats, datepicker.getValue().toString())) {
                     message.setText("Request made successfully");
-                    message.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
+                    message.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                     } else {
                     message.setText("Error whilst doing the request");
-                    message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                    message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                     }
                 } else {
                     message.setText("Please enter a valid number for available seats.");
-                    message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                    message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 }
             } else {
                 message.setText("Please select a ride.");
-                message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+                message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }
     }

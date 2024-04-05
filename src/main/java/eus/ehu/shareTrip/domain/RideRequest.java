@@ -11,7 +11,6 @@ import java.util.Date;
 @Entity
 public class RideRequest implements Serializable {
     @Id
-    @GeneratedValue
     private Integer requestId;
 
     @ManyToOne
