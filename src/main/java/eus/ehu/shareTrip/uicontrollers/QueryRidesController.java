@@ -223,7 +223,7 @@ public class QueryRidesController implements Controller {
                     message.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
                 }
                 if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
-                    if (businessLogic.requestRide(selectedRide.getRideNumber(), seats)) {
+                    if (businessLogic.requestRide(selectedRide.getRideNumber(), seats, datepicker.getValue().toString())) {
                     message.setText("Request made successfully");
                     message.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
                     } else {

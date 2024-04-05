@@ -5,6 +5,7 @@ import eus.ehu.shareTrip.dataAccess.DataAccess;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Entity
@@ -18,18 +19,19 @@ public class RideRequest implements Serializable {
 
     private int numSeats;
     private String reservationCode;
-
+    private String date;
 
 
     public RideRequest() {
         super();
     }
 
-    public RideRequest(Ride ride, int numSeats, String reservationCode) {
+    public RideRequest(Ride ride, int numSeats, String reservationCode, String date) {
         super();
         this.ride = ride;
         this.numSeats = numSeats;
         this.reservationCode = reservationCode;
+        this.date = date;
     }
 
     public Integer getRequestId() {

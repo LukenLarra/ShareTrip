@@ -8,6 +8,7 @@ import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -111,11 +112,11 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@Override
-	public boolean requestRide(int rideId, int numSeats){
+	public boolean requestRide(int rideId, int numSeats, String date){
 		Ride ride = dbManager.getRideById(rideId);
 		if (ride != null) {
 			String reservationCode = UUID.randomUUID().toString();
-			RideRequest rideRequest = new RideRequest(ride, numSeats, reservationCode);
+			RideRequest rideRequest = new RideRequest(ride, numSeats, reservationCode, date);
 			rideRequest.setRequestId(rideId);
            	dbManager.requestRide(rideRequest);
 		}

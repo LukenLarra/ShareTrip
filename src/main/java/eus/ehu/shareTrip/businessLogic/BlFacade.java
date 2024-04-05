@@ -4,6 +4,7 @@ import eus.ehu.shareTrip.domain.*;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -76,7 +77,7 @@ public interface BlFacade {
 
     User signIn(String email, String password);
 
-    boolean requestRide(int rideId, int numSeats);
+    boolean requestRide(int rideId, int numSeats, String date);
 
     RideRequest getRideRequestByReservationCode(String reservationCode);
     void logout();
