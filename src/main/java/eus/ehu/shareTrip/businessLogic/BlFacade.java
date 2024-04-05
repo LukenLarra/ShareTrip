@@ -81,4 +81,7 @@ public interface BlFacade {
     RideRequest getRideRequestByReservationCode(String reservationCode);
     void logout();
 
+    void acceptRequest(String requestCode);
+
+    void rejectRequest(String requestCode);
 }

@@ -64,6 +64,17 @@ public class CreateRideController implements Controller {
     @FXML
     private TextField txtPrice;
 
+    @FXML
+    private Button acceptRequestBtn;
+
+    @FXML
+    private Button rejectRequestBtn;
+
+    @FXML
+    private TextField txtRequestCode;
+
+    @FXML
+    private Label messageRequest;
 
     @FXML
     void closeClick(ActionEvent event) {
@@ -119,6 +130,42 @@ public class CreateRideController implements Controller {
     }
 
     @FXML
+    void acceptRequest(ActionEvent event) {
+        String requestCode = txtRequestCode.getText();
+        if (requestCode.isEmpty()) {
+            messageRequest.setText("Please enter a request code");
+            messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+        } else {
+            try {
+                businessLogic.acceptRequest(requestCode);
+                messageRequest.setText("Request accepted successfully");
+                messageRequest.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
+            } catch (Exception e) {
+                messageRequest.setText("Request not found");
+                messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            }
+        }
+    }
+
+    @FXML
+    void rejectRequest(ActionEvent event) {
+        String requestCode = txtRequestCode.getText();
+        if (requestCode.isEmpty()) {
+            messageRequest.setText("Please enter a request code");
+            messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+        } else {
+            try {
+                businessLogic.rejectRequest(requestCode);
+                messageRequest.setText("Request rejected successfully");
+                messageRequest.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
+            } catch (Exception e) {
+                messageRequest.setText("Request not found");
+                messageRequest.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            }
+        }
+    }
+
+    @FXML
     void createRideClick(ActionEvent e) {
 
         clearErrorLabels();
@@ -156,6 +203,7 @@ public class CreateRideController implements Controller {
     }
  */
     }
+
 
     private List<LocalDate> holidays = new ArrayList<>();
 

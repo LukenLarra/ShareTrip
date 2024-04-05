@@ -339,4 +339,13 @@ public class DataAccess {
       return null;
     }
   }
+
+  public void deleteRideRequest(String requestCode) {
+    db.getTransaction().begin();
+    TypedQuery<RideRequest> query = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.reservationCode = :reservationCode", RideRequest.class);
+    query.setParameter("reservationCode", requestCode);
+    RideRequest rideRequest = query.getSingleResult();
+    db.remove(rideRequest);
+    db.getTransaction().commit();
+  }
 }

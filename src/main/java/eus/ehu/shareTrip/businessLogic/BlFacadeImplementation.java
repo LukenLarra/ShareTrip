@@ -131,4 +131,18 @@ public class BlFacadeImplementation implements BlFacade {
 	public RideRequest getRideRequestByReservationCode(String reservationCode) {
 		return dbManager.getRideRequestByReservationCode(reservationCode);
 	}
+
+	@Override
+	public void acceptRequest(String requestCode){
+		RideRequest rideRequest = dbManager.getRideRequestByReservationCode(requestCode);
+		Ride ride = rideRequest.getRide();
+		ride.bookSeats(rideRequest.getNumSeats());
+	}
+	@Override
+	public void rejectRequest(String requestCode){
+		//Delete the request
+		dbManager.deleteRideRequest(requestCode);
+
+	}
+
 }
