@@ -317,17 +317,15 @@ public class DataAccess {
     return rideQuery.getSingleResult();
   }
 
-  public boolean requestRide(RideRequest rideRequest){
+  public void requestRide(RideRequest rideRequest){
     db.getTransaction().begin();
     try {
       db.persist(rideRequest);
       db.getTransaction().commit();
-      return true;
     } catch (Exception e) {
       if (db.getTransaction().isActive()) {
         db.getTransaction().rollback();
       }
-      return false;
     }
   }
   public RideRequest getRideRequestByReservationCode(String reservationCode) {

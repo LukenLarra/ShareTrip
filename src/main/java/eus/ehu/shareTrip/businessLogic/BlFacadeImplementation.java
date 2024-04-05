@@ -117,7 +117,7 @@ public class BlFacadeImplementation implements BlFacade {
 			String reservationCode = UUID.randomUUID().toString();
 			RideRequest rideRequest = new RideRequest(ride, numSeats, reservationCode);
 			rideRequest.setRequestId(rideId);
-            return dbManager.requestRide(rideRequest);
+           	dbManager.requestRide(rideRequest);
 		}
 		return false;
 	}
@@ -140,7 +140,6 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 	@Override
 	public void rejectRequest(String requestCode){
-		//Delete the request
 		dbManager.deleteRideRequest(requestCode);
 
 	}
