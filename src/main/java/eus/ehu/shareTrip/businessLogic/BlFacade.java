@@ -76,7 +76,7 @@ public interface BlFacade {
 
     User signIn(String email, String password);
 
-    boolean requestSeats(int rideId, int numSeats);
+    boolean requestRide(int rideId, int numSeats);
 
     RideRequest getRideRequestByReservationCode(String reservationCode);
     void logout();

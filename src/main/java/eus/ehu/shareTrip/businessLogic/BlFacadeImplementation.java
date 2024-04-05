@@ -111,12 +111,13 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@Override
-	public boolean requestSeats(int rideId, int numSeats){
+	public boolean requestRide(int rideId, int numSeats){
 		Ride ride = dbManager.getRideById(rideId);
 		if (ride != null) {
 			String reservationCode = UUID.randomUUID().toString();
 			RideRequest rideRequest = new RideRequest(ride, numSeats, reservationCode);
-            return dbManager.requestSeats(rideRequest);
+			rideRequest.setRequestId(rideId);
+            return dbManager.requestRide(rideRequest);
 		}
 		return false;
 	}

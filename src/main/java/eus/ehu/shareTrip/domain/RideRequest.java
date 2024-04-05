@@ -4,9 +4,11 @@ import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.dataAccess.DataAccess;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 
 @Entity
-public class RideRequest{
+public class RideRequest implements Serializable {
     @Id
     @GeneratedValue
     private Integer requestId;

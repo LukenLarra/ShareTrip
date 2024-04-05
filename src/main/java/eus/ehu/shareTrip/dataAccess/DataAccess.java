@@ -311,12 +311,13 @@ public class DataAccess {
 
   }
 
-    public Ride getRideById(int rideId) {
-      TypedQuery<Ride> rideQuery = db.createQuery("SELECT r FROM Ride r WHERE r.id = :id", Ride.class);
-      rideQuery.setParameter("id", rideId);
-      return rideQuery.getSingleResult();
-    }
-  public boolean requestSeats(RideRequest rideRequest){
+  public Ride getRideById(int rideId) {
+    TypedQuery<Ride> rideQuery = db.createQuery("SELECT r FROM Ride r WHERE r.id = :id", Ride.class);
+    rideQuery.setParameter("id", rideId);
+    return rideQuery.getSingleResult();
+  }
+
+  public boolean requestRide(RideRequest rideRequest){
     db.getTransaction().begin();
     try {
       db.persist(rideRequest);
