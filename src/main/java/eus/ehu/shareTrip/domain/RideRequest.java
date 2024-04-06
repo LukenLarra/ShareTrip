@@ -25,8 +25,9 @@ public class RideRequest implements Serializable {
         super();
     }
 
-    public RideRequest(Ride ride, int numSeats, String reservationCode, String date) {
+    public RideRequest(int rideId, Ride ride, int numSeats, String reservationCode, String date) {
         super();
+        this.requestId = rideId;
         this.ride = ride;
         this.numSeats = numSeats;
         this.reservationCode = reservationCode;

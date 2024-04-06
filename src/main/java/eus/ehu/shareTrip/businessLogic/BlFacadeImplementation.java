@@ -116,8 +116,7 @@ public class BlFacadeImplementation implements BlFacade {
 		Ride ride = dbManager.getRideById(rideId);
 		if (ride != null) {
 			String reservationCode = UUID.randomUUID().toString();
-			RideRequest rideRequest = new RideRequest(ride, numSeats, reservationCode, date);
-			rideRequest.setRequestId(rideId);
+			RideRequest rideRequest = new RideRequest(rideId, ride, numSeats, reservationCode, date);
            	dbManager.requestRide(rideRequest);
 			return true;
 		}
