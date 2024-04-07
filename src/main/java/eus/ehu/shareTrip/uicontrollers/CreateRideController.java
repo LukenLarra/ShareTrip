@@ -152,50 +152,77 @@ public class CreateRideController implements Controller{
     @FXML
     void acceptRequest(ActionEvent event) {
         String requestCode = txtRequestCode.getText();
-        if (requestCode.isEmpty()) {
-            messageRequest.setText("Please enter a request code");
+        if (requestCode.isEmpty() && rideRequestTable.getSelectionModel().getSelectedItem() == null) {
+            messageRequest.setText("Please enter a request code or select a request from the table");
             messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
-        } else {
+        } else if (!requestCode.isEmpty() && rideRequestTable.getSelectionModel().getSelectedItem() == null){
             try {
                 businessLogic.acceptRequest(requestCode);
                 messageRequest.setText("Request accepted successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
+                refreshButton.fire();
             } catch (Exception e) {
-                messageRequest.setText("Request not found");
+                messageRequest.setText("No request was found with the given code");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
+        }else if (rideRequestTable.getSelectionModel().getSelectedItem() != null && requestCode.isEmpty()){
+            RideRequest selectedRequest = rideRequestTable.getSelectionModel().getSelectedItem();
+            try {
+                businessLogic.acceptRequest(selectedRequest.getReservationCode());
+                messageRequest.setText("Request accepted successfully");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+                txtRequestCode.clear();
+                refreshButton.fire();
+            } catch (Exception e) {
+                messageRequest.setText("Error accepting the selected request");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+            }
+        }else{
+            messageRequest.setText("Please enter a request code or select a request from the table, not both");
+            messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }
     }
 
     @FXML
     void rejectRequest(ActionEvent event) {
         String requestCode = txtRequestCode.getText();
-        if (requestCode.isEmpty()) {
-            messageRequest.setText("Please enter a request code");
+        if (requestCode.isEmpty() && rideRequestTable.getSelectionModel().getSelectedItem() == null) {
+            messageRequest.setText("Please enter a request code or select a request from the table");
             messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
-        } else {
+        } else if (!requestCode.isEmpty() && rideRequestTable.getSelectionModel().getSelectedItem() == null){
             try {
                 businessLogic.rejectRequest(requestCode);
-                messageRequest.setText("Request rejected successfully");
+                messageRequest.setText("Request accepted successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
+                refreshButton.fire();
             } catch (Exception e) {
-                messageRequest.setText("Request not found");
+                messageRequest.setText("No request was found with the given code");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
+        }else if (rideRequestTable.getSelectionModel().getSelectedItem() != null && requestCode.isEmpty()){
+            RideRequest selectedRequest = rideRequestTable.getSelectionModel().getSelectedItem();
+            try {
+                businessLogic.rejectRequest(selectedRequest.getReservationCode());
+                messageRequest.setText("Request accepted successfully");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+                txtRequestCode.clear();
+                refreshButton.fire();
+            } catch (Exception e) {
+                messageRequest.setText("Error accepting the selected request");
+                messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+            }
+        }else{
+            messageRequest.setText("Please enter a request code or select a request from the table, not both");
+            messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }
     }
 
     @FXML
     public void refreshRideRequests(ActionEvent event) {
-        // Clear the current items in the list
         rideRequestTable.getItems().clear();
-
-        // Retrieve the ride requests for the current driver
         List<RideRequest> rideRequests = businessLogic.getRideRequestsForDriver(businessLogic.getCurrentUser().getId());
-
-        // Add the ride requests to the ListView
         rideRequestTable.getItems().addAll(rideRequests);
     }
 
