@@ -5,10 +5,7 @@ import eus.ehu.shareTrip.configuration.UtilDate;
 import eus.ehu.shareTrip.domain.*;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -340,4 +337,11 @@ public class DataAccess {
     db.remove(rideRequest);
     db.getTransaction().commit();
   }
+
+  public List<RideRequest> getRideRequestsForDriver(int driverId) {
+    TypedQuery<RideRequest> rideQuery = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.ride.driver.id = :driverId", RideRequest.class);
+    rideQuery.setParameter("driverId", driverId);
+    return rideQuery.getResultList();
+  }
+
 }

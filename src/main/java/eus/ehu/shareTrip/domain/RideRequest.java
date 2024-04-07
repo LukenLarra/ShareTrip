@@ -66,4 +66,9 @@ public class RideRequest implements Serializable {
         this.reservationCode = reservationCode;
     }
 
+    @Override
+    public String toString() {
+        return "Request ID: " + requestId + ", Date: " + date + ", Number of Seats: " + numSeats + ", Reservation Code: " + reservationCode;
+    }
+
 }

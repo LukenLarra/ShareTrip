@@ -146,4 +146,9 @@ public class BlFacadeImplementation implements BlFacade {
 
 	}
 
+	@Override
+	public List<RideRequest> getRideRequestsForDriver(int driverId) {
+		return dbManager.getRideRequestsForDriver(driverId);
+	}
+
 }

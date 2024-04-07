@@ -3,6 +3,7 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
+import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
@@ -24,6 +25,8 @@ import java.util.ResourceBundle;
 
 public class CreateRideController implements Controller {
 
+    public ListView rideRequestList;
+
     public CreateRideController(BlFacade bl) {
         this.businessLogic = bl;
     }
@@ -41,6 +44,8 @@ public class CreateRideController implements Controller {
 
     private MainGUI mainGUI;
 
+    @FXML
+    private Button refreshButton;
 
     @FXML
     private Label lblErrorMessage;
@@ -165,6 +170,18 @@ public class CreateRideController implements Controller {
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }
+    }
+
+    @FXML
+    public void refreshRideRequests(ActionEvent event) {
+        // Clear the current items in the list
+        rideRequestList.getItems().clear();
+
+        // Retrieve the ride requests for the current driver
+        List<RideRequest> rideRequests = businessLogic.getRideRequestsForDriver(businessLogic.getCurrentUser().getId());
+
+        // Add the ride requests to the ListView
+        rideRequestList.getItems().addAll(rideRequests);
     }
 
     @FXML
@@ -305,6 +322,7 @@ public class CreateRideController implements Controller {
       }
 */
         });
+
 
     }
 

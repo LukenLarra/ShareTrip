@@ -32,6 +32,6 @@
       <Button fx:id="requestRideButton" layoutX="574.0" layoutY="315.0" mnemonicParsing="false" onAction="#requestRide" text="Request Ride" />
       <TextField fx:id="seatsNumber" layoutX="377.0" layoutY="315.0" />
       <Label layoutX="331.0" layoutY="319.0" text="Seats:" />
-      <Label fx:id="message" layoutX="377.0" layoutY="358.0" prefHeight="17.0" prefWidth="328.0" />
+      <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="377.0" layoutY="358.0" prefHeight="17.0" prefWidth="328.0" />
     </children>
 </AnchorPane>
