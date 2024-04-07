@@ -5,6 +5,7 @@ import eus.ehu.shareTrip.dataAccess.DataAccess;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -71,4 +72,7 @@ public class RideRequest implements Serializable {
         return "Request ID: " + requestId + ", Date: " + date + ", Number of Seats: " + numSeats + ", Reservation Code: " + reservationCode;
     }
 
+    public LocalDate getDate() {
+        return LocalDate.parse(date);
+    }
 }

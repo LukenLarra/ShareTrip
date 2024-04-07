@@ -1,16 +1,18 @@
 package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
-import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
 import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.DatePickerSkin;
 import javafx.util.Callback;
 import eus.ehu.shareTrip.ui.MainGUI;
@@ -19,13 +21,12 @@ import eus.ehu.shareTrip.utils.Dates;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CreateRideController implements Controller {
-
-    public ListView rideRequestList;
+public class CreateRideController implements Controller{
 
     public CreateRideController(BlFacade bl) {
         this.businessLogic = bl;
@@ -53,6 +54,20 @@ public class CreateRideController implements Controller {
     @FXML
     private Label lblErrorMinBet;
 
+    @FXML
+    private TableView<RideRequest> rideRequestTable;
+
+    @FXML
+    private TableColumn<RideRequest, Integer> requestIdColumn;
+
+    @FXML
+    private TableColumn<RideRequest, Integer> numSeatsColumn;
+
+    @FXML
+    private TableColumn<RideRequest, String> dateColumn;
+
+    @FXML
+    private TableColumn<RideRequest, String> requestCodeColumn;
 
     @FXML
     private Button btnCreateRide;
@@ -175,13 +190,13 @@ public class CreateRideController implements Controller {
     @FXML
     public void refreshRideRequests(ActionEvent event) {
         // Clear the current items in the list
-        rideRequestList.getItems().clear();
+        rideRequestTable.getItems().clear();
 
         // Retrieve the ride requests for the current driver
         List<RideRequest> rideRequests = businessLogic.getRideRequestsForDriver(businessLogic.getCurrentUser().getId());
 
         // Add the ride requests to the ListView
-        rideRequestList.getItems().addAll(rideRequests);
+        rideRequestTable.getItems().addAll(rideRequests);
     }
 
     @FXML
@@ -322,6 +337,20 @@ public class CreateRideController implements Controller {
       }
 */
         });
+
+
+        requestIdColumn.setCellValueFactory(new PropertyValueFactory<>("requestId"));
+        numSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("numSeats"));
+        dateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RideRequest, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<RideRequest, String> cellData) {
+                LocalDate date = cellData.getValue().getDate();
+                String formattedDate = (date != null) ? date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : "";
+                return new SimpleStringProperty(formattedDate);
+            }
+        });
+        requestCodeColumn.setCellValueFactory(new PropertyValueFactory<>("reservationCode"));
+
 
 
     }
