@@ -197,7 +197,7 @@ public class QueryRidesController implements Controller {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Ride, String> data) {
                 Driver driver = data.getValue().getDriver();
-                return new SimpleStringProperty(driver != null ? driver.getName() : "<no name>");
+                return new SimpleStringProperty(driver.getName() != null ? driver.getName() : "<no name>");
             }
         });
 
