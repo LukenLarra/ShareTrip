@@ -72,7 +72,7 @@ public class DataAccess {
 
   public void reset() {
     db.getTransaction().begin();
-    db.createNativeQuery("DELETE FROM DRIVER_RIDE").executeUpdate();
+    //db.createNativeQuery("DELETE FROM DRIVER_RIDE").executeUpdate();
     db.createQuery("DELETE FROM Ride ").executeUpdate();
     db.createQuery("DELETE FROM Driver ").executeUpdate();
     db.getTransaction().commit();
