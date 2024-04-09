@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.CreateRideController">
+<AnchorPane prefHeight="400.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.CreateRideController">
    <children>
       <DatePicker fx:id="datePicker" layoutX="137.0" layoutY="56.0" />
       <Label layoutX="53.0" layoutY="60.0" text="%RideDate" />
@@ -27,12 +27,12 @@
       <Button fx:id="acceptRequestBtn" layoutX="528.0" layoutY="285.0" mnemonicParsing="false" onAction="#acceptRequest" text="%Accept" />
       <Button fx:id="rejectRequestBtn" layoutX="620.0" layoutY="285.0" mnemonicParsing="false" onAction="#rejectRequest" text="%Reject" />
       <Label fx:id="messageRequest" alignment="CENTER" contentDisplay="CENTER" layoutX="505.0" layoutY="323.0" prefHeight="17.0" prefWidth="195.0" />
-      <TableView fx:id="rideRequestTable" layoutX="439.0" layoutY="16.0" prefHeight="212.0" prefWidth="485.0">
+      <TableView fx:id="rideRequestTable" layoutX="431.0" layoutY="16.0" prefHeight="212.0" prefWidth="482.0">
          <columns>
-            <TableColumn fx:id="requestIdColumn" prefWidth="67.0" text="Request ID" />
-            <TableColumn fx:id="numSeatsColumn" prefWidth="112.0" text="Number of Seats" />
-            <TableColumn fx:id="dateColumn" prefWidth="102.0" text="Date" />
-            <TableColumn fx:id="requestCodeColumn" prefWidth="240.0" text="Request Code" />
+            <TableColumn fx:id="requestIdColumn" prefWidth="74.4000244140625" text="%RequestID" />
+            <TableColumn fx:id="numSeatsColumn" prefWidth="108.79998779296875" text="%NumSeats" />
+            <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="118.4000244140625" text="%Date" />
+            <TableColumn fx:id="requestCodeColumn" prefWidth="224.7999267578125" text="%RequestCode" />
          </columns>
       </TableView>
       <Button fx:id="refreshBtn" layoutX="762.0" layoutY="243.0" mnemonicParsing="false" onAction="#refreshRideRequests" text="%Refresh" />
