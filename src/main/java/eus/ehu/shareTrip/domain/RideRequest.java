@@ -20,7 +20,6 @@ public class RideRequest implements Serializable {
     private int numSeats;
     private String reservationCode;
     private String date;
-
     private String status; // {PENDING, ACCEPTED, REJECTED}
 
 
@@ -80,7 +79,7 @@ public class RideRequest implements Serializable {
 
     @Override
     public String toString() {
-        return "Request ID: " + requestId + ", Date: " + date + ", Number of Seats: " + numSeats + ", Reservation Code: " + reservationCode;
+        return "Request ID: " + requestId + ", Date: " + date + ", Number of Seats: " + numSeats + ", Reservation Code: " + reservationCode + ", Status: " + status;
     }
 
     public LocalDate getDate() {
