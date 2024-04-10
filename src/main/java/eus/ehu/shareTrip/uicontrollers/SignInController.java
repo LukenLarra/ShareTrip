@@ -32,20 +32,27 @@ public class SignInController implements Controller {
 
     @FXML
     void SignIn(ActionEvent event) {
-        if(emailFieldSignIn.getText().contains("@gmail.com")) {
-            User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
-            if (user == null) {
-                msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
-                msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
-
-                PauseTransition pause = new PauseTransition(Duration.seconds(2));
-                pause.setOnFinished(e -> {
-                    msgSignIn.setText("");
-                    msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
-                });
-                pause.play();
-
-            }else{
+        if (emailFieldSignIn.getText().isEmpty() || passwordFieldSignIn.getText().isEmpty()) {
+            msgSignIn.setText("Email or password cannot be empty.");
+            msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> {
+                msgSignIn.setText("");
+                msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+            });
+            pause.play();
+        } else if (!emailFieldSignIn.getText().contains("@gmail.com")) {
+            msgSignIn.setText("Email must be a gmail account.");
+            msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> {
+                msgSignIn.setText("");
+                msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+            });
+            pause.play();
+        } else {
+            try {
+                User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
                 passwordFieldSignIn.clear();
                 emailFieldSignIn.clear();
                 msgSignIn.setText("Logged in successfully.");
@@ -58,17 +65,16 @@ public class SignInController implements Controller {
                     msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
                 });
                 pause.play();
+            } catch (Exception exception) {
+                msgSignIn.setText("Email or password incorrect. Make sure you are signed up.");
+                msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                pause.setOnFinished(e -> {
+                    msgSignIn.setText("");
+                    msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+                });
+                pause.play();
             }
-        } else {
-            msgSignIn.setText("Email must be a gmail account.");
-            msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> {
-                msgSignIn.setText("");
-                msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
-            });
-            pause.play();
         }
     }
 

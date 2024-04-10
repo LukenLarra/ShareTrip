@@ -13,6 +13,6 @@
       <Button fx:id="btnSignIn" layoutX="273.0" layoutY="269.0" mnemonicParsing="false" onAction="#SignIn" text="Login" />
       <Label layoutX="177.0" layoutY="132.0" text="Email:" />
       <Label layoutX="157.0" layoutY="194.0" text="Password:" />
-      <Label fx:id="msgSignIn" alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="321.0" prefHeight="18.0" prefWidth="255.0" />
+      <Label fx:id="msgSignIn" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="322.0" prefHeight="18.0" prefWidth="392.0" />
    </children>
 </AnchorPane>
