@@ -191,7 +191,7 @@ public class CreateRideController implements Controller{
         } else if (!requestCode.isEmpty() && rideRequestTable.getSelectionModel().getSelectedItem() == null){
             try {
                 businessLogic.rejectRequest(requestCode);
-                messageRequest.setText("Request accepted successfully");
+                messageRequest.setText("Request rejected successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
             } catch (Exception e) {
@@ -202,11 +202,11 @@ public class CreateRideController implements Controller{
             RideRequest selectedRequest = rideRequestTable.getSelectionModel().getSelectedItem();
             try {
                 businessLogic.rejectRequest(selectedRequest.getReservationCode());
-                messageRequest.setText("Request accepted successfully");
+                messageRequest.setText("Request rejected successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
             } catch (Exception e) {
-                messageRequest.setText("Error accepting the selected request");
+                messageRequest.setText("Error rejecting the selected request");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }else{

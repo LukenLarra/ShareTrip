@@ -168,6 +168,8 @@ public class QueryRidesController implements Controller {
             for (Ride ride : rides) {
                 tblRides.getItems().add(ride);
             }
+            //if number of seats is 0, delete ride
+            tblRides.getItems().removeIf(ride -> ride.getNumPlaces() == 0);
         });
 
         datepicker.setOnMouseClicked(e -> {
@@ -212,7 +214,7 @@ public class QueryRidesController implements Controller {
         if (businessLogic.getCurrentUser().getClass().equals(Driver.class)){
             message.setText("Only travelers can request rides");
             message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
-        }else{
+        }else {
             Ride selectedRide = tblRides.getSelectionModel().getSelectedItem();
             if (selectedRide != null) {
                 String seatsStr = seatsNumber.getText();
@@ -224,6 +226,11 @@ public class QueryRidesController implements Controller {
                 }
                 if (seats > 0 && seats <= selectedRide.getNumPlaces()) {
                     if (businessLogic.requestRide(selectedRide.getRideNumber(), seats, datepicker.getValue().toString())) {
+                    selectedRide.setNumPlaces(selectedRide.getNumPlaces() - seats);
+                    if(selectedRide.getNumPlaces() == 0){
+                        tblRides.getItems().remove(selectedRide);
+                    }
+                    tblRides.refresh();
                     message.setText("Request made successfully");
                     message.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                     } else {
