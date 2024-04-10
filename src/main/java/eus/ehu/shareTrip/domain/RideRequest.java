@@ -21,6 +21,8 @@ public class RideRequest implements Serializable {
     private String reservationCode;
     private String date;
 
+    private String status; // {PENDING, ACCEPTED, REJECTED}
+
 
     public RideRequest() {
         super();
@@ -33,6 +35,7 @@ public class RideRequest implements Serializable {
         this.numSeats = numSeats;
         this.reservationCode = reservationCode;
         this.date = date;
+        this.status = "PENDING";
     }
 
     public Integer getRequestId() {
@@ -65,6 +68,14 @@ public class RideRequest implements Serializable {
 
     public void setReservationCode(String reservationCode) {
         this.reservationCode = reservationCode;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

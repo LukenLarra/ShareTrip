@@ -159,6 +159,7 @@ public class CreateRideController implements Controller{
         }else if (!requestCode.isEmpty() && selectedRequest == null){
             try {
                 businessLogic.acceptRequest(requestCode);
+                selectedRequest.setStatus("Accepted");
                 messageRequest.setText("Request accepted successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
@@ -169,6 +170,7 @@ public class CreateRideController implements Controller{
         }else if (requestCode.isEmpty()){
             try {
                 businessLogic.acceptRequest(selectedRequest.getReservationCode());
+                selectedRequest.setStatus("Accepted");
                 messageRequest.setText("Request accepted successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
@@ -185,12 +187,14 @@ public class CreateRideController implements Controller{
     @FXML
     void rejectRequest(ActionEvent event) {
         String requestCode = txtRequestCode.getText();
-        if (requestCode.isEmpty() && rideRequestTable.getSelectionModel().getSelectedItem() == null) {
+        RideRequest selectedRequest = rideRequestTable.getSelectionModel().getSelectedItem();
+        if (requestCode.isEmpty() && selectedRequest == null) {
             messageRequest.setText("Please enter a request code or select a request from the table");
             messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         } else if (!requestCode.isEmpty() && rideRequestTable.getSelectionModel().getSelectedItem() == null){
             try {
                 businessLogic.rejectRequest(requestCode);
+                selectedRequest.setStatus("Rejected");
                 messageRequest.setText("Request rejected successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
@@ -198,10 +202,10 @@ public class CreateRideController implements Controller{
                 messageRequest.setText("No request was found with the given code");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
-        }else if (rideRequestTable.getSelectionModel().getSelectedItem() != null && requestCode.isEmpty()){
-            RideRequest selectedRequest = rideRequestTable.getSelectionModel().getSelectedItem();
+        }else if (selectedRequest != null && requestCode.isEmpty()){
             try {
                 businessLogic.rejectRequest(selectedRequest.getReservationCode());
+                selectedRequest.setStatus("Rejected");
                 messageRequest.setText("Request rejected successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
