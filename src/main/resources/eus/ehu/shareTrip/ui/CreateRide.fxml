@@ -26,7 +26,7 @@
       <TextField fx:id="txtRequestCode" layoutX="528.0" layoutY="243.0" promptText="Request Code" />
       <Button fx:id="acceptRequestBtn" layoutX="528.0" layoutY="285.0" mnemonicParsing="false" onAction="#acceptRequest" text="%Accept" />
       <Button fx:id="rejectRequestBtn" layoutX="620.0" layoutY="285.0" mnemonicParsing="false" onAction="#rejectRequest" text="%Reject" />
-      <Label fx:id="messageRequest" alignment="CENTER" contentDisplay="CENTER" layoutX="446.0" layoutY="328.0" prefHeight="18.0" prefWidth="329.0" />
+      <Label fx:id="messageRequest" alignment="CENTER" contentDisplay="CENTER" layoutX="446.0" layoutY="328.0" prefHeight="0.0" prefWidth="330.0" />
       <TableView fx:id="rideRequestTable" layoutX="431.0" layoutY="16.0" prefHeight="212.0" prefWidth="482.0">
          <columns>
             <TableColumn fx:id="requestIdColumn" prefWidth="74.4000244140625" text="%RequestID" />

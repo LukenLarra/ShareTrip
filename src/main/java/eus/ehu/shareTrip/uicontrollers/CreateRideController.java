@@ -159,7 +159,6 @@ public class CreateRideController implements Controller{
         }else if (!requestCode.isEmpty() && selectedRequest == null){
             try {
                 businessLogic.acceptRequest(requestCode);
-                selectedRequest.setStatus("Accepted");
                 messageRequest.setText("Request accepted successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
@@ -214,7 +213,7 @@ public class CreateRideController implements Controller{
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }else{
-            messageRequest.setText("Please enter a request code or select a request from the table, not both");
+            messageRequest.setText("Enter a request code or select a request from the table, not both");
             messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }
     }
