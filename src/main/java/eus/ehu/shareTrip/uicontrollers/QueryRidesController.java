@@ -209,7 +209,7 @@ public class QueryRidesController implements Controller {
     }
 
     @FXML
-    void requestRide(ActionEvent event) {
+    public void requestRide(ActionEvent event) {
         int seats = 0;
         if (businessLogic.getCurrentUser().getClass().equals(Driver.class)){
             message.setText("Only travelers can request rides");
