@@ -160,6 +160,7 @@ public class CreateRideController implements Controller{
             try {
                 businessLogic.acceptRequest(requestCode);
                 refreshRideRequests(event);
+                selectedRequest.setStatus("Accepted");
                 messageRequest.setText("Request accepted successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
@@ -169,7 +170,7 @@ public class CreateRideController implements Controller{
             }
         }else if (requestCode.isEmpty()){
             try {
-                businessLogic.acceptRequest(selectedRequest.getReservationCode());
+                businessLogic.acceptRequest(requestCode);
                 refreshRideRequests(event);
                 selectedRequest.setStatus("Accepted");
                 messageRequest.setText("Request accepted successfully");
@@ -226,7 +227,11 @@ public class CreateRideController implements Controller{
     public void refreshRideRequests(ActionEvent event) {
         rideRequestTable.getItems().clear();
         List<RideRequest> rideRequests = businessLogic.getRideRequestsForDriver(businessLogic.getCurrentUser().getId());
-        rideRequestTable.getItems().addAll(rideRequests);
+        for (RideRequest rideRequest : rideRequests) {
+            if (rideRequest.getStatus().equals("PENDING")) {
+                rideRequestTable.getItems().add(rideRequest);
+            }
+        }
     }
 
     @FXML
