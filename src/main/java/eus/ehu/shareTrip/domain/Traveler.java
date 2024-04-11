@@ -8,10 +8,6 @@ import java.io.Serializable;
 @DiscriminatorValue("TRAVELER")
 public class Traveler extends User implements Serializable {
 
-    private String email;
-    private String name;
-    private String password;
-
 
     public Traveler(String email, String name, String password) {
         super(email, name, password);
@@ -21,29 +17,32 @@ public class Traveler extends User implements Serializable {
         super();
     }
     public String getEmail() {
-        return email;
+        return super.getEmail();
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        super.setEmail(email);
     }
 
     public String getName() {
-        return name;
+        return super.getName();
     }
 
     public void setName(String name) {
-        this.name = name;
+        super.setName(name);
     }
 
     public String getPassword() {
-        return password;
+        return super.getPassword();
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        super.setPassword(password);
     }
 
+    public String toString(){
+        return super.toString();
+    }
 
 
 

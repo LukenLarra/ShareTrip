@@ -41,4 +41,20 @@ public class User {
     public int getId() {
         return id.intValue();
     }
+
+    protected void setEmail(String email) {
+        this.email = email;
+    }
+
+    protected void setName(String name) {
+        this.name = name;
+    }
+
+    protected String getPassword() {
+        return password;
+    }
+
+    protected void setPassword(String password) {
+        this.password = password;
+    }
 }

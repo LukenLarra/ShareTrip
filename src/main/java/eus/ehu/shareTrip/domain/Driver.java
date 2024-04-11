@@ -11,9 +11,6 @@ import java.util.Vector;
 @DiscriminatorValue("DRIVER")
 public class Driver extends User implements Serializable {
 
-	private String email;
-	private String name;
-	private String password;
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST, mappedBy="driver", orphanRemoval=true)
 	private List<Ride> rides=new Vector<Ride>();
 
@@ -28,31 +25,31 @@ public class Driver extends User implements Serializable {
 
 
 	public String getEmail() {
-		return email;
+		return super.getEmail();
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		super.setEmail(email);
 	}
 
 	public String getName() {
-		return name;
+		return super.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		super.setName(name);
 	}
 
 	public String getPassword() {
-		return password;
+		return super.getPassword();
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		super.setPassword(password);
 	}
 	
 	public String toString(){
-		return email+";"+name+rides;
+		return super.toString();
 	}
 	
 	/**
@@ -93,7 +90,7 @@ public class Driver extends User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Driver other = (Driver) obj;
-		if (!email.equals(other.email))
+		if (!super.getEmail().equals(other.getEmail()))
 			return false;
 		return true;
 	}

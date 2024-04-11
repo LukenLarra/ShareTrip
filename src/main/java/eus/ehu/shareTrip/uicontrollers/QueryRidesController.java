@@ -3,6 +3,7 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
+import eus.ehu.shareTrip.domain.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -198,11 +199,10 @@ public class QueryRidesController implements Controller {
         qc1.setCellValueFactory(new Callback<>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Ride, String> data) {
-                Driver driver = data.getValue().getDriver();
-                return new SimpleStringProperty(driver.getName() != null ? driver.getName() : "<no name>");
+                User driver = data.getValue().getDriver();
+                return new SimpleStringProperty(driver.getName());
             }
         });
-
         qc2.setCellValueFactory(new PropertyValueFactory<>("numPlaces"));
         qc3.setCellValueFactory(new PropertyValueFactory<>("price"));
 
