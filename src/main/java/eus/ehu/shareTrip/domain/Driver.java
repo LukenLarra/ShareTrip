@@ -109,5 +109,8 @@ public class Driver extends User implements Serializable {
 			return r;
 		} else return null;
 	}
-	
+
+	public List<Ride> getRides() {
+		return rides;
+	}
 }
