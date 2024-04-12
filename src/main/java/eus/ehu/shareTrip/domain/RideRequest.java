@@ -1,7 +1,5 @@
 package eus.ehu.shareTrip.domain;
 
-import eus.ehu.shareTrip.businessLogic.BlFacade;
-import eus.ehu.shareTrip.dataAccess.DataAccess;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
