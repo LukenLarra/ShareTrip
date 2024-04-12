@@ -20,7 +20,7 @@ public class Ride implements Serializable {
 	private float price;
 
 	@ManyToOne
-	private Driver driver;
+	private Driver driver; // test
 	
 	public Ride(){
 		super();
