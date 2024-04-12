@@ -390,4 +390,19 @@ public class CreateRideController implements Controller{
     public void setMainApp(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
     }
+
+    @Override
+    public Node getLogoutBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getQueryRidesBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getCreateRidesBtn() {
+        return null;
+    }
 }

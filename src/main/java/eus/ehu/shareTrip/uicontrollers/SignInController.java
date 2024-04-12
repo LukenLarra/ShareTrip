@@ -6,6 +6,7 @@ import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -59,6 +60,10 @@ public class SignInController implements Controller {
                 msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 businessLogic.setCurrentUser(user);
 
+                getLogoutBtn().setVisible(true);
+                getQueryRidesBtn().setVisible(true);
+                getCreateRidesBtn().setVisible(true);
+
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(e -> {
                     msgSignIn.setText("");
@@ -85,6 +90,18 @@ public class SignInController implements Controller {
 
     public SignInController(BlFacade bl) {
         this.businessLogic = bl;
+    }
+    @Override
+    public Node getLogoutBtn() {
+        return mainGUI.getMainGUI().getLogoutBtn();
+    }
+    @Override
+    public Node getQueryRidesBtn() {
+        return mainGUI.getMainGUI().getQueryRidesBtn();
+    }
+    @Override
+    public Node getCreateRidesBtn() {
+        return mainGUI.getMainGUI().getCreateRidesBtn();
     }
 }
 

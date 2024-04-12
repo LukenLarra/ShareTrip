@@ -5,6 +5,7 @@ import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -109,6 +110,21 @@ public class SignUpController implements Controller {
 
     public SignUpController(BlFacade bl) {
         this.businessLogic = bl;
+    }
+
+    @Override
+    public Node getLogoutBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getQueryRidesBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getCreateRidesBtn() {
+        return null;
     }
 
 }

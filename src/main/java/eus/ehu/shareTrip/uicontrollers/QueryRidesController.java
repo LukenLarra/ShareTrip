@@ -253,5 +253,20 @@ public class QueryRidesController implements Controller {
         this.mainGUI = mainGUI;
     }
 
+    @Override
+    public Node getLogoutBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getQueryRidesBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getCreateRidesBtn() {
+        return null;
+    }
+
 }
 

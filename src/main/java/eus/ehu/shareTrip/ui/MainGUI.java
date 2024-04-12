@@ -3,6 +3,7 @@ package eus.ehu.shareTrip.ui;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -39,6 +40,18 @@ public class MainGUI {
                 e.printStackTrace();
             }
         });
+    }
+
+    public Node getLogoutBtn() {
+        return mainWin.c.getLogoutBtn();
+    }
+
+    public Node getQueryRidesBtn() {
+        return mainWin.c.getQueryRidesBtn();
+    }
+
+    public Node getCreateRidesBtn() {
+        return mainWin.c.getCreateRidesBtn();
     }
 
 

@@ -7,6 +7,7 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -179,6 +180,9 @@ public class MainGUIController implements Controller{
 
     @FXML
     void initialize() {
+        logoutBtn.setVisible(false);
+        queryRidesBtn.setVisible(false);
+        createRidesBtn.setVisible(false);
     }
 
     private void showScene(String scene) {
@@ -188,6 +192,18 @@ public class MainGUIController implements Controller{
             case "SignIn" -> mainWrapper.setCenter(mainGUI.getSignInWin());
             case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());
         }
+    }
+
+    public Node getLogoutBtn() {
+        return logoutBtn;
+    }
+
+    public Node getQueryRidesBtn() {
+        return queryRidesBtn;
+    }
+
+    public Node getCreateRidesBtn() {
+        return createRidesBtn;
     }
 
     @Override
