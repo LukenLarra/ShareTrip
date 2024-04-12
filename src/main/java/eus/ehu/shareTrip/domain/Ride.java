@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @SuppressWarnings("serial")
@@ -19,7 +20,7 @@ public class Ride implements Serializable {
 	private float price;
 
 	@ManyToOne
-	private Driver driver;  
+	private Driver driver;
 	
 	public Ride(){
 		super();

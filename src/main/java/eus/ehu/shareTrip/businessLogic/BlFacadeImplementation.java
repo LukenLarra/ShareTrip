@@ -135,7 +135,7 @@ public class BlFacadeImplementation implements BlFacade {
 
 	@Override
 	public void acceptRequest(String requestCode){
-		dbManager.deleteRideRequest(requestCode);
+		dbManager.changeStatus(requestCode, "ACCEPTED");
 	}
 	@Override
 	public void rejectRequest(String requestCode){
@@ -143,8 +143,7 @@ public class BlFacadeImplementation implements BlFacade {
 		RideRequest rideRequest = dbManager.getRideRequestByReservationCode(requestCode);
 		Ride ride = rideRequest.getRide();
 		ride.setNumPlaces(ride.getNumPlaces() + rideRequest.getNumSeats());
-		dbManager.deleteRideRequest(requestCode);
-	}
+		dbManager.changeStatus(requestCode, "REJECTED");	}
 
 	@Override
 	public List<RideRequest> getRideRequestsForDriver(int driverId) {

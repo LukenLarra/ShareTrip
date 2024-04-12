@@ -151,8 +151,8 @@ public class CreateRideController implements Controller{
 
     @FXML
     void acceptRequest(ActionEvent event) {
-        String requestCode = txtRequestCode.getText();
         RideRequest selectedRequest = rideRequestTable.getSelectionModel().getSelectedItem();
+        String requestCode = txtRequestCode.getText();
         if (requestCode.isEmpty() && selectedRequest == null) {
             messageRequest.setText("Please enter a request code or select a request from the table");
             messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
@@ -223,7 +223,11 @@ public class CreateRideController implements Controller{
     public void refreshRideRequests(ActionEvent event) {
         rideRequestTable.getItems().clear();
         List<RideRequest> rideRequests = businessLogic.getRideRequestsForDriver(businessLogic.getCurrentUser().getId());
-        rideRequestTable.getItems().addAll(rideRequests);
+        for (RideRequest rideRequest : rideRequests) {
+            if (rideRequest.getStatus().equals("PENDING")) {
+                rideRequestTable.getItems().add(rideRequest);
+            }
+        }
     }
 
     @FXML

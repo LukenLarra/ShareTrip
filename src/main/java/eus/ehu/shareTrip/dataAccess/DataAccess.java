@@ -343,4 +343,14 @@ public class DataAccess {
     return rideQuery.getResultList();
   }
 
+  //change status of ride request
+    public void changeStatus(String requestCode, String status) {
+        db.getTransaction().begin();
+        TypedQuery<RideRequest> query = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.reservationCode = :reservationCode", RideRequest.class);
+        query.setParameter("reservationCode", requestCode);
+        RideRequest rideRequest = query.getSingleResult();
+        rideRequest.setStatus(status);
+        db.getTransaction().commit();
+    }
+
 }
