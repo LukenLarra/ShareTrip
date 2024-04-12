@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
+ // test
 
 @Entity
 public class RideRequest implements Serializable {
