@@ -32,12 +32,6 @@ public class MainGUIController implements Controller{
     private Label selectOptionLbl;
 
     @FXML
-    private Label lblUserName;
-
-    @FXML
-    private Label lblUserType;
-
-    @FXML
     private Button queryRidesBtn;
 
     @FXML
