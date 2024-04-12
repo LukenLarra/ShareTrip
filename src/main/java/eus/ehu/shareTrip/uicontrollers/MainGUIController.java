@@ -57,6 +57,9 @@ public class MainGUIController implements Controller{
     @FXML
     private Button btnShowSignUp;
 
+    @FXML
+    private Button myRidesBtn;
+
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
@@ -176,6 +179,21 @@ public class MainGUIController implements Controller{
         showScene("SignIn");
     }
 
+    @FXML
+    void myRides(ActionEvent event) {
+        if (businessLogic.getCurrentUser() == null) {
+            selectOptionLbl.setText("Please sign in to view your rides.");
+            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+            showScene("SignIn");
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> selectOptionLbl.setText(""));
+            pause.play();
+        }else {
+            showScene("MyRides");
+        }
+    }
+
 
     @FXML
     void initialize() {
@@ -187,6 +205,7 @@ public class MainGUIController implements Controller{
             case "QueryRides" -> mainWrapper.setCenter(mainGUI.getQueryRidesWin());
             case "SignIn" -> mainWrapper.setCenter(mainGUI.getSignInWin());
             case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());
+            case "MyRides" -> mainWrapper.setCenter(mainGUI.getMyRidesWin());
         }
     }
 
