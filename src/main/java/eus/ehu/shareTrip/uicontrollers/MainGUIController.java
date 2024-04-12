@@ -84,30 +84,12 @@ public class MainGUIController implements Controller{
     }
     @FXML
     void queryRides(ActionEvent event) {
-        //if the driver hasn't signed in, don't let them query rides
-        if (businessLogic.getCurrentUser() == null) {
-            selectOptionLbl.setText("Please sign in to query rides.");
-            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-            showScene("SignIn");
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> selectOptionLbl.setText(""));
-            pause.play();
-        }else{ showScene("QueryRides"); }
+        showScene("QueryRides");
     }
 
     @FXML
     void createRide(ActionEvent event) {
-        //if the driver hasn't signed in, don't let them create rides
-        if (businessLogic.getCurrentUser() == null) {
-            selectOptionLbl.setText("Please sign in to create rides.");
-            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-            showScene("SignIn");
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> selectOptionLbl.setText(""));
-            pause.play();
-        }else if (businessLogic.getCurrentUser().getClass().equals(Traveler.class)){
+         if (businessLogic.getCurrentUser().getClass().equals(Traveler.class)){
             selectOptionLbl.setText("Only drivers can create rides.");
             selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
             showScene("QueryRides");
@@ -152,22 +134,13 @@ public class MainGUIController implements Controller{
 
     @FXML
     void logout(ActionEvent event) {
-        if (businessLogic.getCurrentUser() == null) {
-            selectOptionLbl.setText("You are not signed in.");
-            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
+        businessLogic.logout();
+        selectOptionLbl.setText("You have been logged out.");
+        selectOptionLbl.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
 
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> selectOptionLbl.setText(""));
-            pause.play();
-        }else {
-            businessLogic.logout();
-            selectOptionLbl.setText("You have been logged out.");
-            selectOptionLbl.setStyle("-fx-text-fill: green; -fx-text-radius: 5px;");
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> selectOptionLbl.setText(""));
-            pause.play();
-        }
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> selectOptionLbl.setText(""));
+        pause.play();
         showScene("SignIn");
     }
 
