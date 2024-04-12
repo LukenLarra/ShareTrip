@@ -1,13 +1,10 @@
 package eus.ehu.shareTrip.domain;
 
-import eus.ehu.shareTrip.businessLogic.BlFacade;
-import eus.ehu.shareTrip.dataAccess.DataAccess;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-
+ // test
 
 @Entity
 public class RideRequest implements Serializable {

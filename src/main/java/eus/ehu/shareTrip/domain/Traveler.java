@@ -1,7 +1,6 @@
 package eus.ehu.shareTrip.domain;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import java.io.Serializable;
 
 @Entity
