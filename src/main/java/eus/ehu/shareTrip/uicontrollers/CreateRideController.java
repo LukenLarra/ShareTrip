@@ -171,7 +171,6 @@ public class CreateRideController implements Controller{
             try {
                 businessLogic.acceptRequest(selectedRequest.getReservationCode());
                 refreshRideRequests(event);
-                selectedRequest.setStatus("Accepted");
                 messageRequest.setText("Request accepted successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
@@ -196,7 +195,6 @@ public class CreateRideController implements Controller{
             try {
                 businessLogic.rejectRequest(requestCode);
                 refreshRideRequests(event);
-                selectedRequest.setStatus("Rejected");
                 messageRequest.setText("Request rejected successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
@@ -208,7 +206,6 @@ public class CreateRideController implements Controller{
             try {
                 businessLogic.rejectRequest(selectedRequest.getReservationCode());
                 refreshRideRequests(event);
-                selectedRequest.setStatus("Rejected");
                 messageRequest.setText("Request rejected successfully");
                 messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 txtRequestCode.clear();
