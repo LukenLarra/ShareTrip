@@ -172,7 +172,10 @@ public class DataAccess {
       }
       db.getTransaction().begin();
 
-      Driver driver = db.find(Driver.class, driverEmail);
+      TypedQuery<Driver> driverQuery = db.createQuery("SELECT d FROM Driver d WHERE d.email = :email", Driver.class);
+      driverQuery.setParameter("email", driverEmail);
+      Driver driver = driverQuery.getSingleResult();
+      
       if (driver.doesRideExists(from, to, date)) {
         db.getTransaction().commit();
         throw new RideAlreadyExistException(ResourceBundle.getBundle("Etiquetas").getString("DataAccess.RideAlreadyExist"));

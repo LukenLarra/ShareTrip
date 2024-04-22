@@ -141,6 +141,9 @@ public class MainGUIController implements Controller{
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(e -> selectOptionLbl.setText(""));
         pause.play();
+        getLogoutBtn().setVisible(false);
+        getQueryRidesBtn().setVisible(false);
+        getCreateRidesBtn().setVisible(false);
         showScene("SignIn");
     }
 
