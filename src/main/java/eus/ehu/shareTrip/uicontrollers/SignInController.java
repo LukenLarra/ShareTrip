@@ -2,6 +2,7 @@ package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
+import eus.ehu.shareTrip.domain.Traveler;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.animation.PauseTransition;
@@ -64,7 +65,7 @@ public class SignInController implements Controller {
                 getLogoutBtn().setVisible(true);
                 getQueryRidesBtn().setVisible(true);
                 if (user instanceof Driver) getCreateRidesBtn().setVisible(true);
-                else getMyRidesBtn().setVisible(true);
+                else if (user instanceof Traveler) getMyRidesBtn().setVisible(true);
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(e -> {
@@ -107,7 +108,7 @@ public class SignInController implements Controller {
     }
     @Override
     public Node getMyRidesBtn() {
-        return null;
+        return mainGUI.getMainGUI().getMyRidesBtn();
     }
 }
 

@@ -54,6 +54,10 @@ public class MainGUI {
         return mainWin.c.getCreateRidesBtn();
     }
 
+    public Node getMyRidesBtn() {
+        return mainWin.c.getMyRidesBtn();
+    }
+
 
     class Window {
         Controller c;
