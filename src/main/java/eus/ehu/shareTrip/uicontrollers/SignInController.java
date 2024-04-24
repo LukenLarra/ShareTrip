@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
 public class SignInController implements Controller {
@@ -85,6 +86,13 @@ public class SignInController implements Controller {
                 });
                 pause.play();
             }
+        }
+    }
+
+    @Override @FXML
+    public void keyboardNav(KeyEvent event) {
+        if (event.getCode().toString().equals("ENTER")) {
+            SignIn(new ActionEvent());
         }
     }
 

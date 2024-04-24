@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import eus.ehu.shareTrip.ui.MainGUI;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -191,6 +192,11 @@ public class MainGUIController implements Controller{
                 ((MyRidesController)(mainGUI.getMyRidesWindow().getController())).refreshMyRides(new ActionEvent());
             }
         }
+    }
+
+    @Override
+    public void keyboardNav(KeyEvent event) {
+
     }
 
     public Node getLogoutBtn() {

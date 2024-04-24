@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.DatePickerSkin;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 import eus.ehu.shareTrip.ui.MainGUI;
 import eus.ehu.shareTrip.utils.Dates;
@@ -246,6 +247,11 @@ public class QueryRidesController implements Controller {
                 message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }
+    }
+
+    @Override
+    public void keyboardNav(KeyEvent event) {
+
     }
 
     @Override

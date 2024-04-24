@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
 public class SignUpController implements Controller {
@@ -100,6 +101,13 @@ public class SignUpController implements Controller {
                 msgSignUp.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
             });
             pause.play();
+        }
+    }
+
+    @Override @FXML
+    public void keyboardNav(KeyEvent event) {
+        if (event.getCode().toString().equals("ENTER")){
+            SignUp(new ActionEvent());
         }
     }
 
