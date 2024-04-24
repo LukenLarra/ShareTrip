@@ -231,35 +231,33 @@ public class CreateRideController implements Controller{
         }
     }
 
+    @Override
+    public void keyboardNav(KeyEvent event) {
+
+
+    }
+
     @FXML
     void createRideClick(ActionEvent e) {
-
         clearErrorLabels();
-
         //  Event event = comboEvents.getSelectionModel().getSelectedItem();
         String errors = field_Errors();
-
         if (errors != null) {
             // businessLogic.createQuestion(event, inputQuestion, inputPrice);
             displayMessage(errors, "danger");
-
         } else {
             try {
-
                 int inputSeats = Integer.parseInt(txtNumberOfSeats.getText());
                 float price = Float.parseFloat(txtPrice.getText());
                 User user = businessLogic.getCurrentUser();
                 Ride r = businessLogic.createRide(txtDepartCity.getText(), txtArrivalCity.getText(), Dates.convertToDate(datePicker.getValue()), inputSeats, price, user.getEmail());
                 displayMessage(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"), "success");
-
-
             } catch (RideMustBeLaterThanTodayException e1) {
                 displayMessage(e1.getMessage(), "danger");
             } catch (RideAlreadyExistException e1) {
                 displayMessage(e1.getMessage(), "danger");
             }
         }
-
 /*
     if (lblErrorMinBet.getText().length() > 0 && showErrors) {
       lblErrorMinBet.getStyleClass().setAll("lbl", "lbl-danger");
@@ -269,88 +267,65 @@ public class CreateRideController implements Controller{
     }
  */
     }
-
-
     private List<LocalDate> holidays = new ArrayList<>();
-
-  /*private void setEventsPrePost(int year, int month) {
+  /* private void setEventsPrePost(int year, int month) {
     LocalDate date = LocalDate.of(year, month, 1);
     setEvents(date.getYear(), date.getMonth().getValue());
     setEvents(date.plusMonths(1).getYear(), date.plusMonths(1).getMonth().getValue());
     setEvents(date.plusMonths(-1).getYear(), date.plusMonths(-1).getMonth().getValue());
-  }*/
-
- /* private void setEvents(int year, int month) {
-
+  }
+    private void setEvents(int year, int month) {
     Date date = Dates.toDate(year, month);
-
     for (Date day : businessLogic.getEventsMonth(date)) {
       holidays.add(Dates.convertToLocalDateViaInstant(day));
     }
   }*/
-
     @FXML
     void initialize() {
-
-
-        // btnCreateRide.setDisable(true);
-
-        // only show the text of the event in the combobox (without the id)
-/*
-    Callback<ListView<Event>, ListCell<Event>> factory = lv -> new ListCell<>() {
+      /*btnCreateRide.setDisable(true);
+      only show the text of the event in the combobox (without the id)
+      Callback<ListView<Event>, ListCell<Event>> factory = lv -> new ListCell<>() {
       @Override
       protected void updateItem(Event item, boolean empty) {
         super.updateItem(item, empty);
         setText(empty ? "" : item.getDescription());
       }
     };
-
-
-     comboEvents.setCellFactory(factory);
-    comboEvents.setButtonCell(factory.call(null));
-
- */
-
-
-        // setEventsPrePost(LocalDate.now().getYear(), LocalDate.now().getMonth().getValue());
-
-
-        // get a reference to datepicker inner content
-        // attach a listener to the  << and >> buttons
-        // mark events for the (prev, current, next) month and year shown
-        datePicker.setOnMouseClicked(e -> {
-            DatePickerSkin skin = (DatePickerSkin) datePicker.getSkin();
-            skin.getPopupContent().lookupAll(".button").forEach(node -> {
-                node.setOnMouseClicked(event -> {
-                    List<Node> labels = skin.getPopupContent().lookupAll(".label").stream().toList();
-                    String month = ((Label) (labels.get(0))).getText();
-                    String year = ((Label) (labels.get(1))).getText();
-                    YearMonth ym = Dates.getYearMonth(month + " " + year);
-                    // setEventsPrePost(ym.getYear(), ym.getMonthValue());
-                });
+    comboEvents.setCellFactory(factory);
+    comboEvents.setButtonCell(factory.call(null)); */
+    // setEventsPrePost(LocalDate.now().getYear(), LocalDate.now().getMonth().getValue());
+    // get a reference to datepicker inner content
+    // attach a listener to the  << and >> buttons
+    // mark events for the (prev, current, next) month and year shown
+    datePicker.setOnMouseClicked(e -> {
+        DatePickerSkin skin = (DatePickerSkin) datePicker.getSkin();
+        skin.getPopupContent().lookupAll(".button").forEach(node -> {
+            node.setOnMouseClicked(event -> {
+                List<Node> labels = skin.getPopupContent().lookupAll(".label").stream().toList();
+                String month = ((Label) (labels.get(0))).getText();
+                String year = ((Label) (labels.get(1))).getText();
+                YearMonth ym = Dates.getYearMonth(month + " " + year);
+                // setEventsPrePost(ym.getYear(), ym.getMonthValue());
             });
-
-
         });
+    });
+    datePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+        @Override
+        public DateCell call(DatePicker param) {
+            return new DateCell() {
+                @Override
+                public void updateItem(LocalDate item, boolean empty) {
+                    super.updateItem(item, empty);
 
-        datePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(DatePicker param) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (!empty && item != null) {
-                            if (holidays.contains(item)) {
-                                this.setStyle("-fx-background-color: pink");
-                            }
+                    if (!empty && item != null) {
+                        if (holidays.contains(item)) {
+                            this.setStyle("-fx-background-color: pink");
                         }
                     }
-                };
-            }
-        });
-
+                }
+            };
+        }
+    });
         // when a date is selected...
         datePicker.setOnAction(actionEvent -> {
      /* comboEvents.getItems().clear();
@@ -369,8 +344,6 @@ public class CreateRideController implements Controller{
       }
 */
         });
-
-
         requestIdColumn.setCellValueFactory(new PropertyValueFactory<>("requestId"));
         numSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("numSeats"));
         dateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RideRequest, String>, ObservableValue<String>>() {
@@ -382,9 +355,6 @@ public class CreateRideController implements Controller{
             }
         });
         requestCodeColumn.setCellValueFactory(new PropertyValueFactory<>("reservationCode"));
-
-
-
     }
 
     @Override
@@ -422,8 +392,4 @@ public class CreateRideController implements Controller{
         return null;
     }
 
-    @Override
-    public void keyboardNav(KeyEvent event) {
-
-    }
 }
