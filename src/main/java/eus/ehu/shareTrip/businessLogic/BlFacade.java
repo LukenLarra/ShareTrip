@@ -87,6 +87,7 @@ public interface BlFacade {
     void rejectRequest(String requestCode);
 
     List<RideRequest> getRideRequestsForDriver(int driverId);
+    List<RideRequest> getRideRequestsForTraveler(int travelerId);
 
 
 }

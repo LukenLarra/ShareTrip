@@ -117,7 +117,7 @@ public class BlFacadeImplementation implements BlFacade {
 		Ride ride = dbManager.getRideById(rideId);
 		if (ride != null) {
 			String reservationCode = UUID.randomUUID().toString().substring(0, 8);
-			RideRequest rideRequest = new RideRequest(rideId, ride, numSeats, reservationCode, date);
+			RideRequest rideRequest = new RideRequest(rideId, ride, numSeats, reservationCode, date, currentUser);
            	dbManager.requestRide(rideRequest);
 			return true;
 		}
@@ -150,6 +150,12 @@ public class BlFacadeImplementation implements BlFacade {
 	public List<RideRequest> getRideRequestsForDriver(int driverId) {
 		return dbManager.getRideRequestsForDriver(driverId);
 	}
+
+	@Override
+	public List<RideRequest> getRideRequestsForTraveler(int travelerId){
+		return dbManager.getRideRequestsForTraveler(travelerId);
+	}
+
 
 
 }

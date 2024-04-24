@@ -13,6 +13,9 @@ public class RideRequest implements Serializable {
 
     @ManyToOne
     private Ride ride;
+    @ManyToOne
+    private User traveler;
+
 
     private int numSeats;
     private String reservationCode;
@@ -24,7 +27,7 @@ public class RideRequest implements Serializable {
         super();
     }
 
-    public RideRequest(int rideId, Ride ride, int numSeats, String reservationCode, String date) {
+    public RideRequest(int rideId, Ride ride, int numSeats, String reservationCode, String date, User traveler) {
         super();
         this.requestId = rideId;
         this.ride = ride;
@@ -32,6 +35,7 @@ public class RideRequest implements Serializable {
         this.reservationCode = reservationCode;
         this.date = date;
         this.status = "PENDING";
+        this.traveler = traveler;
     }
 
     public Integer getRequestId() {
@@ -73,6 +77,10 @@ public class RideRequest implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public User getTraveler() { return traveler; }
+
+    public void setTraveler(User traveler) { this.traveler = traveler; }
 
     @Override
     public String toString() {

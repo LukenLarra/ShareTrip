@@ -109,7 +109,7 @@ public class MyRidesController implements Controller{
     @FXML
     public void refreshMyRides(ActionEvent event) {
         myRidesTable.getItems().clear();
-        List<RideRequest> rideRequests = businessLogic.getRideRequestsForDriver(businessLogic.getCurrentUser().getId());
+        List<RideRequest> rideRequests = businessLogic.getRideRequestsForTraveler(businessLogic.getCurrentUser().getId());
         for (RideRequest rideRequest : rideRequests) {
                 myRidesTable.getItems().add(rideRequest);
         }

@@ -356,4 +356,9 @@ public class DataAccess {
         db.getTransaction().commit();
     }
 
+    public List<RideRequest> getRideRequestsForTraveler(int travelerId) {
+        TypedQuery<RideRequest> rideQuery = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.traveler.id = :travelerId", RideRequest.class);
+        rideQuery.setParameter("travelerId", travelerId);
+        return rideQuery.getResultList();
+    }
 }
