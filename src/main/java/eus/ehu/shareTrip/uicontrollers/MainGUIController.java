@@ -179,7 +179,10 @@ public class MainGUIController implements Controller{
 
     private void showScene(String scene) {
         switch (scene) {
-            case "CreateRide" -> mainWrapper.setCenter(mainGUI.getCreateRidesWin());
+            case "CreateRide" -> {
+                mainWrapper.setCenter(mainGUI.getCreateRidesWin());
+                ((CreateRideController)(mainGUI.getCreateRidesWindow().getController())).refreshRideRequests(new ActionEvent());
+            }
             case "QueryRides" -> mainWrapper.setCenter(mainGUI.getQueryRidesWin());
             case "SignIn" -> mainWrapper.setCenter(mainGUI.getSignInWin());
             case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());

@@ -7,6 +7,7 @@ import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
+import javafx.event.ActionEvent;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -149,5 +150,6 @@ public class BlFacadeImplementation implements BlFacade {
 	public List<RideRequest> getRideRequestsForDriver(int driverId) {
 		return dbManager.getRideRequestsForDriver(driverId);
 	}
+
 
 }

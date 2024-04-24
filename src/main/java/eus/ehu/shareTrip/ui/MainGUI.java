@@ -67,9 +67,17 @@ public class MainGUI {
     }
 
 
-    class Window {
+    public Window getCreateRidesWindow(){
+        return createRideWin;
+    }
+
+    public class Window {
         Controller c;
         Parent ui;
+
+        public Controller getController(){
+            return c;
+        }
     }
 
     private Window load(String fxmlfile) throws IOException {
@@ -115,6 +123,8 @@ public class MainGUI {
     public Parent getCreateRidesWin() {
         return createRideWin.ui;
     }
+
+
 
     public Parent getSignInWin() {
         return signInWin.ui;
