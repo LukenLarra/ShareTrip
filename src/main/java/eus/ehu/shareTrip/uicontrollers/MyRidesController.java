@@ -50,11 +50,6 @@ public class MyRidesController implements Controller{
     @FXML
     private TableColumn<RideRequest, String> statusColumn;
 
-    @FXML
-    public void deleteRequest(ActionEvent event){
-
-    }
-
     @Override
     public void setMainApp(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
@@ -104,6 +99,16 @@ public class MyRidesController implements Controller{
         });
         requestCodeColumn.setCellValueFactory(new PropertyValueFactory<>("reservationCode"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+    }
+
+    @FXML
+    public void deleteRequest(ActionEvent event){
+        RideRequest rideRequest = myRidesTable.getSelectionModel().getSelectedItem();
+        if (rideRequest != null) {
+            businessLogic.deleteRideRequest(rideRequest.getReservationCode());
+            myRidesTable.getItems().remove(rideRequest);
+        }
+
     }
 
     @FXML

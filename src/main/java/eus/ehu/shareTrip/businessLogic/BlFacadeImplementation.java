@@ -156,6 +156,10 @@ public class BlFacadeImplementation implements BlFacade {
 		return dbManager.getRideRequestsForTraveler(travelerId);
 	}
 
+	@Override
+	public void deleteRideRequest(String requestId){
+		dbManager.deleteRideRequest(requestId);
+	}
 
 
 }

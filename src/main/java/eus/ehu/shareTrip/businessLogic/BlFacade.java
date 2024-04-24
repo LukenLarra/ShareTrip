@@ -90,4 +90,5 @@ public interface BlFacade {
     List<RideRequest> getRideRequestsForTraveler(int travelerId);
 
 
+    void deleteRideRequest(String requestId);
 }
