@@ -410,4 +410,14 @@ public class CreateRideController implements Controller{
     public Node getMyRidesBtn() {
         return null;
     }
+
+    @Override
+    public Node getSingUpBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getSingInBtn() {
+        return null;
+    }
 }

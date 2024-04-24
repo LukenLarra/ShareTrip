@@ -13,4 +13,8 @@ public interface Controller {
   Node getCreateRidesBtn();
 
   Node getMyRidesBtn();
+
+  Node getSingUpBtn();
+
+  Node getSingInBtn();
 }

@@ -131,5 +131,15 @@ public class SignUpController implements Controller {
         return null;
     }
 
+    @Override
+    public Node getSingUpBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getSingInBtn() {
+        return null;
+    }
+
 }
 

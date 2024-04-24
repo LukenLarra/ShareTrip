@@ -148,6 +148,8 @@ public class MainGUIController implements Controller{
         getQueryRidesBtn().setVisible(false);
         getCreateRidesBtn().setVisible(false);
         getMyRidesBtn().setVisible(false);
+        getSingUpBtn().setVisible(true);
+        getSingInBtn().setVisible(true);
         showScene("SignIn");
     }
 
@@ -200,6 +202,15 @@ public class MainGUIController implements Controller{
     public Node getMyRidesBtn() {
         return myRidesBtn;
     }
+
+    public Node getSingUpBtn() {
+        return btnShowSignUp;
+    }
+
+    public Node getSingInBtn() {
+        return btnShowSignIn;
+    }
+
 
     @Override
     public void setMainApp(MainGUI mainGUI) {

@@ -72,6 +72,15 @@ public class MyRidesController implements Controller{
         return null;
     }
 
+    @Override
+    public Node getSingUpBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getSingInBtn() {
+        return null;
+    }
 }
 
 

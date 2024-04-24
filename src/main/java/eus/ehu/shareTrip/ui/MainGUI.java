@@ -58,6 +58,14 @@ public class MainGUI {
         return mainWin.c.getMyRidesBtn();
     }
 
+    public Node getSingUpBtn() {
+        return mainWin.c.getSingUpBtn();
+    }
+
+    public Node getSingInBtn() {
+        return mainWin.c.getSingInBtn();
+    }
+
 
     class Window {
         Controller c;
