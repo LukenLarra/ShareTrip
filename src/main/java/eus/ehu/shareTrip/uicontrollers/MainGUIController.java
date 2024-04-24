@@ -186,7 +186,10 @@ public class MainGUIController implements Controller{
             case "QueryRides" -> mainWrapper.setCenter(mainGUI.getQueryRidesWin());
             case "SignIn" -> mainWrapper.setCenter(mainGUI.getSignInWin());
             case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());
-            case "MyRides" -> mainWrapper.setCenter(mainGUI.getMyRidesWin());
+            case "MyRides" -> {
+                mainWrapper.setCenter(mainGUI.getMyRidesWin());
+                ((MyRidesController)(mainGUI.getMyRidesWindow().getController())).refreshMyRides(new ActionEvent());
+            }
         }
     }
 

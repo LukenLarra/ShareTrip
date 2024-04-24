@@ -3,12 +3,20 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.ui.MainGUI;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class MyRidesController implements Controller{
 
@@ -80,6 +88,31 @@ public class MyRidesController implements Controller{
     @Override
     public Node getSingInBtn() {
         return null;
+    }
+
+    @FXML
+    void initialize(){
+        requestIdColumn.setCellValueFactory(new PropertyValueFactory<>("requestId"));
+        numSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("numSeats"));
+        dateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RideRequest, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<RideRequest, String> cellData) {
+                LocalDate date = cellData.getValue().getDate();
+                String formattedDate = (date != null) ? date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : "";
+                return new SimpleStringProperty(formattedDate);
+            }
+        });
+        requestCodeColumn.setCellValueFactory(new PropertyValueFactory<>("reservationCode"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+    }
+
+    @FXML
+    public void refreshMyRides(ActionEvent event) {
+        myRidesTable.getItems().clear();
+        List<RideRequest> rideRequests = businessLogic.getRideRequestsForDriver(businessLogic.getCurrentUser().getId());
+        for (RideRequest rideRequest : rideRequests) {
+                myRidesTable.getItems().add(rideRequest);
+        }
     }
 }
 
