@@ -104,7 +104,7 @@ public class MyRidesController implements Controller{
     @FXML
     public void deleteRequest(ActionEvent event){
         RideRequest rideRequest = myRidesTable.getSelectionModel().getSelectedItem();
-        if (rideRequest != null) {
+        if (rideRequest != null && !rideRequest.getStatus().equals("PENDING")) {
             businessLogic.deleteRideRequest(rideRequest.getReservationCode());
             myRidesTable.getItems().remove(rideRequest);
         }
