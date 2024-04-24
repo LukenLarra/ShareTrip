@@ -147,6 +147,7 @@ public class MainGUIController implements Controller{
         getLogoutBtn().setVisible(false);
         getQueryRidesBtn().setVisible(false);
         getCreateRidesBtn().setVisible(false);
+        getMyRidesBtn().setVisible(false);
         showScene("SignIn");
     }
 
@@ -171,6 +172,7 @@ public class MainGUIController implements Controller{
         logoutBtn.setVisible(false);
         queryRidesBtn.setVisible(false);
         createRidesBtn.setVisible(false);
+        myRidesBtn.setVisible(false);
     }
 
     private void showScene(String scene) {
@@ -193,6 +195,10 @@ public class MainGUIController implements Controller{
 
     public Node getCreateRidesBtn() {
         return createRidesBtn;
+    }
+
+    public Node getMyRidesBtn() {
+        return myRidesBtn;
     }
 
     @Override

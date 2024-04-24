@@ -126,6 +126,10 @@ public class SignUpController implements Controller {
     public Node getCreateRidesBtn() {
         return null;
     }
+    @Override
+    public Node getMyRidesBtn() {
+        return null;
+    }
 
 }
 

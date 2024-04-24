@@ -11,4 +11,6 @@ public interface Controller {
   Node getQueryRidesBtn();
 
   Node getCreateRidesBtn();
+
+  Node getMyRidesBtn();
 }

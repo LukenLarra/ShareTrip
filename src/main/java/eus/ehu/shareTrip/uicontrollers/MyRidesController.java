@@ -67,6 +67,11 @@ public class MyRidesController implements Controller{
         return null;
     }
 
+    @Override
+    public Node getMyRidesBtn() {
+        return null;
+    }
+
 }
 
 

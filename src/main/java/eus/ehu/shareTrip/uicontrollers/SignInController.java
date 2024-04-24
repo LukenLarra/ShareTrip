@@ -64,6 +64,7 @@ public class SignInController implements Controller {
                 getLogoutBtn().setVisible(true);
                 getQueryRidesBtn().setVisible(true);
                 if (user instanceof Driver) getCreateRidesBtn().setVisible(true);
+                else getMyRidesBtn().setVisible(true);
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(e -> {
@@ -103,6 +104,10 @@ public class SignInController implements Controller {
     @Override
     public Node getCreateRidesBtn() {
         return mainGUI.getMainGUI().getCreateRidesBtn();
+    }
+    @Override
+    public Node getMyRidesBtn() {
+        return null;
     }
 }
 

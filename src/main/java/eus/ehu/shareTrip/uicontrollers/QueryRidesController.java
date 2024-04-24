@@ -268,5 +268,10 @@ public class QueryRidesController implements Controller {
         return null;
     }
 
+    @Override
+    public Node getMyRidesBtn() {
+        return null;
+    }
+
 }
 
