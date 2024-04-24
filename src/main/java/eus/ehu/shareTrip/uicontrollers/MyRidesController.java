@@ -5,6 +5,7 @@ import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -49,6 +50,21 @@ public class MyRidesController implements Controller{
     @Override
     public void setMainApp(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
+    }
+
+    @Override
+    public Node getLogoutBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getQueryRidesBtn() {
+        return null;
+    }
+
+    @Override
+    public Node getCreateRidesBtn() {
+        return null;
     }
 
 }
