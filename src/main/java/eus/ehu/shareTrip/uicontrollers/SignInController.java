@@ -62,6 +62,7 @@ public class SignInController implements Controller {
                 msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 businessLogic.setCurrentUser(user);
 
+
                 getLogoutBtn().setVisible(true);
                 getQueryRidesBtn().setVisible(true);
                 if (user instanceof Driver) getCreateRidesBtn().setVisible(true);
