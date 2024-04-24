@@ -131,20 +131,20 @@ public class MainGUI {
 
 
     public void showMain() {
-        setupScene(mainWin.ui, "MainTitle", 1000, 600);
+        setupScene(mainWin.ui, "MainTitle", 1200, 600);
 
     }
     public void showQueryRides() {
-        setupScene(queryRidesWin.ui, "QueryRides", 1000, 500);
+        setupScene(queryRidesWin.ui, "QueryRides", 1000, 600);
 
     }
     public void showCreateRide() {
-        setupScene(createRideWin.ui, "CreateRide", 550, 400);
+        setupScene(createRideWin.ui, "CreateRide", 1000, 600);
 
     }
 
     public void showMyRides() {
-        setupScene(myRidesWin.ui, "MyRides", 550, 400);
+        setupScene(myRidesWin.ui, "MyRides", 1000, 600);
     }
 
 
