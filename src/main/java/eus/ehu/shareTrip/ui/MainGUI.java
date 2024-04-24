@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class MainGUI {
 
-    private Window mainWin, createRideWin, queryRidesWin, signInWin, signUpWin;
+    private Window mainWin, createRideWin, queryRidesWin, signInWin, signUpWin, myRidesWin;
 
     private BlFacade businessLogic;
 
@@ -87,6 +87,7 @@ public class MainGUI {
         createRideWin = load("CreateRide.fxml");
         signInWin = load("SignIn.fxml");
         signUpWin = load("SignUp.fxml");
+        myRidesWin = load("MyRides.fxml");
 
 
         showMain();
@@ -107,9 +108,14 @@ public class MainGUI {
         return signInWin.ui;
     }
 
+    public Parent getMyRidesWin() {
+        return myRidesWin.ui;
+    }
+
     public Parent getSignUpWin() {
         return signUpWin.ui;
     }
+
 
 
     public void showMain() {
@@ -123,6 +129,10 @@ public class MainGUI {
     public void showCreateRide() {
         setupScene(createRideWin.ui, "CreateRide", 550, 400);
 
+    }
+
+    public void showMyRides() {
+        setupScene(myRidesWin.ui, "MyRides", 550, 400);
     }
 
 
