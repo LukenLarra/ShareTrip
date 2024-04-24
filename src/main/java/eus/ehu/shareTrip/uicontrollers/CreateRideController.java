@@ -231,7 +231,7 @@ public class CreateRideController implements Controller{
         }
     }
 
-    @Override
+    @Override @FXML
     public void keyboardNav(KeyEvent event) {
 
 

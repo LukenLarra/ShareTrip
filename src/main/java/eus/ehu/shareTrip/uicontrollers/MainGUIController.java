@@ -194,7 +194,7 @@ public class MainGUIController implements Controller{
         }
     }
 
-    @Override
+    @Override @FXML
     public void keyboardNav(KeyEvent event) {
 
     }
