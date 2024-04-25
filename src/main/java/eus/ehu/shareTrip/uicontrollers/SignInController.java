@@ -63,7 +63,6 @@ public class SignInController implements Controller {
                 msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 businessLogic.setCurrentUser(user);
 
-
                 getSingUpBtn().setVisible(false);
                 getSingInBtn().setVisible(false);
                 getLogoutBtn().setVisible(true);
@@ -77,6 +76,10 @@ public class SignInController implements Controller {
                     ((MainGUIController)mainGUI.getMainWin().getController()).showScene("QueryRides");
                 }
 
+                if (user instanceof Traveler)
+                ((MainGUIController)mainGUI.getMainWin().getController()).getLblUsername().setText("Traveler: " + user.getName());
+                else if (user instanceof Driver)
+                ((MainGUIController)mainGUI.getMainWin().getController()).getLblUsername().setText("Driver: " + user.getName());
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(e -> {
