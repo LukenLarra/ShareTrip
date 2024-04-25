@@ -57,4 +57,5 @@ public class User {
     protected void setPassword(String password) {
         this.password = password;
     }
+
 }

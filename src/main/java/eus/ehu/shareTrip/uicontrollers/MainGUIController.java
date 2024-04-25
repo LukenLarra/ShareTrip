@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import eus.ehu.shareTrip.ui.MainGUI;
+import javafx.scene.control.Labeled;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -54,6 +55,9 @@ public class MainGUIController implements Controller{
     private Button btnShowSignUp;
 
     @FXML
+    private Label lblUserName;
+
+    @FXML
     private Button myRidesBtn;
 
     private MainGUI mainGUI;
@@ -64,6 +68,10 @@ public class MainGUIController implements Controller{
 
     public MainGUIController(BlFacade blFacade){
         businessLogic = blFacade;
+    }
+
+    public Labeled getLblUsername() {
+        return lblUserName;
     }
 
 
@@ -93,33 +101,13 @@ public class MainGUIController implements Controller{
 
     @FXML
     void createRide(ActionEvent event) {
-         if (businessLogic.getCurrentUser().getClass().equals(Traveler.class)){
-            selectOptionLbl.setText("Only drivers can create rides.");
-            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-            showScene("QueryRides");
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> selectOptionLbl.setText(""));
-            pause.play();
-        }else {
-            showScene("CreateRide");
-        }
+        showScene("CreateRide");
     }
 
 
     @FXML
     void showSignIn(ActionEvent event) throws IOException {
-        //if the driver has already signed in don't let them sign in again
-        if (businessLogic.getCurrentUser() != null) {
-            selectOptionLbl.setText("You are already signed in.");
-            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> selectOptionLbl.setText(""));
-            pause.play();
-        } else {
-            showScene("SignIn");
-        }
+        showScene("SignIn");
     }
     @FXML
     void showSignUp(ActionEvent event) throws IOException {
