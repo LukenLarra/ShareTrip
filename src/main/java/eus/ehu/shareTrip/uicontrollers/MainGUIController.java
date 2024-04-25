@@ -1,7 +1,6 @@
 package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
-import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Traveler;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -9,14 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -189,7 +185,7 @@ public class MainGUIController implements Controller{
             case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());
             case "MyRides" -> {
                 mainWrapper.setCenter(mainGUI.getMyRidesWin());
-                ((MyRidesController)(mainGUI.getMyRidesWindow().getController())).refreshMyRides(new ActionEvent());
+                ((MyRidesTravelerController)(mainGUI.getMyRidesWindow().getController())).refreshMyRides(new ActionEvent());
             }
         }
     }
