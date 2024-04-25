@@ -76,6 +76,7 @@ public class SignInController implements Controller {
                     ((MainGUIController)mainGUI.getMainWin().getController()).showScene("QueryRides");
                 }
 
+
                 if (user instanceof Traveler)
                 ((MainGUIController)mainGUI.getMainWin().getController()).getLblUsername().setText("Traveler: " + user.getName());
                 else if (user instanceof Driver)
