@@ -95,6 +95,8 @@ public class SignUpController implements Controller {
             passwordChecker.clear();
             msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
 
+            ((MainGUIController)mainGUI.getMainWin().getController()).showScene("SignIn");
+
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.setOnFinished(e -> {
                 msgSignUp.setText("");

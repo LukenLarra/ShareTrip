@@ -71,6 +71,7 @@ public class MainGUI {
         return createRideWin;
     }
     public Window getMyRidesWindow(){ return myRidesWin; }
+    public Window getMainWin() { return mainWin; }
 
     public class Window {
         Controller c;

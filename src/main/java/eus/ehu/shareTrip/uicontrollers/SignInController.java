@@ -63,12 +63,20 @@ public class SignInController implements Controller {
                 msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
                 businessLogic.setCurrentUser(user);
 
+
                 getSingUpBtn().setVisible(false);
                 getSingInBtn().setVisible(false);
                 getLogoutBtn().setVisible(true);
                 getQueryRidesBtn().setVisible(true);
-                if (user instanceof Driver) getCreateRidesBtn().setVisible(true);
-                else if (user instanceof Traveler) getMyRidesBtn().setVisible(true);
+                if (user instanceof Driver){
+                    getCreateRidesBtn().setVisible(true);
+                    ((MainGUIController)mainGUI.getMainWin().getController()).showScene("CreateRide");
+                }
+                else if (user instanceof Traveler){
+                    getMyRidesBtn().setVisible(true);
+                    ((MainGUIController)mainGUI.getMainWin().getController()).showScene("QueryRides");
+                }
+
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(e -> {

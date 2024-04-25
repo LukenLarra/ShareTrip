@@ -178,7 +178,7 @@ public class MainGUIController implements Controller{
         myRidesBtn.setVisible(false);
     }
 
-    private void showScene(String scene) {
+    public void showScene(String scene) {
         switch (scene) {
             case "CreateRide" -> {
                 mainWrapper.setCenter(mainGUI.getCreateRidesWin());
