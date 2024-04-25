@@ -15,7 +15,7 @@
             <Button fx:id="btnShowSignIn" mnemonicParsing="false" onAction="#showSignIn" text="%SignIn" />
             <Button fx:id="createRidesBtn" mnemonicParsing="false" onAction="#createRide" text="%CreateRide" />
             <Button fx:id="queryRidesBtn" mnemonicParsing="false" onAction="#queryRides" text="%QueryRides" />
-            <Button fx:id="myRidesBtn" mnemonicParsing="false" onAction="#myRides" text="%MyRides" />
+            <Button fx:id="myRidesBtn" mnemonicParsing="false" onAction="#myRides" text="%MyRidesTraveler" />
             <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logout" text="%Logout" />
             <Label fx:id="lblUserName" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="146.0" />
          </children>

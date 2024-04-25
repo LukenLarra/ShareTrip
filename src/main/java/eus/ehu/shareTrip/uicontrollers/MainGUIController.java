@@ -1,7 +1,7 @@
 package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
-import eus.ehu.shareTrip.domain.Traveler;
+import eus.ehu.shareTrip.domain.Driver;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -135,6 +135,7 @@ public class MainGUIController implements Controller{
         getMyRidesBtn().setVisible(false);
         getSingUpBtn().setVisible(true);
         getSingInBtn().setVisible(true);
+        ((MainGUIController)mainGUI.getMainWindow().getController()).getLblUsername().setText("");
         showScene("SignIn");
     }
 
@@ -149,7 +150,11 @@ public class MainGUIController implements Controller{
             pause.setOnFinished(e -> selectOptionLbl.setText(""));
             pause.play();
         }else {
-            showScene("MyRides");
+            if (businessLogic.getCurrentUser() instanceof Driver) {
+                showScene("MyRidesDriver");
+            } else {
+                showScene("MyRidesTraveler");
+            }
         }
     }
 
@@ -171,9 +176,13 @@ public class MainGUIController implements Controller{
             case "QueryRides" -> mainWrapper.setCenter(mainGUI.getQueryRidesWin());
             case "SignIn" -> mainWrapper.setCenter(mainGUI.getSignInWin());
             case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());
-            case "MyRides" -> {
-                mainWrapper.setCenter(mainGUI.getMyRidesWin());
-                ((MyRidesTravelerController)(mainGUI.getMyRidesWindow().getController())).refreshMyRides(new ActionEvent());
+            case "MyRidesTraveler" -> {
+                mainWrapper.setCenter(mainGUI.getMyRidesTravelerWin());
+                ((MyRidesTravelerController)(mainGUI.getMyRidesWindow().getController())).refreshMyRidesTraveler(new ActionEvent());
+            }
+            case "MyRidesDriver" -> {
+                mainWrapper.setCenter(mainGUI.getMyRidesDriverWin());
+                ((MyRidesDriverController)(mainGUI.getMyRidesDriverWindow().getController())).refreshMyRidesDriver(new ActionEvent());
             }
         }
     }

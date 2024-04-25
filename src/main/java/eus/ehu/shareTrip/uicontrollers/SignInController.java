@@ -67,20 +67,18 @@ public class SignInController implements Controller {
                 getSingInBtn().setVisible(false);
                 getLogoutBtn().setVisible(true);
                 getQueryRidesBtn().setVisible(true);
+                getMyRidesBtn().setVisible(true);
                 if (user instanceof Driver){
                     getCreateRidesBtn().setVisible(true);
-                    ((MainGUIController)mainGUI.getMainWin().getController()).showScene("CreateRide");
+                    ((MainGUIController)mainGUI.getMainWindow().getController()).showScene("CreateRide");
+                    ((MainGUIController)mainGUI.getMainWindow().getController()).getLblUsername().setText("Driver: " + user.getName());
+
                 }
                 else if (user instanceof Traveler){
-                    getMyRidesBtn().setVisible(true);
-                    ((MainGUIController)mainGUI.getMainWin().getController()).showScene("QueryRides");
+                    ((MainGUIController)mainGUI.getMainWindow().getController()).showScene("QueryRides");
+                    ((MainGUIController)mainGUI.getMainWindow().getController()).getLblUsername().setText("Traveler: " + user.getName());
                 }
 
-
-                if (user instanceof Traveler)
-                ((MainGUIController)mainGUI.getMainWin().getController()).getLblUsername().setText("Traveler: " + user.getName());
-                else if (user instanceof Driver)
-                ((MainGUIController)mainGUI.getMainWin().getController()).getLblUsername().setText("Driver: " + user.getName());
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(e -> {

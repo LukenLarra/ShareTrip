@@ -1,22 +1,19 @@
 package eus.ehu.shareTrip.uicontrollers;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
+import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
-import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.ui.MainGUI;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.util.Callback;
+
+import java.util.List;
 
 public class MyRidesDriverController implements Controller {
 
@@ -49,19 +46,21 @@ public class MyRidesDriverController implements Controller {
 
     @FXML
     void initialize() {
-        rideNumColumn.setCellValueFactory(new PropertyValueFactory<>("rideNum"));
-        numSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("numSeats"));
-        dateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ride, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Ride, String> cellData) {
-                LocalDate date = cellData.getValue().getDate();
-                String formattedDate = (date != null) ? date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : "";
-                return new SimpleStringProperty(formattedDate);
-            }
-        });
+        rideNumColumn.setCellValueFactory(new PropertyValueFactory<>("rideNumber"));
+        numSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("numPlaces"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         fromColumn.setCellValueFactory(new PropertyValueFactory<>("fromLocation"));
         toColumn.setCellValueFactory(new PropertyValueFactory<>("toLocation"));
 
+    }
+
+    @FXML
+    public void refreshMyRidesDriver(ActionEvent event) {
+        myRidesTable.getItems().clear();
+        List<Ride> rides = ((Driver)businessLogic.getCurrentUser()).getRides();
+        for (Ride ride : rides) {
+            myRidesTable.getItems().add(ride);
+        }
     }
 
     @Override

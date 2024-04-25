@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class MainGUI {
 
-    private Window mainWin, createRideWin, queryRidesWin, signInWin, signUpWin, myRidesWin;
+    private Window mainWin, createRideWin, queryRidesWin, signInWin, signUpWin, myRidesTravelerWin, myRidesDriverWin;
 
     private BlFacade businessLogic;
 
@@ -67,11 +67,15 @@ public class MainGUI {
     }
 
 
+
     public Window getCreateRidesWindow(){
         return createRideWin;
     }
-    public Window getMyRidesWindow(){ return myRidesWin; }
-    public Window getMainWin() { return mainWin; }
+    public Window getMyRidesWindow(){ return myRidesTravelerWin; }
+    public Window getMainWindow() { return mainWin; }
+    public Window getMyRidesDriverWindow() {
+        return myRidesDriverWin;
+    }
 
     public class Window {
         Controller c;
@@ -109,7 +113,8 @@ public class MainGUI {
         createRideWin = load("CreateRide.fxml");
         signInWin = load("SignIn.fxml");
         signUpWin = load("SignUp.fxml");
-        myRidesWin = load("MyRidesTraveler.fxml");
+        myRidesTravelerWin = load("MyRidesTraveler.fxml");
+        myRidesDriverWin = load("MyRidesDriver.fxml");
 
 
         showMain();
@@ -126,14 +131,14 @@ public class MainGUI {
         return createRideWin.ui;
     }
 
-
+    public Parent getMyRidesDriverWin() { return myRidesDriverWin.ui; }
 
     public Parent getSignInWin() {
         return signInWin.ui;
     }
 
-    public Parent getMyRidesWin() {
-        return myRidesWin.ui;
+    public Parent getMyRidesTravelerWin() {
+        return myRidesTravelerWin.ui;
     }
 
     public Parent getSignUpWin() {
@@ -156,7 +161,11 @@ public class MainGUI {
     }
 
     public void showMyRides() {
-        setupScene(myRidesWin.ui, "MyRides", 1000, 600);
+        setupScene(myRidesTravelerWin.ui, "MyRidesTraveler", 1000, 600);
+    }
+
+    public void showMyRidesDriver() {
+        setupScene(myRidesDriverWin.ui, "MyRidesDriver", 1000, 600);
     }
 
 
