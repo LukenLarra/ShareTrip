@@ -15,8 +15,8 @@ public class Driver extends User implements Serializable {
 	private List<Ride> rides=new Vector<Ride>();
 
 
-	public Driver(String email, String name, String password) {
-		super(email, name, password);
+	public Driver(String email, String name, String password, String profileImage) {
+		super(email, name, password, profileImage);
 	}
 
 	public Driver() {

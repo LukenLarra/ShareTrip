@@ -7,13 +7,8 @@ import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
-import javafx.event.ActionEvent;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
-import java.util.Vector;
+import java.util.*;
 
 
 /**
@@ -99,8 +94,8 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@Override
-	public void signUp(String email, String name, String password, String role) {
-		dbManager.signUp(email, name, password, role);
+	public void signUp(String email, String name, String password, String role, String imagePath) {
+		dbManager.signUp(email, name, password, role, imagePath);
 	}
 
 	@Override
@@ -159,6 +154,16 @@ public class BlFacadeImplementation implements BlFacade {
 	@Override
 	public void deleteRideRequest(String requestId){
 		dbManager.deleteRideRequest(requestId);
+	}
+
+	@Override
+	public String getImagePath(Long id){
+		return dbManager.getImagePath(id);
+	}
+
+	@Override
+	public void updateImagePath(Long id, String imagePath){
+		dbManager.updateImagePath(id, imagePath);
 	}
 
 

@@ -15,14 +15,17 @@ public class User {
     private String email;
     private String name;
     private String password;
+    private String profileImage;
+
 
 
     //private boolean isDriver;
 
-    public User(String email, String name, String password) {
+    public User(String email, String name, String password, String profileImage) {
         this.email = email;
         this.name = name;
         this.password = password;
+        this.profileImage = profileImage;
     }
 
     public User() {
@@ -40,6 +43,14 @@ public class User {
 
     public int getId() {
         return id.intValue();
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     protected void setEmail(String email) {

@@ -96,12 +96,12 @@ public class DataAccess {
 
 
       //Create drivers
-      Driver driver1 = new Driver("driver1@gmail.com", "Aitor Fernandez", "1234");
-      Driver driver2 = new Driver("driver2@gmail.com", "Ane Gaztañaga", "4321");
-      Driver driver3 = new Driver("driver3@gmail.com", "Test driver", "0000");
+      Driver driver1 = new Driver("driver1@gmail.com", "Aitor Fernandez", "1234", "src/main/resources/images/defaultProfile.jpg");
+      Driver driver2 = new Driver("driver2@gmail.com", "Ane Gaztañaga", "4321", "src/main/resources/images/defaultProfile.jpg");
+      Driver driver3 = new Driver("driver3@gmail.com", "Test driver", "0000", "src/main/resources/images/defaultProfile.jpg");
 
-      Traveler traveler1 = new Traveler("traveler1@gmail.com", "Juan Perez", "9999");
-      Traveler traveler2 = new Traveler("traveler2@gmail.com", "Gorka Astigarraga", "9876");
+      Traveler traveler1 = new Traveler("traveler1@gmail.com", "Juan Perez", "9999","src/main/resources/images/defaultProfile.jpg");
+      Traveler traveler2 = new Traveler("traveler2@gmail.com", "Gorka Astigarraga", "9876", "src/main/resources/images/defaultProfile.jpg");
 
 
       //Create rides
@@ -299,12 +299,12 @@ public class DataAccess {
     return userQuery.getSingleResult();
   }
 
-  public void signUp(String email, String name, String password, String role) {
+  public void signUp(String email, String name, String password, String role, String imagePath) {
     db.getTransaction().begin();
     if (role.equals("Driver")){
-      db.persist(new Driver(email, name, password));
+      db.persist(new Driver(email, name, password, imagePath));
     } else {
-      db.persist(new Traveler(email, name, password));
+      db.persist(new Traveler(email, name, password, imagePath));
     }
     db.getTransaction().commit();
 
@@ -360,5 +360,20 @@ public class DataAccess {
         TypedQuery<RideRequest> rideQuery = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.traveler.id = :travelerId", RideRequest.class);
         rideQuery.setParameter("travelerId", travelerId);
         return rideQuery.getResultList();
+    }
+
+    public String getImagePath(Long id) {
+        TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class);
+        userQuery.setParameter("id", id);
+        return userQuery.getSingleResult().getProfileImage();
+    }
+
+    public void updateImagePath(Long id, String imagePath) {
+        db.getTransaction().begin();
+        TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class);
+        userQuery.setParameter("id", id);
+        User user = userQuery.getSingleResult();
+        user.setProfileImage(imagePath);
+        db.getTransaction().commit();
     }
 }

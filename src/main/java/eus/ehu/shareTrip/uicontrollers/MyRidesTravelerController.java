@@ -12,9 +12,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -50,6 +54,13 @@ public class MyRidesTravelerController implements Controller{
 
     @FXML
     private TableColumn<RideRequest, String> statusColumn;
+
+    @FXML
+    ImageView profileImageView = new ImageView();
+
+    @FXML
+    private Button selectImageButton;
+
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
@@ -100,6 +111,7 @@ public class MyRidesTravelerController implements Controller{
         });
         requestCodeColumn.setCellValueFactory(new PropertyValueFactory<>("reservationCode"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+
     }
 
     @FXML
@@ -123,6 +135,25 @@ public class MyRidesTravelerController implements Controller{
         List<RideRequest> rideRequests = businessLogic.getRideRequestsForTraveler(businessLogic.getCurrentUser().getId());
         for (RideRequest rideRequest : rideRequests) {
                 myRidesTable.getItems().add(rideRequest);
+        }
+    }
+
+    public void showProfileImage() {
+        String imagePath = businessLogic.getImagePath((long) businessLogic.getCurrentUser().getId());
+        if (imagePath != null) {
+            profileImageView.setImage(new Image(imagePath));
+        }
+    }
+
+    @FXML
+    public void changeImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        fileChooser.setInitialDirectory(new File("C:/Users/Luken/Desktop/Universidad/IntelliJ/ShareTrip/src/main/resources/images"));
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            businessLogic.updateImagePath((long) businessLogic.getCurrentUser().getId(), file.toURI().toString());
+            profileImageView.setImage(new Image(file.toURI().toString()));
         }
     }
 }

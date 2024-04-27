@@ -141,20 +141,10 @@ public class MainGUIController implements Controller{
 
     @FXML
     void myRides(ActionEvent event) {
-        if (businessLogic.getCurrentUser() == null) {
-            selectOptionLbl.setText("Please sign in to view your rides.");
-            selectOptionLbl.setStyle("-fx-text-fill: red; -fx-text-radius: 5px;");
-            showScene("SignIn");
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(e -> selectOptionLbl.setText(""));
-            pause.play();
-        }else {
-            if (businessLogic.getCurrentUser() instanceof Driver) {
-                showScene("MyRidesDriver");
-            } else {
-                showScene("MyRidesTraveler");
-            }
+        if (businessLogic.getCurrentUser() instanceof Driver) {
+            showScene("MyRidesDriver");
+        } else {
+            showScene("MyRidesTraveler");
         }
     }
 
@@ -179,6 +169,7 @@ public class MainGUIController implements Controller{
             case "MyRidesTraveler" -> {
                 mainWrapper.setCenter(mainGUI.getMyRidesTravelerWin());
                 ((MyRidesTravelerController)(mainGUI.getMyRidesWindow().getController())).refreshMyRidesTraveler(new ActionEvent());
+                ((MyRidesTravelerController)(mainGUI.getMyRidesWindow().getController())).showProfileImage();
             }
             case "MyRidesDriver" -> {
                 mainWrapper.setCenter(mainGUI.getMyRidesDriverWin());

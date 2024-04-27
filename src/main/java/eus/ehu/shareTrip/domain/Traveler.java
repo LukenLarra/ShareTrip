@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class Traveler extends User implements Serializable {
 
 
-    public Traveler(String email, String name, String password) {
-        super(email, name, password);
+    public Traveler(String email, String name, String password, String profileImage) {
+        super(email, name, password, profileImage);
     }
 
     public Traveler() {

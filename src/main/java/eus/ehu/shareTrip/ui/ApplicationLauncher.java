@@ -24,7 +24,7 @@ public class ApplicationLauncher {
         businessLogic = new BlFacadeImplementation();
 
 
-      Driver driver=new Driver("driver3@gmail.com","Test Driver", "1111");
+      Driver driver=new Driver("driver3@gmail.com","Test Driver", "1111", "src/main/resources/images/defaultProfile.png");
       businessLogic.setCurrentUser(driver);
 
 

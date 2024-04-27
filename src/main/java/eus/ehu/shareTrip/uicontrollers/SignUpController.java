@@ -12,8 +12,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
+
+import java.io.File;
 
 public class SignUpController implements Controller {
 
@@ -41,6 +46,14 @@ public class SignUpController implements Controller {
 
     @FXML
     private TextField usernameFieldSignUp;
+
+    @FXML
+    private ImageView profileImage;
+
+    @FXML
+    private Button profileImageBtn;
+
+    String[] imagePath = new String[1];
 
     @FXML
     void SignUp(ActionEvent event) {
@@ -86,7 +99,7 @@ public class SignUpController implements Controller {
             });
             pause.play();
         } else {
-            businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText());
+            businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText(), imagePath[0]);
             msgSignUp.setText("User created successfully");
             userSignUp.selectToggle(null);
             emailFieldSignUp.clear();
@@ -94,6 +107,7 @@ public class SignUpController implements Controller {
             passwordFieldSignUp.clear();
             passwordChecker.clear();
             msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+
 
             ((MainGUIController)mainGUI.getMainWindow().getController()).showScene("SignIn");
 
@@ -111,6 +125,24 @@ public class SignUpController implements Controller {
         if (event.getCode().toString().equals("ENTER")){
             SignUp(new ActionEvent());
         }
+    }
+
+    @FXML
+    void chooseProfileImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        fileChooser.setInitialDirectory(new File("C:/Users/Luken/Desktop/Universidad/IntelliJ/ShareTrip/src/main/resources/images"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            imagePath[0] = selectedFile.getAbsolutePath();
+            profileImage.setImage(new Image("file:///" + imagePath[0]));
+        }
+    }
+
+
+    @FXML
+    void initialize() {
+        imagePath[0] = "../../../../images/defaultProfile.jpg";
     }
 
     @Override
