@@ -8,11 +8,16 @@ import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.util.List;
 
 public class MyRidesDriverController implements Controller {
@@ -45,6 +50,12 @@ public class MyRidesDriverController implements Controller {
     private TableColumn<Ride, String> toColumn;
 
     @FXML
+    private ImageView profileImage = new ImageView();
+
+    @FXML
+    private Button changeImageButton;
+
+    @FXML
     void initialize() {
         rideNumColumn.setCellValueFactory(new PropertyValueFactory<>("rideNumber"));
         numSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("numPlaces"));
@@ -60,6 +71,25 @@ public class MyRidesDriverController implements Controller {
         List<Ride> rides = ((Driver)businessLogic.getCurrentUser()).getRides();
         for (Ride ride : rides) {
             myRidesTable.getItems().add(ride);
+        }
+    }
+
+    public void showProfileImage() {
+        String imagePath = businessLogic.getImagePath((long) businessLogic.getCurrentUser().getId());
+        if (imagePath != null) {
+            profileImage.setImage(new Image(imagePath));
+        }
+    }
+
+    @FXML
+    public void changeImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        fileChooser.setInitialDirectory(new File("C:/Users/Luken/Desktop/Universidad/IntelliJ/ShareTrip/src/main/resources/images"));
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            businessLogic.updateImagePath((long) businessLogic.getCurrentUser().getId(), file.toURI().toString());
+            profileImage.setImage(new Image(file.toURI().toString()));
         }
     }
 
