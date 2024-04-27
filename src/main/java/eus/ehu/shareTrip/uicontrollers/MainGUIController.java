@@ -168,12 +168,15 @@ public class MainGUIController implements Controller{
             case "SignUp" -> mainWrapper.setCenter(mainGUI.getSignUpWin());
             case "MyRidesTraveler" -> {
                 mainWrapper.setCenter(mainGUI.getMyRidesTravelerWin());
-                ((MyRidesTravelerController)(mainGUI.getMyRidesWindow().getController())).refreshMyRidesTraveler(new ActionEvent());
-                ((MyRidesTravelerController)(mainGUI.getMyRidesWindow().getController())).showProfileImage();
+                ((MyProfileTravelerController)(mainGUI.getMyRidesTravelerWindow().getController())).refreshMyRidesTraveler(new ActionEvent());
+                ((MyProfileTravelerController)(mainGUI.getMyRidesTravelerWindow().getController())).showProfileDetails();
+                //((MyRidesTravelerController)(mainGUI.getMyRidesTravelerWindow().getController())).showProfileImage();
             }
             case "MyRidesDriver" -> {
                 mainWrapper.setCenter(mainGUI.getMyRidesDriverWin());
-                ((MyRidesDriverController)(mainGUI.getMyRidesDriverWindow().getController())).refreshMyRidesDriver(new ActionEvent());
+                ((MyProfileDriverController)(mainGUI.getMyRidesDriverWindow().getController())).refreshMyRidesDriver(new ActionEvent());
+                ((MyProfileDriverController)(mainGUI.getMyRidesDriverWindow().getController())).showProfileDetails();
+                //((MyRidesDriverController)(mainGUI.getMyRidesDriverWindow().getController())).showProfileImage();
             }
         }
     }

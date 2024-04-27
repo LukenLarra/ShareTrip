@@ -71,7 +71,7 @@ public class MainGUI {
     public Window getCreateRidesWindow(){
         return createRideWin;
     }
-    public Window getMyRidesWindow(){ return myRidesTravelerWin; }
+    public Window getMyRidesTravelerWindow(){ return myRidesTravelerWin; }
     public Window getMainWindow() { return mainWin; }
     public Window getMyRidesDriverWindow() {
         return myRidesDriverWin;
@@ -113,8 +113,8 @@ public class MainGUI {
         createRideWin = load("CreateRide.fxml");
         signInWin = load("SignIn.fxml");
         signUpWin = load("SignUp.fxml");
-        myRidesTravelerWin = load("MyRidesTraveler.fxml");
-        myRidesDriverWin = load("MyRidesDriver.fxml");
+        myRidesTravelerWin = load("MyProfileTraveler.fxml");
+        myRidesDriverWin = load("MyProfileDriver.fxml");
 
 
         showMain();

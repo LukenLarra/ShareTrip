@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,13 +21,13 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.util.List;
 
-public class MyRidesDriverController implements Controller {
+public class MyProfileDriverController implements Controller {
 
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
 
-    public MyRidesDriverController(BlFacade bl) {
+    public MyProfileDriverController(BlFacade bl) {
         businessLogic = bl;
     }
 
@@ -54,6 +55,12 @@ public class MyRidesDriverController implements Controller {
 
     @FXML
     private Button changeImageButton;
+
+    @FXML
+    private Label emailLbl;
+
+    @FXML
+    private Label nameLbl;
 
     @FXML
     void initialize() {
@@ -91,6 +98,14 @@ public class MyRidesDriverController implements Controller {
             businessLogic.updateImagePath((long) businessLogic.getCurrentUser().getId(), file.toURI().toString());
             profileImage.setImage(new Image(file.toURI().toString()));
         }
+    }
+
+
+    public void showProfileDetails() {
+        String name = businessLogic.getCurrentUser().getName();
+        String email = businessLogic.getCurrentUser().getEmail();
+        nameLbl.setText(name);
+        emailLbl.setText(email);
     }
 
     @Override

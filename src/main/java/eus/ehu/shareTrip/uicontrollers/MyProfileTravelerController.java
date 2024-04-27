@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,13 +24,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class MyRidesTravelerController implements Controller{
+public class MyProfileTravelerController implements Controller{
 
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
 
-    public MyRidesTravelerController(BlFacade bl) {
+    public MyProfileTravelerController(BlFacade bl) {
         businessLogic = bl;
     }
 
@@ -61,6 +62,11 @@ public class MyRidesTravelerController implements Controller{
     @FXML
     private Button selectImageButton;
 
+    @FXML
+    private Label nameLbl;
+
+    @FXML
+    private Label emailLbl;
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
@@ -155,6 +161,13 @@ public class MyRidesTravelerController implements Controller{
             businessLogic.updateImagePath((long) businessLogic.getCurrentUser().getId(), file.toURI().toString());
             profileImageView.setImage(new Image(file.toURI().toString()));
         }
+    }
+
+    public void showProfileDetails() {
+        String name = businessLogic.getCurrentUser().getName();
+        String email = businessLogic.getCurrentUser().getEmail();
+        nameLbl.setText(name);
+        emailLbl.setText(email);
     }
 }
 
