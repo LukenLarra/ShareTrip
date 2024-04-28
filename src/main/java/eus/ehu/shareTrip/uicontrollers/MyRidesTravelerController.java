@@ -155,7 +155,6 @@ public class MyRidesTravelerController implements Controller{
     public void changeImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-        fileChooser.setInitialDirectory(new File("C:/Users/Luken/Desktop/Universidad/IntelliJ/ShareTrip/src/main/resources/images"));
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             businessLogic.updateImagePath((long) businessLogic.getCurrentUser().getId(), file.toURI().toString());
