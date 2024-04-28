@@ -131,7 +131,6 @@ public class SignUpController implements Controller {
     void chooseProfileImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-        fileChooser.setInitialDirectory(new File("C:/Users/Luken/Desktop/Universidad/IntelliJ/ShareTrip/src/main/resources/images"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             imagePath[0] = selectedFile.getAbsolutePath();
