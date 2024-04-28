@@ -24,13 +24,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class MyProfileTravelerController implements Controller{
+public class MyRidesTravelerController implements Controller{
 
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
 
-    public MyProfileTravelerController(BlFacade bl) {
+    public MyRidesTravelerController(BlFacade bl) {
         businessLogic = bl;
     }
 

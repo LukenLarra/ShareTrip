@@ -113,8 +113,8 @@ public class MainGUI {
         createRideWin = load("CreateRide.fxml");
         signInWin = load("SignIn.fxml");
         signUpWin = load("SignUp.fxml");
-        myRidesTravelerWin = load("MyProfileTraveler.fxml");
-        myRidesDriverWin = load("MyProfileDriver.fxml");
+        myRidesTravelerWin = load("MyRidesTraveler.fxml");
+        myRidesDriverWin = load("MyRidesDriver.fxml");
 
 
         showMain();

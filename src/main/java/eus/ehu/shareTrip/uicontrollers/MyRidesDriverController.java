@@ -21,13 +21,13 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.util.List;
 
-public class MyProfileDriverController implements Controller {
+public class MyRidesDriverController implements Controller {
 
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
 
-    public MyProfileDriverController(BlFacade bl) {
+    public MyRidesDriverController(BlFacade bl) {
         businessLogic = bl;
     }
 
