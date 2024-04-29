@@ -142,7 +142,6 @@ public class MyRidesTravelerController implements Controller{
         for (RideRequest rideRequest : rideRequests) {
                 myRidesTable.getItems().add(rideRequest);
         }
-        showProfileImage();
     }
 
     public void showProfileImage() {

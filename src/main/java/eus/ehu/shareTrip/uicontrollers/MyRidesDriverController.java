@@ -79,7 +79,6 @@ public class MyRidesDriverController implements Controller {
         for (Ride ride : rides) {
             myRidesTable.getItems().add(ride);
         }
-        showProfileImage();
     }
 
     public void showProfileImage() {
