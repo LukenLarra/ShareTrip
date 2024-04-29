@@ -51,7 +51,7 @@ public class MyRidesDriverController implements Controller {
     private TableColumn<Ride, String> toColumn;
 
     @FXML
-    private ImageView profileImage = new ImageView();
+    private ImageView profileImage;
 
     @FXML
     private Button changeImageButton;
@@ -79,12 +79,15 @@ public class MyRidesDriverController implements Controller {
         for (Ride ride : rides) {
             myRidesTable.getItems().add(ride);
         }
+        showProfileImage();
     }
 
     public void showProfileImage() {
         String imagePath = businessLogic.getImagePath((long) businessLogic.getCurrentUser().getId());
         if (imagePath != null) {
-            profileImage.setImage(new Image(imagePath));
+            profileImage.setImage(new Image("file:///" + imagePath));
+        } else {
+            profileImage.setImage(new Image("file:///" + "src/main/resources/images/defaultProfile.jpg"));
         }
     }
 
