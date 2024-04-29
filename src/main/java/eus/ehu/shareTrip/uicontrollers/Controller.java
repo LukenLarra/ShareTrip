@@ -20,6 +20,4 @@ public interface Controller {
 
   Node getSingInBtn();
 
-  @FXML
-  void keyboardNav(KeyEvent event);
 }

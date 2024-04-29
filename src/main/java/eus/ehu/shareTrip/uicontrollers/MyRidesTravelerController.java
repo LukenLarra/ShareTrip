@@ -130,8 +130,9 @@ public class MyRidesTravelerController implements Controller{
 
     }
 
-    @Override @FXML
+    @FXML
     public void keyboardNav(KeyEvent event) {
+
 
     }
 

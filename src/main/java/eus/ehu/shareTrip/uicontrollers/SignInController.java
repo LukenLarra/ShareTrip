@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
@@ -99,11 +100,30 @@ public class SignInController implements Controller {
         }
     }
 
-    @Override @FXML
+    @FXML
     public void keyboardNav(KeyEvent event) {
-        if (event.getCode().toString().equals("ENTER")) {
-            SignIn(new ActionEvent());
+        switch (event.getCode()) {
+            case TAB:
+                if (emailFieldSignIn.isFocused()) {
+                    passwordFieldSignIn.requestFocus();
+                    event.consume();
+                }
+                else if (passwordFieldSignIn.isFocused()) {
+                    btnSignIn.requestFocus();
+                    event.consume();
+                }
+                else{
+                    emailFieldSignIn.requestFocus();
+                    event.consume();
+                }
+                break;
+            case ENTER:
+                if (emailFieldSignIn.isFocused() || passwordFieldSignIn.isFocused() || btnSignIn.isFocused()){
+                    SignIn(new ActionEvent());
+                }
+                break;
         }
+
     }
 
     @Override

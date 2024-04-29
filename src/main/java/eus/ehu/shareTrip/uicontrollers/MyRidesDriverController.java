@@ -142,7 +142,6 @@ public class MyRidesDriverController implements Controller {
         return null;
     }
 
-    @Override
     public void keyboardNav(KeyEvent event) {
 
     }

@@ -249,7 +249,7 @@ public class QueryRidesController implements Controller {
         }
     }
 
-    @Override @FXML
+     @FXML
     public void keyboardNav(KeyEvent event) {
 
     }
