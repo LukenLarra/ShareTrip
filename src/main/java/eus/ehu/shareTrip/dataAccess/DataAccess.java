@@ -96,12 +96,12 @@ public class DataAccess {
 
 
       //Create drivers
-      Driver driver1 = new Driver("driver1@gmail.com", "Aitor Fernandez", "1234", "src/main/resources/images/defaultProfile.jpg");
-      Driver driver2 = new Driver("driver2@gmail.com", "Ane Gaztañaga", "4321", "src/main/resources/images/defaultProfile.jpg");
+      Driver driver1 = new Driver("driver1@gmail.com", "Aitor Fernandez", "1234", "src/main/resources/images/foto2.jpg");
+      Driver driver2 = new Driver("driver2@gmail.com", "Ane Gaztañaga", "4321", "src/main/resources/images/foto1.jpg");
       Driver driver3 = new Driver("driver3@gmail.com", "Test driver", "0000", "src/main/resources/images/defaultProfile.jpg");
 
-      Traveler traveler1 = new Traveler("traveler1@gmail.com", "Juan Perez", "9999","src/main/resources/images/defaultProfile.jpg");
-      Traveler traveler2 = new Traveler("traveler2@gmail.com", "Gorka Astigarraga", "9876", "src/main/resources/images/defaultProfile.jpg");
+      Traveler traveler1 = new Traveler("traveler1@gmail.com", "Juan Perez", "9999","src/main/resources/images/foto3.jpg");
+      Traveler traveler2 = new Traveler("traveler2@gmail.com", "Gorka Astigarraga", "9876", "src/main/resources/images/foto4.jpg");
 
 
       //Create rides
