@@ -57,7 +57,7 @@ public class MyRidesTravelerController implements Controller{
     private TableColumn<RideRequest, String> statusColumn;
 
     @FXML
-    ImageView profileImageView = new ImageView();
+    private ImageView profileImageView;
 
     @FXML
     private Button selectImageButton;
@@ -142,12 +142,15 @@ public class MyRidesTravelerController implements Controller{
         for (RideRequest rideRequest : rideRequests) {
                 myRidesTable.getItems().add(rideRequest);
         }
+        showProfileImage();
     }
 
     public void showProfileImage() {
         String imagePath = businessLogic.getImagePath((long) businessLogic.getCurrentUser().getId());
         if (imagePath != null) {
-            profileImageView.setImage(new Image(imagePath));
+            profileImageView.setImage(new Image("file:///" + imagePath));
+        } else {
+            profileImageView.setImage(new Image("file:///" + "src/main/resources/images/defaultProfile.jpg"));
         }
     }
 

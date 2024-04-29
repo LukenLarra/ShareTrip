@@ -363,14 +363,16 @@ public class DataAccess {
     }
 
     public String getImagePath(Long id) {
-        TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class);
+        TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u " +
+                "WHERE u.id = :id", User.class);
         userQuery.setParameter("id", id);
         return userQuery.getSingleResult().getProfileImage();
     }
 
     public void updateImagePath(Long id, String imagePath) {
         db.getTransaction().begin();
-        TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class);
+        TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u " +
+                "WHERE u.id = :id", User.class);
         userQuery.setParameter("id", id);
         User user = userQuery.getSingleResult();
         user.setProfileImage(imagePath);

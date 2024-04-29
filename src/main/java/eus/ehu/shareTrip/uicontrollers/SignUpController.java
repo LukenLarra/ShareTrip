@@ -53,7 +53,7 @@ public class SignUpController implements Controller {
     @FXML
     private Button profileImageBtn;
 
-    String[] imagePath = new String[1];
+    private String imagePath;
 
     @FXML
     void SignUp(ActionEvent event) {
@@ -99,7 +99,7 @@ public class SignUpController implements Controller {
             });
             pause.play();
         } else {
-            businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText(), imagePath[0]);
+            businessLogic.signUp(emailFieldSignUp.getText(), usernameFieldSignUp.getText(), passwordFieldSignUp.getText(), selectedRadioButton.getText(), imagePath);
             msgSignUp.setText("User created successfully");
             userSignUp.selectToggle(null);
             emailFieldSignUp.clear();
@@ -133,15 +133,15 @@ public class SignUpController implements Controller {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-            imagePath[0] = selectedFile.getAbsolutePath();
-            profileImage.setImage(new Image("file:///" + imagePath[0]));
+            imagePath = selectedFile.getAbsolutePath();
+            profileImage.setImage(new Image("file:///" + imagePath));
         }
     }
 
 
     @FXML
     void initialize() {
-        imagePath[0] = "../../../../images/defaultProfile.jpg";
+        imagePath = "../../../../images/defaultProfile.jpg";
     }
 
     @Override

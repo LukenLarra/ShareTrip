@@ -19,7 +19,7 @@
          </columns>
       </TableView>
       <Button fx:id="deleteRequestButton" layoutX="378.0" layoutY="433.0" mnemonicParsing="false" onAction="#deleteRequest" text="Delete Request" />
-      <ImageView fx:id="profileImage" fitHeight="125.0" fitWidth="166.0" layoutX="475.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="profileImageView" fitHeight="125.0" fitWidth="166.0" layoutX="475.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="selectImageButton" layoutX="493.0" layoutY="161.0" mnemonicParsing="false" onAction="#changeImage" text="Change profile image" />
       <Label layoutX="174.0" layoutY="116.0" text="Email:" />
       <Label layoutX="172.0" layoutY="86.0" text="Name:" />
