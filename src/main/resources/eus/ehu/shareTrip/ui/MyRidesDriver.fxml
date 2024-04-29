@@ -20,7 +20,7 @@
       </TableView>
       <ImageView fx:id="profileImage" fitHeight="150.0" fitWidth="200.0" layoutX="419.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="changeImageBtn" layoutX="454.0" layoutY="183.0" mnemonicParsing="false" onAction="#changeImage" text="Change profile image" />
-      <Label layoutX="151.0" layoutY="119.0" text="Email:" />
+      <Label layoutX="151.0" layoutY="119.0" text="Email:"/>
       <Label layoutX="149.0" layoutY="89.0" text="Name:" />
       <Label fx:id="emailLbl" layoutX="208.0" layoutY="119.0" prefHeight="17.0" prefWidth="163.0" />
       <Label fx:id="nameLbl" layoutX="208.0" layoutY="89.0" prefHeight="17.0" prefWidth="163.0" />

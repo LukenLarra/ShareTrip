@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MyRidesDriverController implements Controller {
 
+    public Button changeImageBtn;
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
