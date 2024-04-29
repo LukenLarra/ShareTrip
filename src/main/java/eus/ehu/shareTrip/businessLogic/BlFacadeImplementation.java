@@ -162,6 +162,11 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@Override
+	public void setImagePath(Long id, String imagePath){
+		dbManager.setImagePath(id, imagePath);
+	}
+
+	@Override
 	public void updateImagePath(Long id, String imagePath){
 		dbManager.updateImagePath(id, imagePath);
 	}

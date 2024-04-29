@@ -378,4 +378,14 @@ public class DataAccess {
         user.setProfileImage(imagePath);
         db.getTransaction().commit();
     }
+
+  public void setImagePath(Long id, String imagePath) {
+    db.getTransaction().begin();
+    TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u " +
+            "WHERE u.id = :id", User.class);
+    userQuery.setParameter("id", id);
+    User user = userQuery.getSingleResult();
+    user.setProfileImage(imagePath);
+    db.getTransaction().commit();
+  }
 }

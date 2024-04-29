@@ -90,6 +90,7 @@ public interface BlFacade {
 
     void deleteRideRequest(String requestId);
     String getImagePath(Long id);
+    void setImagePath(Long id, String imagePath);
     void updateImagePath(Long id, String imagePath);
 
 

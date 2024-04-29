@@ -85,19 +85,17 @@ public class MyRidesDriverController implements Controller {
         String imagePath = businessLogic.getImagePath((long) businessLogic.getCurrentUser().getId());
         if (imagePath != null) {
             profileImage.setImage(new Image("file:///" + imagePath));
-        } else {
-            profileImage.setImage(new Image("file:///" + "src/main/resources/images/defaultProfile.jpg"));
         }
     }
 
     @FXML
     public void changeImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-            businessLogic.updateImagePath((long) businessLogic.getCurrentUser().getId(), file.toURI().toString());
-            profileImage.setImage(new Image(file.toURI().toString()));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            businessLogic.setImagePath((long) businessLogic.getCurrentUser().getId(),selectedFile.getAbsolutePath());
+            showProfileImage();
         }
     }
 
