@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane stylesheets="@../../../../styles.css" onKeyPressed="#keyboardNav" prefHeight="405.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.QueryRidesController">
+<AnchorPane stylesheets="@../../../../styles/styles.css" onKeyPressed="#keyboardNav" prefHeight="405.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.QueryRidesController">
     <children>
         <DatePicker fx:id="datepicker" layoutX="39.0" layoutY="190.0" />
         <Label layoutX="39.0" layoutY="161.0" text="%EventDate" />
