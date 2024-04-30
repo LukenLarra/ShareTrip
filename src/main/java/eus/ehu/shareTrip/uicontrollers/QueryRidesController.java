@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.DatePickerSkin;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 import eus.ehu.shareTrip.ui.MainGUI;
@@ -249,9 +250,46 @@ public class QueryRidesController implements Controller {
         }
     }
 
-     @FXML
+    @FXML
     public void keyboardNav(KeyEvent event) {
+        if (event.getCode().toString().equals("ENTER")) {
+            requestRide(new ActionEvent());
+        }
+    }
 
+    @FXML
+    public void fromTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            comboArrivalCity.requestFocus();
+        }
+    }
+
+    @FXML
+    public void toTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            datepicker.requestFocus();
+        }
+    }
+
+    @FXML
+    public void dateTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            seatsNumber.requestFocus();
+        }
+    }
+
+    @FXML
+    public void seatsTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            requestRideButton.requestFocus();
+        }
+    }
+
+    @FXML
+    public void requestTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            comboDepartCity.requestFocus();
+        }
     }
 
     @Override

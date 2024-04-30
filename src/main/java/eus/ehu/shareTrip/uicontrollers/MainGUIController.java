@@ -201,7 +201,11 @@ public class MainGUIController implements Controller{
                 queryRidesBtn.requestFocus();
                 event.consume();
             } else {
-                btnShowSignUp.requestFocus();
+                if (mainWrapper.getCenter() == mainGUI.getSignInWin()) {
+                    ((SignInController)(mainGUI.getSignInWindow().getController())).getEmailTF().requestFocus();
+                } else if (mainWrapper.getCenter() == mainGUI.getSignUpWin()) {
+                    ((SignUpController)(mainGUI.getSignUpWindow().getController())).getEmailTF().requestFocus();
+                }
                 event.consume();
             }
         }
@@ -234,7 +238,6 @@ public class MainGUIController implements Controller{
     @FXML
     public void logOutTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB){
-            //depending on which window is open, the focus will be set to the corresponding window's first button or textfield, for example if it is in the signIN window it will focus on email textfield
             if (mainWrapper.getCenter() == mainGUI.getSignInWin()) {
                 ((SignInController)(mainGUI.getSignInWindow().getController())).getEmailTF().requestFocus();
             } else if (mainWrapper.getCenter() == mainGUI.getSignUpWin()) {
@@ -248,8 +251,6 @@ public class MainGUIController implements Controller{
             } else if (mainWrapper.getCenter() == mainGUI.getMyRidesDriverWin()) {
                 ((MyRidesDriverController)(mainGUI.getMyRidesDriverWindow().getController())).getSelectImageButton().requestFocus();
             }
-
-
             event.consume();
         }
     }

@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.DatePickerSkin;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 import eus.ehu.shareTrip.ui.MainGUI;
@@ -45,9 +46,6 @@ public class CreateRideController implements Controller{
     private DatePicker datePicker;
 
     private MainGUI mainGUI;
-
-    @FXML
-    private Button refreshButton;
 
     @FXML
     private Label lblErrorMessage;
@@ -355,6 +353,69 @@ public class CreateRideController implements Controller{
             }
         });
         requestCodeColumn.setCellValueFactory(new PropertyValueFactory<>("reservationCode"));
+    }
+
+    @FXML
+    public void dateTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            txtDepartCity.requestFocus();
+        }
+    }
+
+    @FXML
+    public void fromTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            txtArrivalCity.requestFocus();
+        }
+    }
+
+    @FXML
+    public void toTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            txtNumberOfSeats.requestFocus();
+        }
+    }
+
+    @FXML
+    public void seatsTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            txtPrice.requestFocus();
+        }
+    }
+
+    @FXML
+    public void priceTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            btnCreateRide.requestFocus();
+        }
+    }
+
+    @FXML
+    public void createTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            txtRequestCode.requestFocus();
+        }
+    }
+
+    @FXML
+    public void codeTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            acceptRequestBtn.requestFocus();
+        }
+    }
+
+    @FXML
+    public void acceptTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            rejectRequestBtn.requestFocus();
+        }
+    }
+
+    @FXML
+    public void rejectTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            datePicker.requestFocus();
+        }
     }
 
     @Override
