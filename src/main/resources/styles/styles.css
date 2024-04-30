@@ -1,0 +1,72 @@
+/*.first-color {
+    background: #9ac2b6;
+}
+
+.second-color {
+    background: #aeccc6;
+}
+
+.third-color {
+    background: #9ba6a5;
+}
+
+.fourth-color {
+    background: #757a79;
+}*/
+.button{
+    -fx-background-color: #9ba6a5;
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #757a79;
+    -fx-border-width: 2;
+    -fx-padding: 5 5;
+}
+
+.button:hover {
+    -fx-background-color: #757a79;
+}
+
+.label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+
+}
+
+.text-field {
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-background-color: #9ba6a5;
+    -fx-border-color: #757a79;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.date-picker {
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-background-color: none;
+    -fx-border-color: none;
+    -fx-border-width: 0;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.combo-box {
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-background-color: #9ba6a5;
+    -fx-border-color: #757a79;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+
+.root {
+    -fx-background-color: #9ac2b6;
+}
