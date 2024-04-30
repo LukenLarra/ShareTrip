@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="526.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.MyRidesDriverController">
+<AnchorPane stylesheets="@../../../../styles.css" prefHeight="526.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.MyRidesDriverController">
    <children>
       <TableView fx:id="myRidesTable" layoutX="105.0" layoutY="232.0" prefHeight="212.0" prefWidth="578.0">
          <columns>
