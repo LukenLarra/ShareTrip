@@ -23,7 +23,6 @@ import java.util.List;
 
 public class MyRidesDriverController implements Controller {
 
-    public Button changeImageBtn;
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
@@ -55,13 +54,13 @@ public class MyRidesDriverController implements Controller {
     private ImageView profileImage;
 
     @FXML
-    private Button changeImageButton;
-
-    @FXML
     private Label emailLbl;
 
     @FXML
     private Label nameLbl;
+
+    @FXML
+    public Button changeImageBtn;
 
     @FXML
     void initialize() {
@@ -143,9 +142,7 @@ public class MyRidesDriverController implements Controller {
         return null;
     }
 
-    public void keyboardNav(KeyEvent event) {
-
-    }
+    public Button getSelectImageButton() { return changeImageBtn; }
 
 }
 

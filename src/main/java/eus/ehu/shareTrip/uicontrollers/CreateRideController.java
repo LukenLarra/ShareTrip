@@ -392,4 +392,7 @@ public class CreateRideController implements Controller{
         return null;
     }
 
+    public DatePicker getDatePicker() {
+        return datePicker;
+    }
 }

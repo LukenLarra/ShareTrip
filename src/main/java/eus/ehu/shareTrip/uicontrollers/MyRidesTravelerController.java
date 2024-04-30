@@ -169,6 +169,8 @@ public class MyRidesTravelerController implements Controller{
         nameLbl.setText(name);
         emailLbl.setText(email);
     }
+
+    public Button getSelectImageButton() { return selectImageButton; }
 }
 
 

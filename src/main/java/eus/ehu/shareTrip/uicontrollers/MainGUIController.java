@@ -2,6 +2,7 @@ package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
+import eus.ehu.shareTrip.domain.Traveler;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.scene.control.Labeled;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
@@ -182,8 +184,74 @@ public class MainGUIController implements Controller{
     }
 
     @FXML
-    public void keyboardNav(KeyEvent event) {
+    public void signUpTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            btnShowSignIn.requestFocus();
+            event.consume();
+        }
+    }
 
+    @FXML
+    public void signInTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            if (businessLogic.getCurrentUser() instanceof Driver) {
+                createRidesBtn.requestFocus();
+                event.consume();
+            } else if (businessLogic.getCurrentUser() instanceof Traveler) {
+                queryRidesBtn.requestFocus();
+                event.consume();
+            } else {
+                btnShowSignUp.requestFocus();
+                event.consume();
+            }
+        }
+    }
+
+    @FXML
+    public void createRidesTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            queryRidesBtn.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void queryRidesTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            myRidesBtn.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void myRidesTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            logoutBtn.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void logOutTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            //depending on which window is open, the focus will be set to the corresponding window's first button or textfield, for example if it is in the signIN window it will focus on email textfield
+            if (mainWrapper.getCenter() == mainGUI.getSignInWin()) {
+                ((SignInController)(mainGUI.getSignInWindow().getController())).getEmailTF().requestFocus();
+            } else if (mainWrapper.getCenter() == mainGUI.getSignUpWin()) {
+                ((SignUpController)(mainGUI.getSignUpWindow().getController())).getEmailTF().requestFocus();
+            } else if (mainWrapper.getCenter() == mainGUI.getCreateRidesWin()) {
+                ((CreateRideController)(mainGUI.getCreateRidesWindow().getController())).getDatePicker().requestFocus();
+            } else if (mainWrapper.getCenter() == mainGUI.getQueryRidesWin()) {
+                ((QueryRidesController)(mainGUI.getQueryRidesWindow().getController())).getComboDepartCity().requestFocus();
+            } else if (mainWrapper.getCenter() == mainGUI.getMyRidesTravelerWin()) {
+                ((MyRidesTravelerController)(mainGUI.getMyRidesTravelerWindow().getController())).getSelectImageButton().requestFocus();
+            } else if (mainWrapper.getCenter() == mainGUI.getMyRidesDriverWin()) {
+                ((MyRidesDriverController)(mainGUI.getMyRidesDriverWindow().getController())).getSelectImageButton().requestFocus();
+            }
+
+
+            event.consume();
+        }
     }
 
     public Node getLogoutBtn() {

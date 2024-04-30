@@ -101,29 +101,35 @@ public class SignInController implements Controller {
     }
 
     @FXML
-    public void keyboardNav(KeyEvent event) {
-        switch (event.getCode()) {
-            case TAB:
-                if (emailFieldSignIn.isFocused()) {
-                    passwordFieldSignIn.requestFocus();
-                    event.consume();
-                }
-                else if (passwordFieldSignIn.isFocused()) {
-                    btnSignIn.requestFocus();
-                    event.consume();
-                }
-                else{
-                    emailFieldSignIn.requestFocus();
-                    event.consume();
-                }
-                break;
-            case ENTER:
-                if (emailFieldSignIn.isFocused() || passwordFieldSignIn.isFocused() || btnSignIn.isFocused()){
-                    SignIn(new ActionEvent());
-                }
-                break;
+    public void keyEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER){
+            SignIn(new ActionEvent());
+            event.consume();
         }
+    }
 
+    @FXML
+    public void emailTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            passwordFieldSignIn.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void passTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            btnSignIn.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void btnTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            emailFieldSignIn.requestFocus();
+            event.consume();
+        }
     }
 
     @Override
@@ -150,16 +156,15 @@ public class SignInController implements Controller {
     public Node getMyRidesBtn() {
         return mainGUI.getMainGUI().getMyRidesBtn();
     }
-
     @Override
     public Node getSingUpBtn() {
         return mainGUI.getMainGUI().getSingUpBtn();
     }
-
     @Override
     public Node getSingInBtn() {
         return mainGUI.getMainGUI().getSingInBtn();
     }
+    public TextField getEmailTF() { return emailFieldSignIn; }
 }
 
 

@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
@@ -117,12 +118,7 @@ public class SignUpController implements Controller {
         }
     }
 
-    @FXML
-    public void keyboardNav(KeyEvent event) {
-        if (event.getCode().toString().equals("ENTER")){
-            SignUp(new ActionEvent());
-        }
-    }
+
 
     @FXML
     void chooseProfileImage(ActionEvent event) {
@@ -132,6 +128,78 @@ public class SignUpController implements Controller {
         if (selectedFile != null) {
             imagePath = selectedFile.getAbsolutePath();
             profileImage.setImage(new Image("file:///" + imagePath));
+        }
+    }
+
+    @FXML
+    public void keyEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER){
+            SignUp(new ActionEvent());
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void travTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            emailFieldSignUp.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void driTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            emailFieldSignUp.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void emailTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            usernameFieldSignUp.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void nameTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            passwordFieldSignUp.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void passTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            passwordChecker.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void pass2TAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            profileImageBtn.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void imageTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            btnSignUp.requestFocus();
+            event.consume();
+        }
+    }
+
+    @FXML
+    public void btnTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB){
+            emailFieldSignUp.requestFocus();
+            event.consume();
         }
     }
 
@@ -178,6 +246,8 @@ public class SignUpController implements Controller {
     public Node getSingInBtn() {
         return null;
     }
+
+    public TextField getEmailTF() { return emailFieldSignUp; }
 
 }
 

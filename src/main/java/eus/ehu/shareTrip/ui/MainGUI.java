@@ -76,6 +76,9 @@ public class MainGUI {
     public Window getMyRidesDriverWindow() {
         return myRidesDriverWin;
     }
+    public Window getSignInWindow() { return signInWin; }
+    public Window getSignUpWindow() { return signUpWin; }
+    public Window getQueryRidesWindow() { return queryRidesWin; }
 
     public class Window {
         Controller c;

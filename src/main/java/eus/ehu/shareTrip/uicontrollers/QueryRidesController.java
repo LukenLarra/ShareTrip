@@ -288,5 +288,6 @@ public class QueryRidesController implements Controller {
         return null;
     }
 
+    public ComboBox<String> getComboDepartCity() { return comboDepartCity; }
 }
 
