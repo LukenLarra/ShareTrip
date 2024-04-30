@@ -133,7 +133,7 @@ public class SignUpController implements Controller {
 
     @FXML
     public void keyEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER){
+        if (event.getCode() == KeyCode.ENTER && btnSignUp.isFocused()){
             SignUp(new ActionEvent());
             event.consume();
         }

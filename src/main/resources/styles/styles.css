@@ -13,6 +13,7 @@
 .fourth-color {
     background: #757a79;
 }*/
+
 .button{
     -fx-background-color: #9ba6a5;
     -fx-text-fill: black;
@@ -33,7 +34,6 @@
     -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-text-fill: black;
-
 }
 
 .text-field {
@@ -44,6 +44,17 @@
     -fx-border-width: 1;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
+}
+
+.text-field:focused {
+    -fx-border-color: #e88c49;
+}
+
+.combo-box:focused {
+    -fx-border-color:  #e88c49;
+}
+.button:focused {
+    -fx-border-color:  #e88c49;
 }
 
 .date-picker {
@@ -66,6 +77,19 @@
     -fx-background-radius: 10;
 }
 
+.table-view {
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-background-color: #9ba6a5;
+    -fx-border-color: #757a79;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.column-header{
+    -fx-background-color: #757a79;
+}
 
 .root {
     -fx-background-color: #9ac2b6;

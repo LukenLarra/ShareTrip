@@ -102,7 +102,7 @@ public class SignInController implements Controller {
 
     @FXML
     public void keyEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER){
+        if (event.getCode() == KeyCode.ENTER && btnSignIn.isFocused()){
             SignIn(new ActionEvent());
             event.consume();
         }
