@@ -46,7 +46,7 @@ public class SignInController implements Controller {
                 msgSignIn.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
             });
             pause.play();
-        } else if (!emailFieldSignIn.getText().contains("@gmail.com")) {
+        } else if (!emailFieldSignIn.getText().toLowerCase().contains("@gmail.com")) {
             msgSignIn.setText("Email must be a gmail account.");
             msgSignIn.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
@@ -57,7 +57,7 @@ public class SignInController implements Controller {
             pause.play();
         } else {
             try {
-                User user = businessLogic.signIn(emailFieldSignIn.getText(), passwordFieldSignIn.getText());
+                User user = businessLogic.signIn(emailFieldSignIn.getText().toLowerCase(), passwordFieldSignIn.getText());
                 passwordFieldSignIn.clear();
                 emailFieldSignIn.clear();
                 msgSignIn.setText("Logged in successfully.");
