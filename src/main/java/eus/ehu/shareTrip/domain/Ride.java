@@ -189,5 +189,4 @@ public class Ride implements Serializable {
 	public String toString(){
 		return rideNumber+";"+";"+ fromLocation +";"+ toLocation +";"+date;
 	}
-
 }

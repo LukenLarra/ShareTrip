@@ -3,6 +3,7 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.ui.MainGUI;
+import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -68,6 +70,9 @@ public class MyRidesTravelerController implements Controller{
 
     @FXML
     private Label emailLbl;
+
+    @FXML
+    private Label deleteLabel;
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
@@ -127,8 +132,19 @@ public class MyRidesTravelerController implements Controller{
         if (rideRequest != null && !rideRequest.getStatus().equals("PENDING")) {
             businessLogic.deleteRideRequest(rideRequest.getReservationCode());
             myRidesTable.getItems().remove(rideRequest);
-        }
+            deleteLabel.setText("Request deleted successfully");
+            deleteLabel.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
 
+        } else {
+            deleteLabel.setText("You can't delete a pending request");
+            deleteLabel.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+        }
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> {
+            deleteLabel.setText("");
+            deleteLabel.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+        });
+        pause.play();
     }
 
     @FXML

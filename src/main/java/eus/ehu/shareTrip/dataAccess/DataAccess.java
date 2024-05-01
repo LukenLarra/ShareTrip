@@ -279,11 +279,6 @@ public class DataAccess {
     // create domain entities and persist them
   }
 
-  public void close() {
-    db.close();
-    System.out.println("DataBase is closed");
-  }
-
   public boolean existsUser(String email) {
     TypedQuery<User> userQuery = db.createQuery("SELECT u FROM User u " +
             "WHERE u.email = :email", User.class);
@@ -318,7 +313,18 @@ public class DataAccess {
   }
 
   public void requestRide(RideRequest rideRequest){
+    //if the ride request already exists, cancel the previous one and create a new one
     db.getTransaction().begin();
+    TypedQuery<RideRequest> query = db.createQuery("SELECT rr FROM RideRequest rr WHERE rr.traveler.id = :travelerId AND rr.ride.id = :rideId", RideRequest.class);
+    query.setParameter("travelerId", rideRequest.getTraveler().getId());
+    query.setParameter("rideId", rideRequest.getRide().getRideNumber());
+    List<RideRequest> rideRequests = query.getResultList();
+    for (RideRequest rr : rideRequests) {
+      db.remove(rr);
+      //update the ride giving back the seats that havent been accepted
+        Ride ride = rr.getRide();
+        ride.setNumPlaces(ride.getNumPlaces() + rr.getNumSeats());
+    }
     db.persist(rideRequest);
     db.getTransaction().commit();
   }

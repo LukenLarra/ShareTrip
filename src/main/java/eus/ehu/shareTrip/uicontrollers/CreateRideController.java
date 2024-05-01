@@ -108,7 +108,7 @@ public class CreateRideController implements Controller{
     private String field_Errors() {
 
         try {
-            if ((txtDepartCity.getText().length() == 0) || (txtArrivalCity.getText().length() == 0) || (txtNumberOfSeats.getText().length() == 0) || (txtPrice.getText().length() == 0))
+            if ((txtDepartCity.getText().isEmpty()) || (txtArrivalCity.getText().isEmpty()) || (txtNumberOfSeats.getText().isEmpty()) || (txtPrice.getText().isEmpty()))
                 return ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.ErrorQuery");
             else {
 
@@ -258,12 +258,11 @@ public class CreateRideController implements Controller{
                 User user = businessLogic.getCurrentUser();
                 businessLogic.createRide(txtDepartCity.getText(), txtArrivalCity.getText(), Dates.convertToDate(datePicker.getValue()), inputSeats, price, user.getEmail());
                 displayMessage(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"), "success");
-            } catch (RideMustBeLaterThanTodayException e1) {
-                displayMessage(e1.getMessage(), "danger");
-            } catch (RideAlreadyExistException e1) {
+            } catch (RideMustBeLaterThanTodayException | RideAlreadyExistException e1) {
                 displayMessage(e1.getMessage(), "danger");
             }
         }
+        e.consume();
     }
 
 
