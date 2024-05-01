@@ -42,6 +42,7 @@ public class MainGUI {
         });
     }
 
+
     public Node getLogoutBtn() {
         return mainWin.c.getLogoutBtn();
     }
@@ -123,9 +124,6 @@ public class MainGUI {
         showMain();
     }
 
-   // public void start(Stage stage) throws IOException {
-   //  init(stage);
-   //}
     public Parent getQueryRidesWin() {
         return queryRidesWin.ui;
     }
@@ -154,23 +152,6 @@ public class MainGUI {
         setupScene(mainWin.ui, "MainTitle", 1200, 600);
 
     }
-    public void showQueryRides() {
-        setupScene(queryRidesWin.ui, "QueryRides", 1000, 600);
-
-    }
-    public void showCreateRide() {
-        setupScene(createRideWin.ui, "CreateRide", 1000, 600);
-
-    }
-
-    public void showMyRides() {
-        setupScene(myRidesTravelerWin.ui, "MyRidesTraveler", 1000, 600);
-    }
-
-    public void showMyRidesDriver() {
-        setupScene(myRidesDriverWin.ui, "MyRidesDriver", 1000, 600);
-    }
-
 
     private void setupScene(Parent ui, String title, int width, int height) {
         if (scene == null) {
@@ -189,7 +170,4 @@ public class MainGUI {
         return this;
     }
 
-    //  public static void main(String[] args) {
-//    launch();
-//  }
 }
