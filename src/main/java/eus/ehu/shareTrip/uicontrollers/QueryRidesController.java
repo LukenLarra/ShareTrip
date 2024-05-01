@@ -4,6 +4,7 @@ import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
 import eus.ehu.shareTrip.domain.User;
+import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 import eus.ehu.shareTrip.ui.MainGUI;
 import eus.ehu.shareTrip.utils.Dates;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -81,12 +83,6 @@ public class QueryRidesController implements Controller {
 
     public QueryRidesController(BlFacade bl) {
         businessLogic = bl;
-    }
-
-
-    @FXML
-    void closeClick(ActionEvent event) {
-        mainGUI.showMain();
     }
 
 
@@ -248,12 +244,19 @@ public class QueryRidesController implements Controller {
                 message.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
             }
         }
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> {
+            message.setText("");
+            message.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+        });
+        pause.play();
     }
 
     @FXML
     public void keyboardNav(KeyEvent event) {
-        if (event.getCode().toString().equals("ENTER")) {
+        if (event.getCode() == KeyCode.ENTER) {
             requestRide(new ActionEvent());
+            event.consume();
         }
     }
 
@@ -261,35 +264,62 @@ public class QueryRidesController implements Controller {
     public void fromTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             comboArrivalCity.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void toTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             datepicker.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void dateTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
-            seatsNumber.requestFocus();
+            tblRides.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
         }
+        event.consume();
+    }
+
+    @FXML
+    public void tableTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            seatsNumber.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
+        } else if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN){
+            tblRides.getSelectionModel().select(tblRides.getSelectionModel().getSelectedIndex());
+        }
+        event.consume();
     }
 
     @FXML
     public void seatsTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             requestRideButton.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void requestTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             comboDepartCity.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @Override

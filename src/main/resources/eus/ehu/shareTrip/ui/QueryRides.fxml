@@ -13,7 +13,7 @@
     <children>
         <DatePicker fx:id="datepicker" layoutX="39.0" layoutY="190.0" onKeyPressed="#dateTAB" />
         <Label layoutX="39.0" layoutY="161.0" text="%EventDate" />
-        <TableView fx:id="tblRides" layoutX="394.0" layoutY="70.0" prefHeight="200.0" prefWidth="445.0">
+        <TableView fx:id="tblRides" layoutX="394.0" layoutY="70.0" onKeyPressed="#tableTAB" prefHeight="200.0" prefWidth="445.0">
             <columns>
                 <TableColumn fx:id="qc1" prefWidth="172.800048828125" text="%FindRidesGUI.Driver" />
                 <TableColumn fx:id="qc2" prefWidth="162.4000244140625" text="%FindRidesGUI.NPlaces" />

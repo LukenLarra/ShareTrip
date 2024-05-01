@@ -102,7 +102,7 @@ public class SignInController implements Controller {
 
     @FXML
     public void keyEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER && btnSignIn.isFocused()){
+        if (event.getCode() == KeyCode.ENTER) {
             SignIn(new ActionEvent());
             event.consume();
         }
@@ -112,24 +112,30 @@ public class SignInController implements Controller {
     public void emailTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB){
             passwordFieldSignIn.requestFocus();
-            event.consume();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
         }
+        event.consume();
     }
 
     @FXML
     public void passTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB){
             btnSignIn.requestFocus();
-            event.consume();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
         }
+        event.consume();
     }
 
     @FXML
     public void btnTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB){
             emailFieldSignIn.requestFocus();
-            event.consume();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
         }
+        event.consume();
     }
 
     @Override

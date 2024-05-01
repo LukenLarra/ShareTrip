@@ -185,6 +185,9 @@ public class MainGUIController implements Controller{
 
     @FXML
     public void signUpTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            showScene("SignUp");
+        }
         if (event.getCode() == KeyCode.TAB){
             btnShowSignIn.requestFocus();
             event.consume();
@@ -193,6 +196,9 @@ public class MainGUIController implements Controller{
 
     @FXML
     public void signInTAB(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            showScene("SignIn");
+        }
         if (event.getCode() == KeyCode.TAB) {
             if (businessLogic.getCurrentUser() instanceof Driver) {
                 createRidesBtn.requestFocus();

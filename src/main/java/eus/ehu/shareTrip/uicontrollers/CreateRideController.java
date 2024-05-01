@@ -6,6 +6,7 @@ import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.domain.User;
 import eus.ehu.shareTrip.exceptions.RideAlreadyExistException;
 import eus.ehu.shareTrip.exceptions.RideMustBeLaterThanTodayException;
+import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 import eus.ehu.shareTrip.ui.MainGUI;
 import eus.ehu.shareTrip.utils.Dates;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -95,12 +97,6 @@ public class CreateRideController implements Controller{
     @FXML
     private Label messageRequest;
 
-    @FXML
-    void closeClick(ActionEvent event) {
-        clearErrorLabels();
-        mainGUI.showMain();
-    }
-
     private void clearErrorLabels() {
         lblErrorMessage.setText("");
         lblErrorMinBet.setText("");
@@ -146,6 +142,12 @@ public class CreateRideController implements Controller{
         lblErrorMessage.getStyleClass().clear();
         lblErrorMessage.getStyleClass().setAll("lbl", "lbl-"+label);
         lblErrorMessage.setText(message);
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> {
+            lblErrorMessage.setText("");
+            lblErrorMessage.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+        });
+        pause.play();
     }
 
     @FXML
@@ -181,6 +183,12 @@ public class CreateRideController implements Controller{
             messageRequest.setText("Please enter a request code or select a request from the table, not both");
             messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> {
+            messageRequest.setText("");
+            messageRequest.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+        });
+        pause.play();
     }
 
     @FXML
@@ -216,6 +224,12 @@ public class CreateRideController implements Controller{
             messageRequest.setText("Enter a request code or select a request from the table, not both");
             messageRequest.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> {
+            messageRequest.setText("");
+            messageRequest.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+        });
+        pause.play();
     }
 
     @FXML
@@ -227,12 +241,6 @@ public class CreateRideController implements Controller{
                 rideRequestTable.getItems().add(rideRequest);
             }
         }
-    }
-
-    @FXML
-    public void keyboardNav(KeyEvent event) {
-
-
     }
 
     @FXML
@@ -248,7 +256,7 @@ public class CreateRideController implements Controller{
                 int inputSeats = Integer.parseInt(txtNumberOfSeats.getText());
                 float price = Float.parseFloat(txtPrice.getText());
                 User user = businessLogic.getCurrentUser();
-                Ride r = businessLogic.createRide(txtDepartCity.getText(), txtArrivalCity.getText(), Dates.convertToDate(datePicker.getValue()), inputSeats, price, user.getEmail());
+                businessLogic.createRide(txtDepartCity.getText(), txtArrivalCity.getText(), Dates.convertToDate(datePicker.getValue()), inputSeats, price, user.getEmail());
                 displayMessage(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"), "success");
             } catch (RideMustBeLaterThanTodayException e1) {
                 displayMessage(e1.getMessage(), "danger");
@@ -256,28 +264,11 @@ public class CreateRideController implements Controller{
                 displayMessage(e1.getMessage(), "danger");
             }
         }
-/*
-    if (lblErrorMinBet.getText().length() > 0 && showErrors) {
-      lblErrorMinBet.getStyleClass().setAll("lbl", "lbl-danger");
     }
-    if (lblErrorQuestion.getText().length() > 0 && showErrors) {
-      lblErrorQuestion.getStyleClass().setAll("lbl", "lbl-danger");
-    }
- */
-    }
+
+
     private List<LocalDate> holidays = new ArrayList<>();
-  /* private void setEventsPrePost(int year, int month) {
-    LocalDate date = LocalDate.of(year, month, 1);
-    setEvents(date.getYear(), date.getMonth().getValue());
-    setEvents(date.plusMonths(1).getYear(), date.plusMonths(1).getMonth().getValue());
-    setEvents(date.plusMonths(-1).getYear(), date.plusMonths(-1).getMonth().getValue());
-  }
-    private void setEvents(int year, int month) {
-    Date date = Dates.toDate(year, month);
-    for (Date day : businessLogic.getEventsMonth(date)) {
-      holidays.add(Dates.convertToLocalDateViaInstant(day));
-    }
-  }*/
+
     @FXML
     void initialize() {
       /*btnCreateRide.setDisable(true);
@@ -356,66 +347,107 @@ public class CreateRideController implements Controller{
     }
 
     @FXML
+    public void keyboardNav(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            if (acceptRequestBtn.isFocused()) {
+                acceptRequest(new ActionEvent());
+            } else if (rejectRequestBtn.isFocused()) {
+                rejectRequest(new ActionEvent());
+            } else {
+                createRideClick(new ActionEvent());
+            }
+        }
+        event.consume();
+    }
+
+    @FXML
     public void dateTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             txtDepartCity.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void fromTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             txtArrivalCity.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void toTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             txtNumberOfSeats.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void seatsTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             txtPrice.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void priceTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             btnCreateRide.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void createTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             txtRequestCode.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void codeTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             acceptRequestBtn.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void acceptTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             rejectRequestBtn.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @FXML
     public void rejectTAB(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             datePicker.requestFocus();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
         }
+        event.consume();
     }
 
     @Override

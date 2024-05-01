@@ -133,7 +133,7 @@ public class SignUpController implements Controller {
 
     @FXML
     public void keyEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER && btnSignUp.isFocused()){
+        if (event.getCode() == KeyCode.ENTER){
             SignUp(new ActionEvent());
             event.consume();
         }
@@ -145,6 +145,9 @@ public class SignUpController implements Controller {
             emailFieldSignUp.requestFocus();
             event.consume();
         }
+        if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.SPACE){
+            keyEnter(event);
+        }
     }
 
     @FXML
@@ -152,6 +155,9 @@ public class SignUpController implements Controller {
         if (event.getCode() == KeyCode.TAB){
             emailFieldSignUp.requestFocus();
             event.consume();
+        }
+        if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
         }
     }
 
@@ -161,6 +167,9 @@ public class SignUpController implements Controller {
             usernameFieldSignUp.requestFocus();
             event.consume();
         }
+        if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
+        }
     }
 
     @FXML
@@ -168,6 +177,9 @@ public class SignUpController implements Controller {
         if (event.getCode() == KeyCode.TAB){
             passwordFieldSignUp.requestFocus();
             event.consume();
+        }
+        if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
         }
     }
 
@@ -177,6 +189,9 @@ public class SignUpController implements Controller {
             passwordChecker.requestFocus();
             event.consume();
         }
+        if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
+        }
     }
 
     @FXML
@@ -184,6 +199,9 @@ public class SignUpController implements Controller {
         if (event.getCode() == KeyCode.TAB){
             profileImageBtn.requestFocus();
             event.consume();
+        }
+        if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
         }
     }
 
@@ -193,6 +211,9 @@ public class SignUpController implements Controller {
             btnSignUp.requestFocus();
             event.consume();
         }
+        if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
+        }
     }
 
     @FXML
@@ -200,6 +221,9 @@ public class SignUpController implements Controller {
         if (event.getCode() == KeyCode.TAB){
             emailFieldSignUp.requestFocus();
             event.consume();
+        }
+        if (event.getCode() == KeyCode.ENTER){
+            keyEnter(event);
         }
     }
 

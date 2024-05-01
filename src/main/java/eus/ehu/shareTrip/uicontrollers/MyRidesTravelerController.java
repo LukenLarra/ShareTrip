@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
@@ -132,8 +133,26 @@ public class MyRidesTravelerController implements Controller{
 
     @FXML
     public void keyboardNav(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            deleteRequest(new ActionEvent());
+        }
+        event.consume();
+    }
 
+    @FXML
+    public void imageTAB(KeyEvent event){
+        if (event.getCode() == KeyCode.TAB){
+            deleteRequestButton.isFocused();
+        }
+        event.consume();
+    }
 
+    @FXML
+    public void deleteTAB(KeyEvent event){
+        if (event.getCode() == KeyCode.TAB){
+            selectImageButton.isFocused();
+        }
+        event.consume();
     }
 
     @FXML
