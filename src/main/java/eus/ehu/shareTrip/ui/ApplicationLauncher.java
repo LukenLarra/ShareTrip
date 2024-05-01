@@ -5,6 +5,7 @@ import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.businessLogic.BlFacadeImplementation;
 
+import java.io.File;
 import java.util.Locale;
 
 public class ApplicationLauncher {
@@ -24,7 +25,7 @@ public class ApplicationLauncher {
         businessLogic = new BlFacadeImplementation();
 
 
-      Driver driver=new Driver("driver3@gmail.com","Test Driver", "1111", "src/main/resources/images/defaultProfile.png");
+      Driver driver=new Driver("driver3@gmail.com","Test Driver", "1111", new File("src/main/resources/images/defaultProfile.png").getAbsolutePath());
       businessLogic.setCurrentUser(driver);
 
 
