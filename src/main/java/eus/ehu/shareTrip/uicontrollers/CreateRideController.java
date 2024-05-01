@@ -270,21 +270,6 @@ public class CreateRideController implements Controller{
 
     @FXML
     void initialize() {
-      /*btnCreateRide.setDisable(true);
-      only show the text of the event in the combobox (without the id)
-      Callback<ListView<Event>, ListCell<Event>> factory = lv -> new ListCell<>() {
-      @Override
-      protected void updateItem(Event item, boolean empty) {
-        super.updateItem(item, empty);
-        setText(empty ? "" : item.getDescription());
-      }
-    };
-    comboEvents.setCellFactory(factory);
-    comboEvents.setButtonCell(factory.call(null)); */
-    // setEventsPrePost(LocalDate.now().getYear(), LocalDate.now().getMonth().getValue());
-    // get a reference to datepicker inner content
-    // attach a listener to the  << and >> buttons
-    // mark events for the (prev, current, next) month and year shown
     datePicker.setOnMouseClicked(e -> {
         DatePickerSkin skin = (DatePickerSkin) datePicker.getSkin();
         skin.getPopupContent().lookupAll(".button").forEach(node -> {
@@ -292,9 +277,7 @@ public class CreateRideController implements Controller{
                 List<Node> labels = skin.getPopupContent().lookupAll(".label").stream().toList();
                 String month = ((Label) (labels.get(0))).getText();
                 String year = ((Label) (labels.get(1))).getText();
-                YearMonth ym = Dates.getYearMonth(month + " " + year);
-                // setEventsPrePost(ym.getYear(), ym.getMonthValue());
-            });
+                YearMonth ym = Dates.getYearMonth(month + " " + year);});
         });
     });
     datePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
@@ -304,7 +287,6 @@ public class CreateRideController implements Controller{
                 @Override
                 public void updateItem(LocalDate item, boolean empty) {
                     super.updateItem(item, empty);
-
                     if (!empty && item != null) {
                         if (holidays.contains(item)) {
                             this.setStyle("-fx-background-color: pink");
@@ -316,21 +298,6 @@ public class CreateRideController implements Controller{
     });
         // when a date is selected...
         datePicker.setOnAction(actionEvent -> {
-     /* comboEvents.getItems().clear();
-
-      oListEvents = FXCollections.observableArrayList(new ArrayList<>());
-      oListEvents.setAll(businessLogic.getEvents(Dates.convertToDate(datePicker.getValue())));
-
-      comboEvents.setItems(oListEvents);
-
-      if (comboEvents.getItems().size() == 0)
-        btnCreateRide.setDisable(true);
-      else {
-         btnCreateRide.setDisable(false);
-        // select first option
-        comboEvents.getSelectionModel().select(0);
-      }
-*/
         });
         requestIdColumn.setCellValueFactory(new PropertyValueFactory<>("requestId"));
         numSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("numSeats"));
