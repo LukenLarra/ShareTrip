@@ -158,7 +158,21 @@ public class MyRidesTravelerController implements Controller{
     @FXML
     public void imageTAB(KeyEvent event){
         if (event.getCode() == KeyCode.TAB){
+            myRidesTable.isFocused();
+        } else if (event.getCode() == KeyCode.ENTER) {
+            keyboardNav(event);
+        }
+        event.consume();
+    }
+
+    @FXML
+    public void tableTAB(KeyEvent event){
+        if (event.getCode() == KeyCode.TAB){
             deleteRequestButton.isFocused();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
+        } else if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN){
+            myRidesTable.getSelectionModel().select(myRidesTable.getSelectionModel().getSelectedIndex());
         }
         event.consume();
     }
@@ -167,6 +181,8 @@ public class MyRidesTravelerController implements Controller{
     public void deleteTAB(KeyEvent event){
         if (event.getCode() == KeyCode.TAB){
             selectImageButton.isFocused();
+        } else if (event.getCode() == KeyCode.ENTER){
+            keyboardNav(event);
         }
         event.consume();
     }

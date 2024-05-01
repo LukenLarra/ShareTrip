@@ -145,7 +145,7 @@ public class CreateRideController implements Controller{
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(e -> {
             lblErrorMessage.setText("");
-            lblErrorMessage.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
+            lblErrorMessage.getStyleClass().clear();
         });
         pause.play();
     }
