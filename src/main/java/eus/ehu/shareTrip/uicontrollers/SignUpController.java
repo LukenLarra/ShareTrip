@@ -69,7 +69,7 @@ public class SignUpController implements Controller {
                 msgSignUp.setStyle("-fx-text-fill: none; -fx-background-color: transparent; -fx-background-radius: none; -fx-text-radius: none;");
             });
             pause.play();
-        } else if (!emailFieldSignUp.getText().contains("@gmail.com")) {
+        } else if (!emailFieldSignUp.getText().toLowerCase().contains("@gmail.com")) {
             msgSignUp.setText("Email must be a gmail account.");
             msgSignUp.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
 
