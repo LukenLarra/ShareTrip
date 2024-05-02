@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.scene.control.Labeled;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -57,6 +58,9 @@ public class MainGUIController implements Controller{
 
     @FXML
     private Button myRidesBtn;
+
+    @FXML
+    private ImageView brandImage;
 
     private MainGUI mainGUI;
 

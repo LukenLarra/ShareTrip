@@ -59,9 +59,6 @@ public class QueryRidesController implements Controller {
     @FXML
     private ComboBox<String> comboDepartCity;
 
-//  @FXML
-//  private TableView<Event> tblEvents;
-
     @FXML
     private TableView<Ride> tblRides;
 
@@ -83,24 +80,6 @@ public class QueryRidesController implements Controller {
 
     public QueryRidesController(BlFacade bl) {
         businessLogic = bl;
-    }
-
-
-    private void setEvents(int year, int month) {
-        Date date = Dates.toDate(year, month);
-
-        for (Date day : businessLogic.getEventsMonth(date)) {
-            datesWithBooking.add(Dates.convertToLocalDateViaInstant(day));
-        }
-    }
-
-    // we need to mark (highlight in pink) the events for the previous, current and next month
-    // this method will be called when the user clicks on the << or >> buttons
-    private void setEventsPrePost(int year, int month) {
-        LocalDate date = LocalDate.of(year, month, 1);
-        setEvents(date.getYear(), date.getMonth().getValue());
-        setEvents(date.plusMonths(1).getYear(), date.plusMonths(1).getMonth().getValue());
-        setEvents(date.plusMonths(-1).getYear(), date.plusMonths(-1).getMonth().getValue());
     }
 
 
