@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
@@ -25,6 +26,9 @@ public class SignInController implements Controller {
 
     @FXML
     private Button btnSignIn;
+
+    @FXML
+    private ImageView logo;
 
     @FXML
     private TextField emailFieldSignIn;
