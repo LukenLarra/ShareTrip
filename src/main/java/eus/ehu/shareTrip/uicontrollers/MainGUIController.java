@@ -3,6 +3,7 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Traveler;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -161,6 +162,12 @@ public class MainGUIController implements Controller{
         queryRidesBtn.setVisible(false);
         createRidesBtn.setVisible(false);
         myRidesBtn.setVisible(false);
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(4), brandImage);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+
     }
 
     public void showScene(String scene) {

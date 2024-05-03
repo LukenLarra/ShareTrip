@@ -2,6 +2,7 @@ package eus.ehu.shareTrip.uicontrollers;
 
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.ui.MainGUI;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -231,6 +232,7 @@ public class SignUpController implements Controller {
     @FXML
     void initialize() {
         imagePath = "../../../../images/defaultProfile.jpg";
+
     }
 
     @Override
