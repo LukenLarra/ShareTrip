@@ -4,6 +4,7 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
+import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.ui.MainGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
@@ -99,6 +101,14 @@ public class MyRidesDriverController implements Controller {
         }
     }
 
+    @FXML
+    public void imageSelectorNav(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            changeImage(new ActionEvent());
+        }
+        event.consume();
+    }
+
 
     public void showProfileDetails() {
         String name = businessLogic.getCurrentUser().getName();
@@ -141,8 +151,6 @@ public class MyRidesDriverController implements Controller {
     public Node getSingInBtn() {
         return null;
     }
-
-    public Button getSelectImageButton() { return changeImageBtn; }
 
 }
 

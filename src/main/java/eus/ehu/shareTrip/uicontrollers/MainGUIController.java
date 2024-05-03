@@ -199,10 +199,7 @@ public class MainGUIController implements Controller{
         if (event.getCode() == KeyCode.ENTER) {
             showScene("SignUp");
         }
-        if (event.getCode() == KeyCode.TAB){
-            btnShowSignIn.requestFocus();
-            event.consume();
-        }
+        event.consume();
     }
 
     @FXML
@@ -210,66 +207,43 @@ public class MainGUIController implements Controller{
         if (event.getCode() == KeyCode.ENTER) {
             showScene("SignIn");
         }
-        if (event.getCode() == KeyCode.TAB) {
-            if (businessLogic.getCurrentUser() instanceof Driver) {
-                createRidesBtn.requestFocus();
-                event.consume();
-            } else if (businessLogic.getCurrentUser() instanceof Traveler) {
-                queryRidesBtn.requestFocus();
-                event.consume();
-            } else {
-                if (mainWrapper.getCenter() == mainGUI.getSignInWin()) {
-                    ((SignInController)(mainGUI.getSignInWindow().getController())).getEmailTF().requestFocus();
-                } else if (mainWrapper.getCenter() == mainGUI.getSignUpWin()) {
-                    ((SignUpController)(mainGUI.getSignUpWindow().getController())).getEmailTF().requestFocus();
-                }
-                event.consume();
-            }
-        }
+        event.consume();
     }
 
     @FXML
     public void createRidesTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB){
-            queryRidesBtn.requestFocus();
-            event.consume();
+        if (event.getCode() == KeyCode.ENTER) {
+            showScene("CreateRide");
         }
+        event.consume();
     }
 
     @FXML
     public void queryRidesTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB){
-            myRidesBtn.requestFocus();
-            event.consume();
+        if (event.getCode() == KeyCode.ENTER){
+            showScene("QueryRides");
         }
+        event.consume();
     }
 
     @FXML
     public void myRidesTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB){
-            logoutBtn.requestFocus();
-            event.consume();
+        if (event.getCode() == KeyCode.ENTER){
+            if (businessLogic.getCurrentUser() instanceof Driver) {
+                showScene("MyRidesDriver");
+            } else {
+                showScene("MyRidesTraveler");
+            }
         }
+        event.consume();
     }
 
     @FXML
     public void logOutTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB){
-            if (mainWrapper.getCenter() == mainGUI.getSignInWin()) {
-                ((SignInController)(mainGUI.getSignInWindow().getController())).getEmailTF().requestFocus();
-            } else if (mainWrapper.getCenter() == mainGUI.getSignUpWin()) {
-                ((SignUpController)(mainGUI.getSignUpWindow().getController())).getEmailTF().requestFocus();
-            } else if (mainWrapper.getCenter() == mainGUI.getCreateRidesWin()) {
-                ((CreateRideController)(mainGUI.getCreateRidesWindow().getController())).getDatePicker().requestFocus();
-            } else if (mainWrapper.getCenter() == mainGUI.getQueryRidesWin()) {
-                ((QueryRidesController)(mainGUI.getQueryRidesWindow().getController())).getComboDepartCity().requestFocus();
-            } else if (mainWrapper.getCenter() == mainGUI.getMyRidesTravelerWin()) {
-                ((MyRidesTravelerController)(mainGUI.getMyRidesTravelerWindow().getController())).getSelectImageButton().requestFocus();
-            } else if (mainWrapper.getCenter() == mainGUI.getMyRidesDriverWin()) {
-                ((MyRidesDriverController)(mainGUI.getMyRidesDriverWindow().getController())).getSelectImageButton().requestFocus();
-            }
-            event.consume();
+        if (event.getCode() == KeyCode.ENTER){
+            logout(new ActionEvent());
         }
+        event.consume();
     }
 
     public Node getLogoutBtn() {

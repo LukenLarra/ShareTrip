@@ -10,30 +10,29 @@
 
 <AnchorPane onKeyPressed="#keyboardNav" prefHeight="400.0" prefWidth="915.0" stylesheets="@../../../../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.CreateRideController">
    <children>
-      <DatePicker fx:id="datePicker" layoutX="137.0" layoutY="56.0" onKeyPressed="#dateTAB" />
-      <Label layoutX="41.0" layoutY="61.0" text="%RideDate" />
-      <Label layoutX="39.0" layoutY="101.0" text="%DepartCity" />
-      <Label layoutX="21.0" layoutY="185.0" text="%NumberOfSeats" />
-      <TextField fx:id="txtDepartCity" layoutX="137.0" layoutY="96.0" onKeyPressed="#fromTAB" prefHeight="26.0" prefWidth="287.0" />
-      <TextField fx:id="txtNumberOfSeats" layoutX="137.0" layoutY="180.0" onKeyPressed="#seatsTAB" prefHeight="26.0" prefWidth="106.0" />
-      <Button fx:id="btnCreateRide" layoutX="125.0" layoutY="324.0" mnemonicParsing="false" onAction="#createRideClick" onKeyPressed="#createTAB" prefHeight="26.0" prefWidth="130.0" text="%CreateRide" />
-      <Label fx:id="lblErrorMessage" layoutX="250.0" layoutY="274.0" />
-      <Label fx:id="lblErrorMinBet" layoutX="250.0" layoutY="265.0" />
-      <Label layoutX="40.0" layoutY="142.0" text="%ArrivalCity" />
-      <TextField fx:id="txtArrivalCity" layoutX="137.0" layoutY="137.0" onKeyPressed="#toTAB" prefHeight="26.0" prefWidth="287.0" />
-      <Label layoutX="71.0" layoutY="221.0" text="%Price" />
-      <TextField fx:id="txtPrice" layoutX="137.0" layoutY="216.0" onKeyPressed="#priceTAB" prefHeight="26.0" prefWidth="106.0" />
-      <TextField fx:id="txtRequestCode" layoutX="602.0" layoutY="242.0" onKeyPressed="#codeTAB" promptText="Request Code" />
-      <Button fx:id="acceptRequestBtn" layoutX="602.0" layoutY="285.0" mnemonicParsing="false" onAction="#acceptRequest" onKeyPressed="#acceptTAB" text="%Accept" />
-      <Button fx:id="rejectRequestBtn" layoutX="700.0" layoutY="285.0" mnemonicParsing="false" onAction="#rejectRequest" onKeyPressed="#rejectTAB" text="%Reject" />
-      <Label fx:id="messageRequest" alignment="CENTER" contentDisplay="CENTER" layoutX="446.0" layoutY="328.0" prefHeight="15.0" prefWidth="416.0" />
-      <TableView fx:id="rideRequestTable" layoutX="431.0" layoutY="16.0" prefHeight="212.0" prefWidth="478.0">
+      <DatePicker fx:id="datePicker" layoutX="137.0" layoutY="56.0" />
+      <TextField fx:id="txtDepartCity" layoutX="137.0" layoutY="96.0" prefHeight="26.0" prefWidth="287.0" />
+      <TextField fx:id="txtArrivalCity" layoutX="137.0" layoutY="137.0" prefHeight="26.0" prefWidth="287.0" />
+      <TextField fx:id="txtNumberOfSeats" layoutX="137.0" layoutY="180.0" prefHeight="26.0" prefWidth="106.0" />
+      <TextField fx:id="txtPrice" layoutX="137.0" layoutY="216.0" prefHeight="26.0" prefWidth="106.0" />
+      <Button fx:id="btnCreateRide" layoutX="125.0" layoutY="324.0" mnemonicParsing="false" onAction="#createRideClick" prefHeight="26.0" prefWidth="130.0" text="%CreateRide" />
+      <TableView fx:id="rideRequestTable" layoutX="431.0" layoutY="16.0" prefHeight="212.0" onKeyPressed="#tableNav" prefWidth="478.0">
          <columns>
             <TableColumn fx:id="requestIdColumn" prefWidth="74.4000244140625" text="%RequestID" />
             <TableColumn fx:id="numSeatsColumn" prefWidth="108.79998779296875" text="%NumSeats" />
             <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="118.4000244140625" text="%Date" />
             <TableColumn fx:id="requestCodeColumn" prefWidth="224.7999267578125" text="%RequestCode" />
          </columns>
-      </TableView>
+      </TableView><Label layoutX="41.0" layoutY="61.0" text="%RideDate" />
+      <TextField fx:id="txtRequestCode" layoutX="602.0" layoutY="242.0" promptText="Request Code" />
+      <Button fx:id="acceptRequestBtn" layoutX="602.0" layoutY="285.0" mnemonicParsing="false" onAction="#acceptRequest" text="%Accept" />
+      <Button fx:id="rejectRequestBtn" layoutX="700.0" layoutY="285.0" mnemonicParsing="false" onAction="#rejectRequest" text="%Reject" />
+      <Label layoutX="39.0" layoutY="101.0" text="%DepartCity" />
+      <Label layoutX="21.0" layoutY="185.0" text="%NumberOfSeats" />
+      <Label fx:id="lblErrorMessage" layoutX="250.0" layoutY="274.0" />
+      <Label fx:id="lblErrorMinBet" layoutX="250.0" layoutY="265.0" />
+      <Label layoutX="40.0" layoutY="142.0" text="%ArrivalCity" />
+      <Label layoutX="71.0" layoutY="221.0" text="%Price" />
+      <Label fx:id="messageRequest" alignment="CENTER" contentDisplay="CENTER" layoutX="446.0" layoutY="328.0" prefHeight="15.0" prefWidth="416.0" />
    </children>
 </AnchorPane>

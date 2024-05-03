@@ -156,33 +156,20 @@ public class MyRidesTravelerController implements Controller{
     }
 
     @FXML
-    public void imageTAB(KeyEvent event){
-        if (event.getCode() == KeyCode.TAB){
-            myRidesTable.isFocused();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
+    public void imageSelectorNav(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            changeImage(new ActionEvent());
         }
         event.consume();
     }
 
     @FXML
-    public void tableTAB(KeyEvent event){
-        if (event.getCode() == KeyCode.TAB){
-            deleteRequestButton.isFocused();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
-        } else if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN){
-            myRidesTable.getSelectionModel().select(myRidesTable.getSelectionModel().getSelectedIndex());
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void deleteTAB(KeyEvent event){
-        if (event.getCode() == KeyCode.TAB){
-            selectImageButton.isFocused();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
+    public void tableNav(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            RideRequest selectedRequest = myRidesTable.getSelectionModel().getSelectedItem();
+            if (selectedRequest != null) {
+                deleteRequestButton.requestFocus();
+            }
         }
         event.consume();
     }
@@ -220,8 +207,6 @@ public class MyRidesTravelerController implements Controller{
         nameLbl.setText(name);
         emailLbl.setText(email);
     }
-
-    public Button getSelectImageButton() { return selectImageButton; }
 }
 
 

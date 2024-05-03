@@ -11,8 +11,9 @@
 
 <AnchorPane onKeyPressed="#keyboardNav" prefHeight="405.0" prefWidth="853.0" stylesheets="@../../../../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.QueryRidesController">
     <children>
-        <DatePicker fx:id="datepicker" layoutX="39.0" layoutY="190.0" onKeyPressed="#dateTAB" />
-        <Label layoutX="39.0" layoutY="161.0" text="%EventDate" />
+        <ComboBox fx:id="comboDepartCity" layoutX="126.0" layoutY="54.0" prefWidth="150.0" />
+        <ComboBox fx:id="comboArrivalCity" layoutX="126.0" layoutY="101.0" prefWidth="150.0" />
+        <DatePicker fx:id="datepicker" layoutX="39.0" layoutY="190.0" />
         <TableView fx:id="tblRides" layoutX="394.0" layoutY="70.0" onKeyPressed="#tableTAB" prefHeight="200.0" prefWidth="445.0">
             <columns>
                 <TableColumn fx:id="qc1" prefWidth="172.800048828125" text="%FindRidesGUI.Driver" />
@@ -23,15 +24,14 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
+        <TextField fx:id="seatsNumber" layoutX="377.0" layoutY="315.0" />
+        <Button fx:id="requestRideButton" layoutX="574.0" layoutY="315.0" mnemonicParsing="false" onAction="#requestRide" text="Request Ride" />
+        <Label layoutX="39.0" layoutY="161.0" text="%EventDate" />
         <Label layoutX="358.0" layoutY="49.0" text="  " />
         <Label layoutX="751.0" layoutY="21.0" text="%RideDate" />
-      <Label layoutX="39.0" layoutY="58.0" text="%DepartCity" />
-      <Label layoutX="39.0" layoutY="106.0" text="%ArrivalCity" />
-      <ComboBox fx:id="comboDepartCity" layoutX="126.0" layoutY="54.0" onKeyPressed="#fromTAB" prefWidth="150.0" />
-      <ComboBox fx:id="comboArrivalCity" layoutX="126.0" layoutY="101.0" onKeyPressed="#toTAB" prefWidth="150.0" />
-      <Button fx:id="requestRideButton" layoutX="574.0" layoutY="315.0" mnemonicParsing="false" onAction="#requestRide" onKeyPressed="#requestTAB" text="Request Ride" />
-      <TextField fx:id="seatsNumber" layoutX="377.0" layoutY="315.0" onKeyPressed="#seatsTAB" />
-      <Label layoutX="331.0" layoutY="319.0" text="Seats:" />
-      <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="377.0" layoutY="358.0" prefHeight="17.0" prefWidth="328.0" />
+        <Label layoutX="39.0" layoutY="58.0" text="%DepartCity" />
+        <Label layoutX="39.0" layoutY="106.0" text="%ArrivalCity" />
+        <Label layoutX="331.0" layoutY="319.0" text="Seats:" />
+        <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="377.0" layoutY="358.0" prefHeight="17.0" prefWidth="328.0" />
     </children>
 </AnchorPane>

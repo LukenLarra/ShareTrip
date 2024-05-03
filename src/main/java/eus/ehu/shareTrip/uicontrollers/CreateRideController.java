@@ -327,91 +327,12 @@ public class CreateRideController implements Controller{
     }
 
     @FXML
-    public void dateTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            txtDepartCity.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void fromTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            txtArrivalCity.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void toTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            txtNumberOfSeats.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void seatsTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            txtPrice.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void priceTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            btnCreateRide.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void createTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            txtRequestCode.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void codeTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            acceptRequestBtn.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void acceptTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            rejectRequestBtn.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void rejectTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            datePicker.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER) {
-            keyboardNav(event);
+    public void tableNav(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            RideRequest selectedRequest = rideRequestTable.getSelectionModel().getSelectedItem();
+            if (selectedRequest != null) {
+                acceptRequestBtn.requestFocus();
+            }
         }
         event.consume();
     }

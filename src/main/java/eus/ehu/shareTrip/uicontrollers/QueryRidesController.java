@@ -3,6 +3,7 @@ package eus.ehu.shareTrip.uicontrollers;
 import eus.ehu.shareTrip.businessLogic.BlFacade;
 import eus.ehu.shareTrip.domain.Driver;
 import eus.ehu.shareTrip.domain.Ride;
+import eus.ehu.shareTrip.domain.RideRequest;
 import eus.ehu.shareTrip.domain.User;
 import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleStringProperty;
@@ -240,66 +241,16 @@ public class QueryRidesController implements Controller {
     }
 
     @FXML
-    public void fromTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            comboArrivalCity.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void toTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            datepicker.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void dateTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            tblRides.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
     public void tableTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            seatsNumber.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
-        } else if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN){
-            tblRides.getSelectionModel().select(tblRides.getSelectionModel().getSelectedIndex());
+        if (event.getCode() == KeyCode.ENTER) {
+            Ride selectedRide = tblRides.getSelectionModel().getSelectedItem();
+            if (selectedRide != null) {
+                seatsNumber.requestFocus();
+            }
         }
         event.consume();
     }
 
-    @FXML
-    public void seatsTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            requestRideButton.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
-        }
-        event.consume();
-    }
-
-    @FXML
-    public void requestTAB(KeyEvent event) {
-        if (event.getCode() == KeyCode.TAB) {
-            comboDepartCity.requestFocus();
-        } else if (event.getCode() == KeyCode.ENTER){
-            keyboardNav(event);
-        }
-        event.consume();
-    }
 
     @Override
     public void setMainApp(MainGUI mainGUI) {

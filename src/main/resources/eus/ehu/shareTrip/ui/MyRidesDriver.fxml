@@ -9,6 +9,7 @@
 
 <AnchorPane stylesheets="@../../../../styles/styles.css" prefHeight="526.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.MyRidesDriverController">
    <children>
+      <Button fx:id="changeImageBtn" layoutX="454.0" layoutY="183.0" mnemonicParsing="false" onAction="#changeImage" onKeyPressed="#imageSelectorNav" text="Change profile image" />
       <TableView fx:id="myRidesTable" layoutX="105.0" layoutY="232.0" prefHeight="212.0" prefWidth="578.0">
          <columns>
             <TableColumn fx:id="rideNumColumn" prefWidth="74.4000244140625" text="%Ride" />
@@ -19,7 +20,6 @@
          </columns>
       </TableView>
       <ImageView fx:id="profileImage" fitHeight="150.0" fitWidth="200.0" layoutX="419.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="changeImageBtn" layoutX="454.0" layoutY="183.0" mnemonicParsing="false" onAction="#changeImage" text="Change profile image" />
       <Label layoutX="151.0" layoutY="119.0" text="Email:"/>
       <Label layoutX="149.0" layoutY="89.0" text="Name:" />
       <Label fx:id="emailLbl" layoutX="208.0" layoutY="119.0" prefHeight="17.0" prefWidth="163.0" />

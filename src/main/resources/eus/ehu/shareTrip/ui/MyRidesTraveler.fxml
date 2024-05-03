@@ -9,11 +9,9 @@
 
 <AnchorPane onKeyPressed="#keyboardNav" prefHeight="483.0" prefWidth="852.0" stylesheets="@../../../../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.shareTrip.uicontrollers.MyRidesTravelerController">
    <children>
-
-      <Button fx:id="deleteRequestButton" layoutX="174.0" layoutY="430.0" mnemonicParsing="false" onAction="#deleteRequest" onKeyPressed="#deleteTAB" text="Delete Request" />
+      <Button fx:id="selectImageButton" layoutX="493.0" layoutY="161.0" mnemonicParsing="false" onAction="#changeImage" onKeyPressed="#imageSelectorNav" text="Change profile image" />
       <ImageView fx:id="profileImageView" fitHeight="125.0" fitWidth="166.0" layoutX="475.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="selectImageButton" layoutX="493.0" layoutY="161.0" mnemonicParsing="false" onAction="#changeImage" onKeyPressed="#imageTAB" text="Change profile image" />
-      <TableView fx:id="myRidesTable" layoutX="137.0" layoutY="203.0" onKeyPressed="#tableTAB" prefHeight="212.0" prefWidth="578.0">
+      <TableView fx:id="myRidesTable" layoutX="137.0" layoutY="203.0" onKeyPressed="#tableNav" prefHeight="212.0" prefWidth="578.0">
          <columns>
             <TableColumn fx:id="requestIdColumn" prefWidth="74.4000244140625" text="%RequestID" />
             <TableColumn fx:id="numSeatsColumn" prefWidth="108.79998779296875" text="%NumSeats" />
@@ -22,7 +20,7 @@
             <TableColumn fx:id="statusColumn" prefWidth="156.0" text="%Status" />
          </columns>
       </TableView>
-
+      <Button fx:id="deleteRequestButton" layoutX="174.0" layoutY="430.0" mnemonicParsing="false" onAction="#deleteRequest" text="Delete Request" />
       <Label layoutX="174.0" layoutY="116.0" text="Email:" />
       <Label layoutX="172.0" layoutY="86.0" text="Name:" />
       <Label fx:id="emailLbl" layoutX="231.0" layoutY="116.0" prefHeight="17.0" prefWidth="163.0" />
