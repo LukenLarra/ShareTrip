@@ -72,6 +72,9 @@ public class MyRidesTravelerController implements Controller{
     private Label emailLbl;
 
     @FXML
+    private Label userTypeLbl;
+
+    @FXML
     private Label deleteLabel;
 
     @Override
@@ -135,8 +138,11 @@ public class MyRidesTravelerController implements Controller{
             deleteLabel.setText("Request deleted successfully");
             deleteLabel.setStyle("-fx-text-fill: white; -fx-background-color: green; -fx-background-radius: 5px; -fx-text-radius: 5px;");
 
-        } else {
+        } else if (rideRequest != null && rideRequest.getStatus().equals("PENDING")){
             deleteLabel.setText("You can't delete a pending request");
+            deleteLabel.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
+        }else {
+            deleteLabel.setText("Select a request to delete");
             deleteLabel.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 5px; -fx-text-radius: 5px;");
         }
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
@@ -204,8 +210,10 @@ public class MyRidesTravelerController implements Controller{
     public void showProfileDetails() {
         String name = businessLogic.getCurrentUser().getName();
         String email = businessLogic.getCurrentUser().getEmail();
+        String userType = businessLogic.getCurrentUser().getUserType();
         nameLbl.setText(name);
         emailLbl.setText(email);
+        userTypeLbl.setText(userType);
     }
 }
 

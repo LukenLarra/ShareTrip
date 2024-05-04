@@ -69,4 +69,7 @@ public class User {
         this.password = password;
     }
 
+    public String getUserType() {
+        return this.getClass().getSimpleName();
+    }
 }

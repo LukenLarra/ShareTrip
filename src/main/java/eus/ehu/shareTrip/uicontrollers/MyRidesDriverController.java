@@ -62,6 +62,9 @@ public class MyRidesDriverController implements Controller {
     private Label nameLbl;
 
     @FXML
+    private Label userTypeLbl;
+
+    @FXML
     public Button changeImageBtn;
 
     @FXML
@@ -113,8 +116,11 @@ public class MyRidesDriverController implements Controller {
     public void showProfileDetails() {
         String name = businessLogic.getCurrentUser().getName();
         String email = businessLogic.getCurrentUser().getEmail();
+        String userType = businessLogic.getCurrentUser().getUserType();
         nameLbl.setText(name);
         emailLbl.setText(email);
+        userTypeLbl.setText(userType);
+
     }
 
     @Override

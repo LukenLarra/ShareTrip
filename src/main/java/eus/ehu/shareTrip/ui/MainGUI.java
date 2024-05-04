@@ -149,7 +149,7 @@ public class MainGUI {
 
 
     public void showMain() {
-        setupScene(mainWin.ui, "MainTitle", 1200, 600);
+        setupScene(mainWin.ui, "MainTitle", 1200, 700);
 
     }
 

@@ -26,5 +26,7 @@
       <Label fx:id="emailLbl" layoutX="231.0" layoutY="116.0" prefHeight="17.0" prefWidth="163.0" />
       <Label fx:id="nameLbl" layoutX="231.0" layoutY="86.0" prefHeight="17.0" prefWidth="163.0" />
       <Label fx:id="deleteLabel" layoutX="357.0" layoutY="437.0" prefHeight="15.0" prefWidth="213.0" textAlignment="CENTER" />
+      <Label layoutX="149.0" layoutY="141.0" text="User Type:" />
+      <Label fx:id="userTypeLbl" layoutX="231.0" layoutY="141.0" prefHeight="17.0" prefWidth="163.0" />
    </children>
 </AnchorPane>
