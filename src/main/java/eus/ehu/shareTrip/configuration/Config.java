@@ -1,7 +1,7 @@
 package eus.ehu.shareTrip.configuration;
 
 // import eus.ehu.shareTrip.domain.RideRequest;
-import javafx.scene.control.TableView;
+//import javafx.scene.control.TableView;
 
 import java.io.FileInputStream;
 import java.io.IOException;
